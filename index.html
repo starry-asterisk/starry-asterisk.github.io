@@ -27,7 +27,7 @@
       */
       :root{
         font-size: 16px;
-        --border: #eee;
+        --border: #ccc;
         --accent: rgb(0, 110, 255);
         --main: rgb(0, 110, 255)
       }
@@ -66,6 +66,10 @@
         display: block;
         margin: 0 0.5rem;
         text-decoration: none;
+        box-sizing: border-box;
+      }
+      header > nav > a:hover {
+        border-bottom: 2px solid;
       }
       footer {
         height: 4rem;

@@ -31,7 +31,6 @@
         --border: #ededed;
         --font: #666;
         --accent: #004680;
-        --main: rgb(0, 110, 255);
       }
       *{
         position: relative;
@@ -43,7 +42,7 @@
       }
       ::selection{
         color: white;
-        background-color: var(--main);
+        background-color: var(--accent);
       }
       /*재사용 요소*/
       a {
@@ -59,12 +58,23 @@
         overflow-x: hidden;
       }
       header {
+        display: flex;
         height: 4rem;
         border-bottom: 1px solid var(--border);
       }
+      header > .logo {
+        margin-right: auto;
+        padding: 0 1.5rem;
+      }
+      header > .logo > img {
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-right: 1rem;
+        line-height: 4rem;
+      }
       header > nav {
         display: flex;
-        flex-direction: row-reverse;
+        flex-direction: row;
         height: 4rem;
       }
       header > nav > a {
@@ -99,6 +109,10 @@
 </head>
 <body>
   <header>
+    <a class="logo" title="home">
+      <img>
+      blog
+    </a>
     <nav>
       <a href="/about.html">about</a>
       <a href="/resume.html">resume</a>

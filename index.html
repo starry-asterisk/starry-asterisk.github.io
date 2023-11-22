@@ -25,23 +25,31 @@
         4. font
       }
       */
+      /*공통*/
       :root{
         font-size: 16px;
-        --border: #ccc;
-        --accent: rgb(0, 110, 255);
+        --border: #ededed;
+        --font: #666;
+        --accent: rgb(28, 103, 202);
         --main: rgb(0, 110, 255)
       }
       *{
-        caret-color: var(--accent);
+        position: relative;
         padding: 0;
         border: 0;
         margin: 0;
-        position: relative;
+        color: var(--font);
+        caret-color: var(--accent);
       }
       ::selection{
         color: white;
         background-color: var(--main);
       }
+      /*재사용 요소*/
+      a {
+        color: var(--accent);
+      }
+      /*레이아웃 요소*/
       body {
         display: flex;
         flex-direction: column;
@@ -59,20 +67,18 @@
         height: 4rem;
       }
       header > nav > a {
-        height: 100%;
-        color: var(--border);
-        line-height: 4rem;
-        height: 100%;
         display: block;
-        margin: 0 0.5rem;
-        text-decoration: none;
         box-sizing: border-box;
+        height: 100%;
+        margin: 0 0.5rem;
+        line-height: 4rem;
+        text-decoration: none;
       }
       header > nav > a:hover {
         border-bottom: 2px solid;
       }
       footer {
-        height: 4rem;
+        padding: 1.5rem;
         border-top: 1px solid var(--border);
         text-align: center;
       }
@@ -98,7 +104,7 @@
   </div>
   <footer>
     <p class="copyright">2023 starry-asterisk</p>
-    <p>powered by <a href="#"></a>Git-hub</a>s, written by <a href="#">starry-asterisk</a></p>
+    <p>powered by <a href="#"></a>Git-hub</a>, written by <a href="#">starry-asterisk</a></p>
   </footer>
 </body>
 </html>

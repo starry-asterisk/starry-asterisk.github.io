@@ -30,8 +30,8 @@
         font-size: 16px;
         --border: #ededed;
         --font: #666;
-        --accent: rgb(28, 103, 202);
-        --main: rgb(0, 110, 255)
+        --accent: #004680;
+        --main: rgb(0, 110, 255);
       }
       *{
         position: relative;
@@ -48,6 +48,7 @@
       /*재사용 요소*/
       a {
         color: var(--accent);
+        text-decoration: none;
       }
       /*레이아웃 요소*/
       body {
@@ -73,14 +74,12 @@
         margin: 0 0.5rem;
         color: var(--font);
         line-height: 4rem;
-        text-decoration: none;
       }
       header > nav > a:hover {
         border-bottom: 2px solid;
       }
       footer {
-        padding: 1.5rem;
-        border-top: 1px solid var(--font);
+        padding: 2rem 0 5rem 0;
         background: var(--border);
         text-align: center;
       }
@@ -89,10 +88,12 @@
         text-align: center;
       }
       .middle > main {
+        display: inline-block;
         box-sizing: border-box;
         width: 100%;
         max-width: 45rem;
         padding: 1rem;
+        line-break: anywhere;
       }
     </style>
 </head>

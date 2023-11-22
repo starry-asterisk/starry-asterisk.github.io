@@ -44,6 +44,7 @@
       }
       body {
         display: flex;
+        flex-direction: column;
         max-width: 100%;
         min-height: 100%;
         overflow-x: hidden;
@@ -53,7 +54,18 @@
         border-bottom: 1px solid var(--border);
       }
       header > nav {
+        display: flex;
+        flex-direction: row-reverse;
+        height: 4rem;
+      }
+      header > nav > a {
         height: 100%;
+        color: var(--border);
+        line-height: 4rem;
+        height: 100%;
+        display: block;
+        margin: 0 0.5rem;
+        text-decoration: none;
       }
       footer {
         height: 4rem;

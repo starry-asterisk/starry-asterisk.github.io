@@ -17,23 +17,62 @@
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
     <title>starry-asterisk.github.io | personal github blog</title>
     <style>
+      /*
+      selector {
+        1. layout
+        2. pos
+        3. appearance
+        4. font
+      }
+      */
+      :root{
+        font-size: 16px;
+        --border: #eee;
+        --accent: rgb(0, 110, 255);
+        --main: rgb(0, 110, 255)
+      }
       *{
-        caret-color: rgb(0, 110, 255);
+        caret-color: var(--accent);
+        padding: 0;
+        border: 0;
+        margin: 0;
+        position: relative;
       }
       ::selection{
         color: white;
-        background-color: skyblue;
+        background-color: var(--main);
+      }
+      body {
+        display: flex;
+        max-width: 100%;
+        min-height: 100%;
+        overflow-x: hidden;
+      }
+      header {
+        height: 4rem;
+        border-bottom: 1px solid var(--border);
+      }
+      header > nav {
+        height: 100%;
+      }
+      footer {
+        height: 4rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      .middle{
+        flex: 1;
       }
     </style>
 </head>
 <body>
   <header>
     <nav>
-      <a href="/about.html"></a>
-      <a href="/resume.html"></a>
+      <a href="/about.html">about</a>
+      <a href="/resume.html">resume</a>
     </nav>
   </header>
-  <div>
+  <div class="middle">
     <aside>
 
     </aside>

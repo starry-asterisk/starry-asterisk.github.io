@@ -71,6 +71,7 @@
         box-sizing: border-box;
         height: 100%;
         margin: 0 0.5rem;
+        color: var(--font);
         line-height: 4rem;
         text-decoration: none;
       }
@@ -79,11 +80,19 @@
       }
       footer {
         padding: 1.5rem;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid var(--font);
+        background: var(--border);
         text-align: center;
       }
       .middle{
         flex: 1;
+        text-align: center;
+      }
+      .middle > main {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 45rem;
+        padding: 1rem;
       }
     </style>
 </head>
@@ -103,7 +112,7 @@
     </main>
   </div>
   <footer>
-    <p class="copyright">2023 starry-asterisk</p>
+    <p class="copyright">© 2023 starry-asterisk</p>
     <p>powered by <a href="#"></a>Git-hub</a>, written by <a href="#">starry-asterisk</a></p>
   </footer>
 </body>

@@ -53,15 +53,13 @@
         border-radius: 0.5rem;
       }
       img::before{
-        content: 'OOPS!!';
+        content: attr(alt);
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: var(--accent);
-        color: white;
-        font-weight: bold;
+        background-color: var(--border);
       }
       /*레이아웃 요소*/
       body {
@@ -78,7 +76,7 @@
       }
       header > .logo {
         margin-right: auto;
-        padding: 0 1.5rem;
+        padding: 0 0.75rem;
       }
       header > .logo > img {
         height: 2.5rem;
@@ -104,9 +102,11 @@
         margin: 0 0.5rem;
         color: var(--font);
         line-height: 4rem;
+        border-bottom: 2px solid transparent;
+        transition: border-color 150ms;
       }
       header > nav > a:hover {
-        border-bottom: 2px solid;
+        border-bottom-color: var(--font);
       }
       footer {
         padding: 2rem 0 5rem 0;
@@ -130,8 +130,8 @@
 <body>
   <header>
     <a class="logo" title="home">
-      <img src="/logo.png">
-      <span>blog</span>
+      <img src="/logo.png" alt="✨">
+      <span>starry-asterisk</span>
     </a>
     <nav>
       <a href="/about.html">about</a>

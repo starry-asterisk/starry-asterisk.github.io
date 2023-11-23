@@ -168,6 +168,7 @@ footer {
 }
 
 .profile__left__avatar { 
+    display: block;
     box-sizing: border-box;
     width: 80%;
     margin: 10%;
@@ -184,4 +185,15 @@ footer {
 
 .profile__right{
     flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__right__description {
+    flex: 1;
+}
+
+
+.profile__right__skills {
+    flex: 3;
 }

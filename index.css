@@ -168,9 +168,12 @@ footer {
 }
 
 .profile__left__avatar { 
+    box-sizing: border-box;
     width: 80%;
     margin: 10%;
     aspect-ratio: 1 / 1;
+    border: 0.25rem solid var(--border);
+    border-radius: 50%;
 }
 
 .profile__left__simple_info {

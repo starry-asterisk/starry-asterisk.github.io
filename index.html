@@ -131,12 +131,20 @@
   async function init(){
     
   }
-  async function getRepos() {
-    fetch(`https://api.github.com/users/${USERNAME}/repo`)
+  function getUsers() {
+    fetch(`https://api.github.com/users/${USERNAME}`)
+    .then(res => res.json())
+    .then(user => {
+      gitAttr('avatar_url', user.avatar_url);
+      getRepos(user);
+    }).catch(alert);
+  }
+  function getRepos(user) {
+    fetch(user.repos_url)
     .then(res => res.json())
     .then(getIssues).catch(alert);
   }
-  async function getIssues(repos) {
+  function getIssues(repos) {
     repos.forEach(repo => {
       _repos[repo.name] = repo;
       fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
@@ -146,6 +154,12 @@
   }
   function alert(e){
     console.log(e);
+  }
+  function gitAttr(attr, value){
+    document.querySelectorAll(`[git-target^="${attr},"]`).forEach(el => {
+      let [attr, target] = el.getAttribute('git-target').split(',');
+      el.setAttribute(target, value);
+    });
   }
 </script>
 </html>

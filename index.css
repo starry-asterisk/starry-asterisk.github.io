@@ -124,6 +124,7 @@ header>nav {
     display: flex;
     flex-direction: row;
     height: 4rem;
+    margin-right: 1rem;
 }
 
 header>nav>a {
@@ -191,23 +192,37 @@ footer {
     flex: 2;
     display: flex;
     flex-direction: column;
+    text-align: left;
 }
 
 .profile__right__description {
     flex: 1;
     padding: 0.5rem;
 }
-
-
+.profile__right__description::before{
+    content: '/* intro */';
+    display: block;
+    margin: 0.25rem 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
 .profile__right__skills {
     flex: 3;
     padding: 0.5rem;
 }
+.profile__right__skills::before{
+    content: '/* skill */';
+    display: block;
+    margin: 0.25rem 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
 .profile__right__skills > li {
     display: inline-block;
     box-sizing: border-box;
-    padding: 0.25rem;
+    padding: 0.25rem 1rem;
     margin-right: 0.5rem;
-    border: 1px solid var(--accent);
-    border-radius: 0.75rem;
+    border-radius: 1rem;
+    background: var(--accent);
+    color: white;
 }

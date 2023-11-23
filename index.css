@@ -174,12 +174,7 @@ footer {
     aspect-ratio: 1 / 1;
     border: 0.25rem solid var(--border);
     border-radius: 50%;
-}
-
-.profile__left__simple_info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 .profile__right{

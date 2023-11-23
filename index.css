@@ -80,6 +80,7 @@ body {
     overflow-x: hidden;
 }
 
+/*헤더*/
 header {
     display: flex;
     height: 4rem;
@@ -136,12 +137,14 @@ header>nav>a:hover {
     border-bottom-color: var(--font);
 }
 
+/*footer*/
 footer {
     padding: 2rem 0 5rem 0;
     background: var(--border);
     text-align: center;
 }
 
+/*contents 영역*/
 .middle {
     flex: 1;
     text-align: center;
@@ -154,4 +157,17 @@ footer {
     max-width: 45rem;
     padding: 1rem;
     line-break: anywhere;
+}
+
+.profile {
+    display: flex;
+}
+
+.profile > .profile__left{
+    flex: 1;   
+}
+
+.profile > .profile__right{
+
+    flex: 2;
 }

@@ -54,12 +54,15 @@
       }
       img::before{
         content: attr(alt);
+        display: flex;
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         background-color: var(--border);
+        align-items: center;
+        justify-content: center;
       }
       /*레이아웃 요소*/
       body {
@@ -77,12 +80,19 @@
       header > .logo {
         margin-right: auto;
         padding: 0 0.75rem;
+        cursor: pointer;
+      }
+      header > .logo > * {
+        pointer-events: none;
       }
       header > .logo > img {
         height: 2.5rem;
         width: 2.5rem;
         margin: 0.75rem;
         float: left;
+      }
+      header > .logo > img:after {
+        font-size: 1.5rem;
       }
       header > .logo > span {
         display: inline-block;

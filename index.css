@@ -196,4 +196,5 @@ footer {
 
 .profile__right__skills {
     flex: 3;
+    list-style: none;
 }

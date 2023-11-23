@@ -49,6 +49,20 @@
         color: var(--accent);
         text-decoration: none;
       }
+      img {
+        border-radius: 0.5rem;
+      }
+      img::before{
+        content: 'OOPS!!';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--accent);
+        color: white;
+        font-weight: bold;
+      }
       /*레이아웃 요소*/
       body {
         display: flex;
@@ -117,8 +131,6 @@
   <header>
     <a class="logo" title="home">
       <img>
-        <div></div>
-      </img>
       <span>blog</span>
     </a>
     <nav>

@@ -136,6 +136,9 @@
     .then(res => res.json())
     .then(user => {
       gitAttr('avatar_url', user.avatar_url);
+      gitAttr('html_url', user.html_url);
+      gitAttr('name', user.name);
+      gitAttr('login', user.login);
       getRepos(user);
     }).catch(alert);
   }
@@ -158,7 +161,11 @@
   function gitAttr(attr, value){
     document.querySelectorAll(`[git-target^="${attr},"]`).forEach(el => {
       let [attr, target] = el.getAttribute('git-target').split(',');
-      el.setAttribute(target, value);
+      if(target){
+        el.setAttribute(target, value);
+      }else{
+        el.innerHTML = value;
+      }
     });
   }
 </script>

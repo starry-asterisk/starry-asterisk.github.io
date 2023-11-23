@@ -163,18 +163,22 @@ footer {
     display: flex;
 }
 
-.profile > .profile__left{
+.profile__left {
     flex: 1;   
 }
 
-.profile > .profile__right{
-    flex: 2;
-}
-
-
-.profile > .profile__right > .profile__left__avatar{
-    flex: 2;
+.profile__left__avatar { 
     width: 80%;
     margin: 10%;
     aspect-ratio: 1 / 1;
+}
+
+.profile__left__simple_info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile__right{
+    flex: 2;
 }

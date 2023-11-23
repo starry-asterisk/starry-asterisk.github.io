@@ -168,6 +168,13 @@ footer {
 }
 
 .profile > .profile__right{
-
     flex: 2;
+}
+
+
+.profile > .profile__right > .profile__left__avatar{
+    flex: 2;
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1 / 1;
 }

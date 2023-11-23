@@ -71,6 +71,10 @@ img::before {
     justify-content: center;
 }
 
+ul, ol {
+    list-style: none;
+}
+
 /*레이아웃 요소*/
 body {
     display: flex;
@@ -191,10 +195,19 @@ footer {
 
 .profile__right__description {
     flex: 1;
+    padding: 0.5rem;
 }
 
 
 .profile__right__skills {
     flex: 3;
-    list-style: none;
+    padding: 0.5rem;
+}
+.profile__right__skills > li {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    border: 1px solid var(--accent);
+    border-radius: 0.75rem;
 }

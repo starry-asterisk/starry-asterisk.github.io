@@ -150,12 +150,12 @@
   function getIssues(repos) {
     repos.forEach(repo => {
       _repos[repo.name] = repo;
-      fetch(repo.issues_url)
+      fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
         li.innerHTML = `<img src="img_url" alt="${issue.title}">
-            <p>${issue.title} | (tag) | 설명...</p>
+            <p>${issue.title} | (tag) | ${issue.title}</p>
             <p>1 min ago. 안녕하세요</p>`;
         document.querySelector('.posts>ul').appendChild(li);
       }));

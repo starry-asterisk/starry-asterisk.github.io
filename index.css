@@ -228,3 +228,15 @@ footer {
     background: var(--accent);
     color: white;
 }
+.posts > ul > li {
+    width: 49%;
+    height: 10rem;
+    background: var(--border);
+    float: left;
+    margin: 0.5%;
+}
+.posts > ul > li > img {
+    display: block;
+    border-radius: 0;
+    aspect-ratio: 1 / 3;
+}

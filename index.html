@@ -131,6 +131,7 @@
   async function init(){
     
   }
+  getUsers();
   function getUsers() {
     fetch(`https://api.github.com/users/${USERNAME}`)
     .then(res => res.json())
@@ -155,7 +156,7 @@
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
         li.innerHTML = `<img src="img_url" alt="${issue.title}">
-            <p>${issue.title} | (tag) | ${issue.title}</p>
+            <p>${issue.title} | (tag) | 설명...</p>
             <p>1 min ago. 안녕하세요</p>`;
         document.querySelector('.posts>ul').appendChild(li);
       }));

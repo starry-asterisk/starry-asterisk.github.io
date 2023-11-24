@@ -80,6 +80,7 @@
         <button class="button_more">view more</button>
       </section>
       <section class="repositories" data-type="list">
+        <ul></ul><button class="button_more">view more</button>
             <!--
               ------------------------------------------------
 
@@ -92,6 +93,7 @@
             -->
       </section>
       <section class="issues" data-type="list">
+        <ul></ul><button class="button_more">view more</button>
         <!--
               ------------------------------------------------
               Repo. > issue (tag) title, datetime
@@ -151,7 +153,23 @@
   function getIssues(repos) {
     repos.forEach(repo => {
       _repos[repo.name] = repo;
+      if(repo.name == `${USERNAME}.github.io`){
+        getPosts(repo);
+        return;
+      }
       fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
+      .then(res => res.json())
+      .then(issues => issues.forEach(issue => {
+        let li = document.createElement('li');
+        li.innerHTML = `<img src="img_url" alt="${issue.title}">
+            <p>${issue.title} | (tag) | 설명...</p>
+            <p>1 min ago. 안녕하세요</p>`;
+        document.querySelector('.issues>ul').appendChild(li);
+      }));
+    });
+  }
+  function getPosts(repo){
+    fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
@@ -160,7 +178,6 @@
             <p>1 min ago. 안녕하세요</p>`;
         document.querySelector('.posts>ul').appendChild(li);
       }));
-    });
   }
   function alert(e){
     console.log(e);

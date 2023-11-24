@@ -161,7 +161,7 @@
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
-        li.innerHTML = `<span class="issues__repo">${repo.name}</span><span class="issues__label">label</span><span class="issues__title">${issue.title}</span><span class="issues__created_at">${issue.created_at}</span>`;
+        li.innerHTML = `<span class="issues__repo">${repo.name}</span><span class="issues__label">label</span><span class="issues__title">${issue.title}</span><span class="issues__created_at">${timeSince(new Date(issue.created_at))}</span>`;
         document.querySelector('.issues>ul').appendChild(li);
       }));
     });
@@ -191,5 +191,32 @@
       el.removeAttribute('git-target');
     });
   }
+  function timeSince(date) {
+
+var seconds = Math.floor((new Date() - date) / 1000);
+
+var interval = seconds / 31536000;
+
+if (interval > 1) {
+  return Math.floor(interval) + " years";
+}
+interval = seconds / 2592000;
+if (interval > 1) {
+  return Math.floor(interval) + " months";
+}
+interval = seconds / 86400;
+if (interval > 1) {
+  return Math.floor(interval) + " days";
+}
+interval = seconds / 3600;
+if (interval > 1) {
+  return Math.floor(interval) + " hours";
+}
+interval = seconds / 60;
+if (interval > 1) {
+  return Math.floor(interval) + " minutes";
+}
+return Math.floor(seconds) + " seconds";
+}
 </script>
 </html>

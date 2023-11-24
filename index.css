@@ -249,6 +249,7 @@ footer {
     height: 2rem;
     line-height: 2rem;
     display: flex;
+    background: var(--border);
 }
 .issues__repo,
 .issues__label,
@@ -272,7 +273,7 @@ footer {
     overflow: visible;
     min-width: fit-content;
 }
-.issues__title {
+.issues__repo {
     color: white;
     border-color: var(--accent);
     background: var(--accent);
@@ -282,11 +283,8 @@ footer {
     border-color: var(--font);
     background: var(--font);
 }
-.issues__repo,
-.issues__created_at {
-    color: var(--font);
-    border-color: var(--border);
-    background: var(--border);
+.issues__title {
+    flex: 1
 }
 
 .issues__repo::after,
@@ -298,4 +296,5 @@ footer {
     top: 0;
     border: 1rem solid transparent;
     border-left-color: inherit;
+    z-index: 1;
 }

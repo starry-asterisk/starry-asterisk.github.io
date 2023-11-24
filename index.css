@@ -256,7 +256,9 @@ footer {
 .issues__created_at {
     display: block;
     padding: 0 1rem;
-    border-color: rgba(0,0,0,0.2);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
     white-space: nowrap;
 }
 
@@ -271,10 +273,22 @@ footer {
     min-width: fit-content;
 }
 .issues__title {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+    color: white;
+    border-color: var(--accent);
+    background: var(--accent);
 }
+.issues__label {
+    color: white;
+    border-color: var(--font);
+    background: var(--font);
+}
+.issues__repo,
+.issues__created_at {
+    color: var(--font);
+    border-color: var(--border);
+    background: var(--border);
+}
+
 .issues__repo::after,
 .issues__label::after  {
     content: '';

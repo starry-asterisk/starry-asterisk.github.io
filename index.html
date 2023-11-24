@@ -161,7 +161,7 @@
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
-        li.innerHTML = `<span class="issues__repo">${repo.name}</span><span class="issues__label">label</span><span class="issues__title">${issue.title}</span><span class="issues__created_at" style="color:var(--border)">${issue.created_at}</span>`;
+        li.innerHTML = `<span class="issues__repo">${repo.name}</span><span class="issues__label">label</span><span class="issues__title">${issue.title}</span><span class="issues__created_at">${issue.created_at}</span>`;
         document.querySelector('.issues>ul').appendChild(li);
       }));
     });

@@ -250,6 +250,7 @@ footer {
     line-height: 2rem;
     display: flex;
     background: var(--border);
+    margin-bottom: 0.2rem;
 }
 .issues__repo,
 .issues__label,
@@ -259,6 +260,7 @@ footer {
     padding: 0 1rem;
     white-space: nowrap;
     text-overflow: ellipsis;
+    text-align: left;
     overflow: hidden;
     white-space: nowrap;
 }

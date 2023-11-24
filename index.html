@@ -161,9 +161,7 @@
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
         let li = document.createElement('li');
-        li.innerHTML = `<img src="img_url" alt="${issue.title}">
-            <p>${issue.title} | (tag) | 설명...</p>
-            <p>1 min ago. 안녕하세요</p>`;
+        li.innerHTML = `${repo.name} > ${issue.title}, ${issue.created_at}`;
         document.querySelector('.issues>ul').appendChild(li);
       }));
     });

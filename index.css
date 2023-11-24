@@ -259,6 +259,11 @@ footer {
     border-color: rgba(0,0,0,0.2);
     white-space: nowrap;
 }
+
+.issues__label,
+.issues__title {
+    padding-left: 2rem;
+}
 .issues__repo,
 .issues__label,
 .issues__created_at {

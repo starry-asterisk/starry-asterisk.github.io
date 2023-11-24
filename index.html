@@ -153,6 +153,9 @@
   function getIssues(repos) {
     repos.forEach(repo => {
       _repos[repo.name] = repo;
+      let repo_li = document.createElement('li');
+      repo_li.innerHTML = `<a><p>${repo.name}</p><p>${repo.description}</p><p>${repo.language}</p></a>`;
+      document.querySelector('.repos>ul').appendChild(repo_li);
       if(repo.name == `${USERNAME}.github.io`){
         getPosts(repo);
         return;

@@ -300,3 +300,15 @@ footer {
     border-left-color: inherit;
     z-index: 1;
 }
+
+.repos > ul > li {
+    display: inline-block;
+}
+.repos > ul > li > a {
+    display: block;
+    height: 10rem;
+    border: 1px solid var(--font);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: left;
+}

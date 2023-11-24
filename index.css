@@ -250,16 +250,33 @@ footer {
     line-height: 2rem;
     display: flex;
 }
-.issues > ul > li > span {
+.issues__repo,
+.issues__label,
+.issues__title,
+.issues__created_at {
     display: block;
     padding: 0 1rem;
     border-color: rgba(0,0,0,0.2);
+    white-space: nowrap;
 }
-.issues > ul > li > span::after {
+.issues__repo,
+.issues__label,
+.issues__created_at {
+    overflow: visible;
+    min-width: fit-content;
+}
+.issues__title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.issues__repo::after,
+.issues__label::after  {
     content: '';
     display: block;
     position: absolute;
     right: -2rem;
+    top: 0;
     border: 1rem solid transparent;
-    border-right-color: inherit;
+    border-left-color: inherit;
 }

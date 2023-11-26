@@ -300,15 +300,23 @@ footer {
     border-left-color: inherit;
     z-index: 1;
 }
-
+.repos > ul {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
 .repos > ul > li {
     display: inline-block;
 }
 .repos > ul > li > a {
     display: block;
-    height: 10rem;
+    height: 4rem;
+    width: 13rem;
     border: 1px solid var(--font);
     border-radius: 0.5rem;
     padding: 1rem;
     text-align: left;
+}
+.repos > ul > li:not(:last-child){
+    margin-right: 1rem;
 }

@@ -1,0 +1,270 @@
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="starry-asterisk.github.io">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="description" content="개인 이력서">
+    <meta property="og:description" content="personal github blog">
+    <meta property="og:url" content="https://starry-asterisk.github.io/">
+    <meta property="og:site_name" content="starry-asterisk.github.io">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta property="twitter:title" content="이력서">
+    <link rel="canonical" href="https://starry-asterisk.github.io/">
+    <link rel="icon" href="/favicon.png">
+    <link rel="stylesheet" href="index.css">
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
+    <style>
+      @font-face {
+    font-family: Pretendard;
+    src: url(/Pretendard-Bold.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Pretendard;
+    src: url(/Pretendard-Medium.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: Pretendard;
+    src: url(/Pretendard-Regular.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2);
+    font-weight: normal;
+}
+
+
+/*
+  selector {
+    1. layout
+    2. pos
+    3. appearance
+    4. font
+  }
+  */
+/*공통*/
+:root {
+    font-family: Pretendard, auto;
+    font-size: 16px;
+    --border: #ededed;
+    --font: #666;
+    --accent: #004680;
+}
+
+* {
+    position: relative;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    color: var(--font);
+    caret-color: var(--accent);
+}
+
+::selection {
+    color: white;
+    background-color: var(--accent);
+}
+
+/*재사용 요소*/
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+img {
+    border-radius: 0.5rem;
+}
+
+img::before {
+    content: attr(alt);
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--border);
+    align-items: center;
+    justify-content: center;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/*레이아웃 요소*/
+body {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+/*헤더*/
+header {
+    display: flex;
+    height: 4rem;
+    border-bottom: 1px solid var(--border);
+}
+
+header>.logo {
+    margin-right: auto;
+    padding: 0 0.75rem;
+    cursor: pointer;
+}
+
+header>.logo>* {
+    pointer-events: none;
+}
+
+header>.logo>img {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0.75rem;
+    float: left;
+}
+
+header>.logo>img::before {
+    font-size: 1.5rem;
+}
+
+header>.logo>span {
+    display: inline-block;
+    height: 2.5rem;
+    margin: 0.75rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+}
+
+header>nav {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+header>nav>a {
+    display: block;
+    box-sizing: border-box;
+    height: 100%;
+    margin: 0 0.5rem;
+    color: var(--font);
+    line-height: 4rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 150ms;
+}
+
+header>nav>a:hover {
+    border-bottom-color: var(--font);
+}
+
+/*footer*/
+footer {
+    padding: 2rem 0 5rem 0;
+    background: var(--border);
+    text-align: center;
+}
+
+/*contents 영역*/
+.middle {
+    flex: 1;
+    text-align: center;
+}
+
+.middle>main {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 45rem;
+    padding: 1rem;
+    line-break: anywhere;
+}
+
+.profile {
+    display: flex;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.profile__left {
+    flex: 1;   
+}
+
+.profile__left__avatar { 
+    display: block;
+    box-sizing: border-box;
+    width: 80%;
+    margin: 10%;
+    aspect-ratio: 1 / 1;
+    border: 0.25rem solid var(--border);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile__left__avatar > img {
+    width: 100%;
+    height: 100%;
+}
+
+.profile__right{
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.profile__right__description {
+    flex: 1;
+    padding: 0.5rem;
+}
+.profile__right__description::before{
+    content: '/* intro */';
+    display: block;
+    margin: 1rem 0 0.25rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.profile__right__skills {
+    flex: 3;
+    padding: 0.5rem;
+}
+.profile__right__skills::before{
+    content: '/* skill */';
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.profile__right__skills > li {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 0.25rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 1rem;
+    background: var(--accent);
+    color: white;
+}
+    </style>
+    <title>이력서</title>
+</head>
+<body>
+  <header>
+    <div>
+      
+    </div>
+  </header>
+  <div class="middle">
+    <aside>
+
+    </aside>
+    <main>
+    </main>
+  </div>
+</body>
+<script>
+</script>
+</html>

@@ -6,147 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:title" content="starry-asterisk.github.io">
     <meta property="og:locale" content="ko_KR">
-    <meta name="description" content="personal github blog">
+    <meta name="description" content="개인 이력서">
     <meta property="og:description" content="personal github blog">
     <meta property="og:url" content="https://starry-asterisk.github.io/">
     <meta property="og:site_name" content="starry-asterisk.github.io">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
-    <meta property="twitter:title" content="starry-asterisk.github.io">
+    <meta property="twitter:title" content="이력서">
     <link rel="canonical" href="https://starry-asterisk.github.io/">
     <link rel="icon" href="/favicon.png">
     <link rel="stylesheet" href="index.css">
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
-    
+    <style>
+
+    </style>
     <title>starry-asterisk.github.io | personal github blog</title>
 </head>
 <body>
-  <header>
-    <a class="logo" title="home" href="/">
-      <img src="/logo.png" alt="✨">
-      <span>starry-asterisk</span>
-    </a>
-    <nav>
-      <a href="/about">about</a>
-      <a href="/resume">resume</a>
-    </nav>
-  </header>
   <div class="middle">
     <aside>
 
     </aside>
     <main>
-      <section class="profile">
-        <div class="profile__left">
-          <a clas="profile__left__avatar" git-target="html_url,href" href="/#">
-            <img git-target="avatar_url,src" alt="✨" src="/">
-          </a>
-          <div class="profile__left__simple_info">
-            <h5 git-target="name">김현우</h5>
-            <h2 git-target="login">starry-asterisk</h2>
-            <h3>6507055@naver.com</h3>
-          </div>
-        </div>
-        <div class="profile__right">
-          <div class="profile__right__description">
-            개발자로서의 설명
-          </div>
-          <ul class="profile__right__skills">
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>javascript</li>
-          </ul>
-        </div>
-      </section>
-      <section class="posts" data-type="card">
-        <ul>
-          <li data-src="img_url">
-            <!--
-              ------------------------------------------------
-
-
-                              IMG Background
-
-
-              ------------------------------------------------
-              title  |  tag  | description...
-              ------------------------------------------------
-              latest comment
-              ------------------------------------------------
-            -->
-          </li>
-        </ul>
-        <button class="button_more">view more</button>
-      </section>
-      <section class="repositories" data-type="list">
-            <!--
-              ------------------------------------------------
-
-
-                   github 프로필에 있는 레포지토리 목록 참고
-
-
-              ------------------------------------------------
-              issue (tag) title, datetime
-            -->
-      </section>
-      <section class="issues" data-type="list">
-        <!--
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-              Repo. > issue (tag) title, datetime
-              ------------------------------------------------
-        -->
-      </section>
     </main>
   </div>
-  <footer>
-    <p class="copyright">© 2023 starry-asterisk</p>
-    <p>powered by <a href="#"></a>Git-hub</a>, written by <a href="#">starry-asterisk</a></p>
-  </footer>
 </body>
 <script>
-  /*
-  git api
-
-  https://api.github.com/repos/<username>/<repo>/issues < issue list
-  https://api.github.com/users/<username>/repos < repo list
-  https://api.github.com/users/<username> < user profile
-
-    나중에 notion을 db처럼 활용해도 좋을듯
-  
-  */
-  const USERNAME = 'starry-asterisk';
-  let _repos = {};
-  async function init(){
-    
-  }
-  async function getRepos() {
-    fetch(`https://api.github.com/users/${USERNAME}/repo`)
-    .then(res => res.json())
-    .then(getIssues).catch(alert);
-  }
-  async function getIssues(repos) {
-    repos.forEach(repo => {
-      _repos[repo.name] = repo;
-      fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
-      .then(res => res.json())
-      .then(issues => issues.forEach(console.log));
-    });
-  }
-  function alert(e){
-    console.log(e);
-  }
 </script>
 </html>

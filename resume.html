@@ -1,4 +1,5 @@
 <html lang="ko-KR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,187 +18,245 @@
     <link rel="icon" href="/favicon.png">
     <style>
         @font-face {
-    font-family: Pretendard;
-    src: url(/Pretendard-Bold.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2);
-    font-weight: 600;
-}
+            font-family: Pretendard;
+            src: url(/Pretendard-Bold.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Bold.woff2);
+            font-weight: 600;
+        }
 
-@font-face {
-    font-family: Pretendard;
-    src: url(/Pretendard-Medium.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2);
-    font-weight: 300;
-}
+        @font-face {
+            font-family: Pretendard;
+            src: url(/Pretendard-Medium.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Medium.woff2);
+            font-weight: 300;
+        }
 
-@font-face {
-    font-family: Pretendard;
-    src: url(/Pretendard-Regular.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2);
-    font-weight: normal;
-}
-:root {
-    font-family: Pretendard, auto;
-    font-size: 16px;
-    --border: #ededed;
-    --font: #666;
-    --accent: #004680;
-}
+        @font-face {
+            font-family: Pretendard;
+            src: url(/Pretendard-Regular.woff2), url(https://cdn.jsdelivr.net/gh/orioncactus/pretendard/packages/pretendard/dist/web/static/woff2/Pretendard-Regular.woff2);
+            font-weight: normal;
+        }
 
-* {
-    position: relative;
-    padding: 0;
-    border: 0;
-    margin: 0;
-    color: var(--font);
-    caret-color: var(--accent);
-}
+        :root {
+            font-family: Pretendard, auto;
+            font-size: 16px;
+            --border: #ededed;
+            --font: #666;
+            --accent: #004680;
+        }
 
-::selection {
-    color: white;
-    background-color: var(--accent);
-}
-a {
-    color: var(--accent);
-    text-decoration: none;
-}
+        * {
+            position: relative;
+            padding: 0;
+            border: 0;
+            margin: 0;
+            color: var(--font);
+            caret-color: var(--accent);
+        }
 
-img {
-    border-radius: 0.5rem;
-}
+        ::selection {
+            color: white;
+            background-color: var(--accent);
+        }
 
-img::before {
-    content: attr(alt);
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: var(--border);
-    align-items: center;
-    justify-content: center;
-}
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
 
-ul, ol {
-    list-style: none;
-}
+        img {
+            border-radius: 0.5rem;
+        }
 
-/*레이아웃 요소*/
-body {
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-}
-/*여기까진 나중에 재사용*/
-:root {
-    --header-height: 25rem;
-    --footer-height: 2rem;
-}
-body > * {
-    display: inline-block;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 47rem;
-    margin: 0 auto;
-    padding: 1rem;
-    line-break: anywhere;
-}
-body::before, body::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: var(--accent);
-}
-body::before {
-    top: 0;
-    height: var(--header-height);
-}
-body::after {
-    bottom: 0;
-    height: var(--footer-height);
-}
-header {
-    height: var(--header-height);
-}
-footer {
-    height: var(--footer-height);
-}
-header * {
-    color: white;
-}
-header *::selection, footer::selection {
-    color: var(--accent);
-    background-color:white;
-}
-main {
-    flex: 1;
-    font-size: 1.1rem;
-}
-main > section > div.subHead{
-    float: left;
-    width: 12rem;
-    line-break: anywhere;
-}
-main > section > div:not(.subHead){
-    margin-left: 13rem;
-    line-break: anywhere;
-    padding-bottom: 1.5rem;
-}
-main > section > div:nth-child(n + 3):not(.subHead){
-    padding-top: 1.5rem;
-}
-main > section {
-    padding: 3rem 0;
-    border-bottom: 1px solid var(--border);
-}
-h1 {font-size:5rem;line-height: 1.1;margin: 3rem 0;}
-h2 {font-size: 3rem;margin: 4rem 0 2rem;}
-h3, h4 {font-size:2rem;margin-bottom:1rem;}
-h5 {font-size:1.3rem;margin-bottom:0.5rem;}
-h1::after, h2::after, h3::after, h4::after, h5::after{
-    content: '.';
-    color: var(--accent);
-}
-p, ul {
-    margin-bottom: 1rem;
-}
-ul > li {
-    padding: 0.2rem 0;
-}
-ul > li::before{
-    display: inline-block;
-    content: "•";
-    color: var(--accent);
-    padding: 0 0.5rem;
-}
-p.big {
-    font-size: 2rem;
-    line-height: 1.4;
-    font-weight: 500;
-}
-.line {display: block;}
-.m15 {margin-bottom: 1.5rem;}
-.info {
-    position: absolute;
-    right: 0;
-    top: 4rem;
-}
-mark {
-    background-color: white;
-    color: var(--accent);
-}
+        img::before {
+            content: attr(alt);
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            align-items: center;
+            justify-content: center;
+        }
+
+        ul,
+        ol {
+            list-style: none;
+        }
+
+        /*레이아웃 요소*/
+        body {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            min-height: 100%;
+            overflow-x: hidden;
+        }
+
+        /*여기까진 나중에 재사용*/
+        :root {
+            --header-height: 25rem;
+            --footer-height: 2rem;
+        }
+
+        body>* {
+            display: inline-block;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 47rem;
+            margin: 0 auto;
+            padding: 1rem;
+            line-break: anywhere;
+        }
+
+        body::before,
+        body::after {
+            content: '';
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            background-color: var(--accent);
+        }
+
+        body::before {
+            top: 0;
+            height: var(--header-height);
+        }
+
+        body::after {
+            bottom: 0;
+            height: var(--footer-height);
+        }
+
+        header {
+            height: var(--header-height);
+        }
+
+        footer {
+            height: var(--footer-height);
+        }
+
+        header * {
+            color: white;
+        }
+
+        header *::selection,
+        footer::selection {
+            color: var(--accent);
+            background-color: white;
+        }
+
+        main {
+            flex: 1;
+            font-size: 1.1rem;
+        }
+
+        main>section>div.subHead {
+            float: left;
+            width: 12rem;
+            line-break: anywhere;
+        }
+
+        main>section>div:not(.subHead) {
+            margin-left: 13rem;
+            line-break: anywhere;
+            padding-bottom: 1.5rem;
+        }
+
+        main>section>div:nth-child(n + 3):not(.subHead) {
+            padding-top: 1.5rem;
+        }
+
+        main>section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin: 3rem 0;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin: 4rem 0 2rem;
+        }
+
+        h3,
+        h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h5 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h1::after,
+        h2::after,
+        h3::after,
+        h4::after,
+        h5::after {
+            content: '.';
+            color: var(--accent);
+        }
+
+        p,
+        ul {
+            margin-bottom: 1rem;
+        }
+
+        ul>li {
+            padding: 0.2rem 0;
+        }
+
+        ul>li::before {
+            display: inline-block;
+            content: "•";
+            color: var(--accent);
+            padding: 0 0.5rem;
+        }
+
+        p.big {
+            font-size: 2rem;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .line {
+            display: block;
+        }
+
+        .m15 {
+            margin-bottom: 1.5rem;
+        }
+
+        .info {
+            position: absolute;
+            right: 0;
+            top: 4rem;
+        }
+
+        mark {
+            background-color: white;
+            color: var(--accent);
+        }
     </style>
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
-    
-    <title>김현우 - 이력서     </title>
+    <script
+        type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
+
+    <title>김현우 | 적극적이고 성장하는 개발자</title>
 </head>
+
 <body>
     <header>
         <h1>김현우</h1>
         <p class="big">
-            이전에는 ICIA 교육원에서 <mark>스프링 부트 기반 REST 서비스 개발자 양성과정</mark>을 수료하였으며, 2018년 3월부터 2020년 2월까지 인하공업전문대학에서 정보통신학과로 학사를 이수한 졸업자입니다.
+            이전에는 ICIA 교육원에서 <mark>스프링 부트 기반 REST 서비스 개발자 양성과정</mark>을 수료하였으며, 2018년 3월부터 2020년 2월까지 인하공업전문대학에서 정보통신학과로
+            학사를 이수한 졸업자입니다.
         </p>
         <div class="info">
             <h5>핸드폰</h5>
@@ -216,48 +275,51 @@ mark {
             </div>
             <div>
                 <h4>iSaver TMS</h3>
-                <span class="line">Web Full-Stack</span>
-                <span class="line m15">2022.09. - 재직중</span>
-                <h5>개요</h5>
-                <p>LiDar기반 위험 감지 플랫폼</p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>유지보수</li>
-                    <li>연동</li>
-                    <li>기능개발</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL, Docker</p>
+                    <span class="line">Web Full-Stack</span>
+                    <span class="line m15">2022.09. - 재직중</span>
+                    <h5>개요</h5>
+                    <p>LiDar기반 위험 감지 플랫폼</p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>유지보수</li>
+                        <li>연동</li>
+                        <li>기능개발</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL,
+                        Docker</p>
             </div>
             <div>
                 <h4>밀집도 표현 기술</h3>
-                <span class="line">Web Full-Stack</span>
-                <span class="line m15">2020.05. - 2021.11.</span>
-                <h5>개요</h5>
-                <p>iSaver TMS의 하위 프로젝트</p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>유지보수</li>
-                    <li>연동</li>
-                    <li>기능개발</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL, Docker</p>
+                    <span class="line">Web Full-Stack</span>
+                    <span class="line m15">2020.05. - 2021.11.</span>
+                    <h5>개요</h5>
+                    <p>iSaver TMS의 하위 프로젝트</p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>유지보수</li>
+                        <li>연동</li>
+                        <li>기능개발</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL,
+                        Docker</p>
             </div>
             <div>
                 <h4>우회전 감지 기술</h3>
-                <span class="line">Web Full-Stack</span>
-                <span class="line m15">2020.05. - 2021.11.</span>
-                <h5>개요</h5>
-                <p>iSaver TMS의 하위 프로젝트</p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>유지보수</li>
-                    <li>연동</li>
-                    <li>기능개발</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL, Docker</p>
+                    <span class="line">Web Full-Stack</span>
+                    <span class="line m15">2020.05. - 2021.11.</span>
+                    <h5>개요</h5>
+                    <p>iSaver TMS의 하위 프로젝트</p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>유지보수</li>
+                        <li>연동</li>
+                        <li>기능개발</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>HTML, Javascript, CSS, MQTTv3.1, Spring Boot Framework, Spring Stream Cloud, mongoDB, postgreSQL,
+                        Docker</p>
             </div>
         </section>
         <section>
@@ -268,64 +330,64 @@ mark {
             </div>
             <div>
                 <h4>퍼블버블</h3>
-                <span class="line">(구)지도버튼</span>
-                <span class="line">Web Full-Stack</span>
-                <span class="line m15">2020.02. - 2020.11.</span>
-                <h5>개요</h5>
-                <p>
-                    사용자가 미리 준비된 탬플릿이나 별도의 빈 캔버스에서 자유롭게 디자인 하여, 홍보 및 안내를 위한 페이지 생성이 가능한 서비스입니다.
-                    프론트와 백엔드 전반에 걸쳐 작업했습니다.
-                    입사이전 해당 프로젝트 담당자의 실책으로 인해, 서비스 
-                    데이터와 Front-end 개발 소스가 전부 소실되어 일부 Back-end소스만 
-                    존재하는 상태에서 개발하였으며, 처음 다루는 언어로 해야 했기에 많은 어려움이 있었던 프로젝트 였습니다.
-                </p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>초기 개발 및 유지보수</li>
-                    <li>템플릿 작성 기능<br>
-                    <li>   - 레이어 삭제, 복사, 붙여넣기</li>
-                    <li>   - 레이어 사이즈 조절, 이동, 색상 및 상세 옵션(그림자, 선 두께, 스타일 등)</li>
-                    <li>   - 각종 레이어(지도, 팝업 버튼, 링크, 도형, 이미지, 영상 등)</li>
-                    </li>
-                    <li>템플릿 관리자 페이지</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>HTML, CSS, Javascript, CakePHP</p>
+                    <span class="line">(구)지도버튼</span>
+                    <span class="line">Web Full-Stack</span>
+                    <span class="line m15">2020.02. - 2020.11.</span>
+                    <h5>개요</h5>
+                    <p>
+                        사용자가 미리 준비된 탬플릿이나 별도의 빈 캔버스에서 자유롭게 디자인 하여, 홍보 및 안내를 위한 페이지 생성이 가능한 서비스입니다.
+                        프론트와 백엔드 전반에 걸쳐 작업했습니다.
+                        입사이전 해당 프로젝트 담당자의 실책으로 인해, 서비스
+                        데이터와 Front-end 개발 소스가 전부 소실되어 일부 Back-end소스만
+                        존재하는 상태에서 개발하였으며, 처음 다루는 언어로 해야 했기에 많은 어려움이 있었던 프로젝트 였습니다.
+                    </p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>초기 개발 및 유지보수</li>
+                        <li>템플릿 작성 기능<br>
+                        <li> - 레이어 삭제, 복사, 붙여넣기</li>
+                        <li> - 레이어 사이즈 조절, 이동, 색상 및 상세 옵션(그림자, 선 두께, 스타일 등)</li>
+                        <li> - 각종 레이어(지도, 팝업 버튼, 링크, 도형, 이미지, 영상 등)</li>
+                        </li>
+                        <li>템플릿 관리자 페이지</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>HTML, CSS, Javascript, CakePHP</p>
             </div>
             <div>
                 <h4>부동산 종합관리서비스 - 호잇(Hoit)</h3>
-                <span class="line">Web Full-Stack & Android</span>
-                <span class="line m15">2020.02. - 2020.10.</span>
-                <h5>개요</h5>
-                <p>
-                    부동산의 매매, 임대(관리비, 임대료)의 중개 및 계약서 작성, 세입자 관리가 가능한 멀치플렛폼 서비스입니다.
-                    front-end(web, android), back-end(mobile 포함)
-                </p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>웹 유지보수 및 추가 기능 개발</li>
-                    <li>안드로이드 유지보수 및 추가 기능 개발</li>
-                    <li>오픈뱅킹 api 기반 주기적 자동이체 기능 개선</li>
-                    <li>부동산임대차계약서 온라인 작성 및 서명 기능 개발</li>
-                    <li>카카오 맵 기반 부동산 매물 검색 기능</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>Spring boot Framework, HTML, CSS, Javascript, kotlin(android)</p>
+                    <span class="line">Web Full-Stack & Android</span>
+                    <span class="line m15">2020.02. - 2020.10.</span>
+                    <h5>개요</h5>
+                    <p>
+                        부동산의 매매, 임대(관리비, 임대료)의 중개 및 계약서 작성, 세입자 관리가 가능한 멀치플렛폼 서비스입니다.
+                        front-end(web, android), back-end(mobile 포함)
+                    </p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>웹 유지보수 및 추가 기능 개발</li>
+                        <li>안드로이드 유지보수 및 추가 기능 개발</li>
+                        <li>오픈뱅킹 api 기반 주기적 자동이체 기능 개선</li>
+                        <li>부동산임대차계약서 온라인 작성 및 서명 기능 개발</li>
+                        <li>카카오 맵 기반 부동산 매물 검색 기능</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>Spring boot Framework, HTML, CSS, Javascript, kotlin(android)</p>
             </div>
             <div>
                 <h4>Cosball</h3>
-                <span class="line">Android & iOS Front-End</span>
-                <span class="line m15">2020.05. - 2021.11.</span>
-                <h5>개요</h5>
-                <p>외부 업체와 연동한 대형 서비스로, 멀티플렛폼 서비스이며 저는 그중 React Native를 기반으로 하여 모바일 어플리케이션의 초기출시버전 개발을 하였습니다.</p>
-                <h5>담당업무</h5>
-                <ul>
-                    <li>앱 전체 개발</li>
-                    <li>opencv 기반 qr코드 스캐너</li>
-                    <li>얼굴인식 SDK 연동</li>
-                </ul>
-                <h5>기술스택</h5>
-                <p>React Native, kotlin(android), swift(ios)</p>
+                    <span class="line">Android & iOS Front-End</span>
+                    <span class="line m15">2020.05. - 2021.11.</span>
+                    <h5>개요</h5>
+                    <p>외부 업체와 연동한 대형 서비스로, 멀티플렛폼 서비스이며 저는 그중 React Native를 기반으로 하여 모바일 어플리케이션의 초기출시버전 개발을 하였습니다.</p>
+                    <h5>담당업무</h5>
+                    <ul>
+                        <li>앱 전체 개발</li>
+                        <li>opencv 기반 qr코드 스캐너</li>
+                        <li>얼굴인식 SDK 연동</li>
+                    </ul>
+                    <h5>기술스택</h5>
+                    <p>React Native, kotlin(android), swift(ios)</p>
             </div>
         </section>
         <h2>관련 링크</h2>
@@ -343,4 +405,5 @@ mark {
 
     </footer>
 </body>
+
 </html>

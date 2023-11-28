@@ -276,6 +276,7 @@ footer {
     min-height: 2rem;
     background: var(--border);
     margin-bottom: 0.5rem;
+    transition: height 200ms;
 }
 .issue__item:first-child:before {
     content: '';
@@ -286,7 +287,7 @@ footer {
     width: 12rem;
     background: var(--border);
 }
-.issue__item:first-child::after {
+.issue__item:first-child:not(:last-child)::after {
     content: '';
     position: absolute;
     top: calc(1rem - 2px);
@@ -321,4 +322,16 @@ footer {
     border-left: 4px solid var(--border);
     border-bottom-left-radius: 1rem;
     box-sizing: border-box;
+}
+.issue__item__desc {
+    display: none;
+}
+.issue__item__datetime {
+    display: none;
+}
+.on .issue__item__desc {
+    display: block;
+}
+.on .issue__item__datetime {
+    display: block;
 }

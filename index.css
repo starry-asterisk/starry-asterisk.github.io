@@ -245,10 +245,3 @@ footer {
     text-align: left;
     padding-left: 0.5rem;
 }
-.issues > ul > li {
-    height: 2rem;
-    line-height: 2rem;
-    display: flex;
-    background: var(--border);
-    margin-bottom: 0.2rem;
-}

@@ -288,20 +288,32 @@ footer {
     left: -12rem;
     height: 100%;
     width: calc(6rem + 2px);
-    background: var(--border);
     border-top: 4px solid var(--border);
     border-right: 4px solid var(--border);
-    border-top-right-radius: 3rem;
+    border-top-right-radius: 1rem;
+    box-sizing: border-box;
 }
-.issue__item:not(:first-child)::after {
+.issue__item:nth-child(2)::after {
     content: '';
     position: absolute;
-    top: calc(1rem - 2px);
+    top: calc(-1rem + -2px);
     left: calc(-6rem - 2px);
-    height: 100%;
+    height: calc(100% + 4px);
     width: calc(6rem + 2px);
-    background: var(--border);
     border-bottom: 4px solid var(--border);
     border-left: 4px solid var(--border);
-    border-bottom-left-radius: 3rem;
+    border-bottom-left-radius: 1rem;
+    box-sizing: border-box;
+}
+.issue__item:nth-child(n + 3)::after {
+    content: '';
+    position: absolute;
+    top: calc(-2rem + -2px);
+    left: calc(-6rem - 2px);
+    height: calc(100% + 1rem + 4px);
+    width: calc(6rem + 2px);
+    border-bottom: 4px solid var(--border);
+    border-left: 4px solid var(--border);
+    border-bottom-left-radius: 1rem;
+    box-sizing: border-box;
 }

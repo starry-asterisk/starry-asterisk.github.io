@@ -247,6 +247,7 @@ footer {
 }
 
 .git__wrap {
+    margin-top: 2rem;
     display: flex;
 }
 .repo {
@@ -257,6 +258,7 @@ footer {
     height: 6rem;
     width: 12rem;
     text-align: left;
+    z-index: 2;
 }
 .repo > .desc,
 .repo > .title {
@@ -270,7 +272,7 @@ footer {
 }
 .issue__item {
     display: block;
-    margin-left: 12rem;
+    margin-left: 8rem;
     min-height: 2rem;
     background: var(--border);
     margin-bottom: 0.5rem;

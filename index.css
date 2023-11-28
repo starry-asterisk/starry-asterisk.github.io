@@ -265,6 +265,9 @@ footer {
 .repo > .lang[data-lang]::after {
     content: attr(data-lang);
 }
+.issue {
+    flex: 1;
+}
 .issue__item {
     display: block;
     margin-left: 12rem;
@@ -296,9 +299,9 @@ footer {
 .issue__item:nth-child(2)::after {
     content: '';
     position: absolute;
-    top: calc(-1rem + -2px);
+    top: calc(-1rem + 2px);
     left: calc(-6rem - 2px);
-    height: calc(100% + 4px);
+    height: 100%;
     width: calc(6rem + 2px);
     border-bottom: 4px solid var(--border);
     border-left: 4px solid var(--border);

@@ -323,15 +323,12 @@ footer {
     border-bottom-left-radius: 1rem;
     box-sizing: border-box;
 }
-.issue__item__desc {
-    display: none;
-}
-.issue__item__datetime {
-    display: none;
-}
-.on .issue__item__desc {
+.issue__item__desc, .issue__item__datetime {
     display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 200ms;
 }
-.on .issue__item__datetime {
-    display: block;
+.on .issue__item__desc, .on .issue__item__datetime {
+    max-height: 100vh;
 }

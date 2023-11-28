@@ -333,3 +333,11 @@ footer {
 .on .issue__item__desc, .on .issue__item__datetime {
     max-height: 100vh;
 }
+.issue__item__title {
+    display: block;
+}
+.toggle{
+    display: block;
+    height: 0.5rem;
+    background-color: #004680;
+}

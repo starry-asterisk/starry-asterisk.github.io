@@ -252,8 +252,7 @@ footer {
 }
 .repo {
     box-sizing: border-box;
-    border: 1px solid var(--font);
-    border-radius: 0.5rem;
+    background: var(--border);
     padding: 1rem;
     height: 6rem;
     width: 12rem;
@@ -269,6 +268,7 @@ footer {
 }
 .issue {
     flex: 1;
+    margin-top: calc(2rem - 2px);
 }
 .issue__item {
     display: block;

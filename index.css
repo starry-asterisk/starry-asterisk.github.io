@@ -327,7 +327,8 @@ footer {
     display: block;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 200ms;
+    transition: max-height 400ms;
+    transition-timing-function: ease-in-out;
 }
 .on .issue__item__desc, .on .issue__item__datetime {
     max-height: 100vh;

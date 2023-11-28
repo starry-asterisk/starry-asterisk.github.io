@@ -127,7 +127,11 @@
         header * {
             color: white;
         }
-
+        @media print {
+            header * {
+                color: var(--font);
+            }
+        }
         header *::selection,
         footer::selection {
             color: var(--accent);

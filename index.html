@@ -79,18 +79,23 @@
         </ul>
         <button class="button_more">view more</button>
       </section>
-      <section class="repos" data-type="list">
-        <ul></ul><button class="button_more">view more</button>
-            <!--
-              ------------------------------------------------
-
-
-                   github 프로필에 있는 레포지토리 목록 참고
-
-
-              ------------------------------------------------
-              issue (tag) title, datetime
-            -->
+      <section class="git" data-type="list">
+        <div class="git__wrap">
+          <di class="repo">
+            <span class="title">coral</span>
+            <span class="desc">개인 프로젝트</span>
+            <span class="lang" data-lang="HTML"></span>
+            <span class="star">1</span>
+          </div>
+          <ul class="issue">
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+            <li issue__item><span class="issue__item__label"></span><span class="issue__item__title"></span></li>
+          </ul>
+        </div>
       </section>
       <section class="issues" data-type="list">
         <ul></ul><button class="button_more">view more</button>
@@ -146,6 +151,7 @@
     }).catch(alert);
   }
   function getRepos(user) {
+  return;
     fetch(user.repos_url)
     .then(res => res.json())
     .then(getIssues).catch(alert);

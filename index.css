@@ -295,6 +295,8 @@ footer {
     grid-column: 1 / 5;
 }
 .issue__item {
+    display: flex;
+    flex-direction: column;
     order: 2;
     counter-increment: issue;
     padding: 0.5rem 2.5rem;
@@ -310,6 +312,7 @@ footer {
     color: #1e90ff;
 }
 .issue__item__datetime {
+    margin-left: 0.5rem;
     font-size: 0.8rem;
     opacity: 0.8;
 }

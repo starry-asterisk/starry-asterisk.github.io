@@ -118,30 +118,66 @@
   
   */
   const USERNAME = 'starry-asterisk';
-  let _repos = {};
+  let _git_color = {};
+  let _user = {};
+  let _repos = [];
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  if(!urlParams.get('flag')) init();
+
   async function init(){
+    _git_color = getGitColors();
+    _user = getUsers();
+    _repos = getRepos();
+  }
+  async function getGitColors(){
+    let res = await fetch('/git-color.json');
+    return await res.json();
+  }
+  async function getUsers() {
+    let res = await fetch(`https://api.github.com/users/${USERNAME}`);
+    json = await res.json();
     
+    gitAttr('avatar_url', json.avatar_url);
+    gitAttr('html_url', json.html_url);
+    gitAttr('name', json.name);
+    gitAttr('login', json.login);
+    
+    return json;
   }
-  getUsers();
-  function getUsers() {
-    fetch(`https://api.github.com/users/${USERNAME}`)
-    .then(res => res.json())
-    .then(user => {
-      gitAttr('avatar_url', user.avatar_url);
-      gitAttr('html_url', user.html_url);
-      gitAttr('name', user.name);
-      gitAttr('login', user.login);
-      getRepos(user);
-    }).catch(alert);
+  async function getRepos(user = _user) {
+    if('repos_url' in user){
+      let res = await fetch(user.repos_url);
+      return await res.json();
+    }else{
+      return [];
+    }
   }
-  function getRepos(user) {
-  return;
-    fetch(user.repos_url)
-    .then(res => res.json())
-    .then(getIssues).catch(alert);
-  }
-  function getIssues(repos) {
+  function getIssues(repos = _repos) {
     repos.forEach(repo => {
+      `<div class="git__wrap">
+          <div class="repo">
+            <span class="repo__lang" data-lang="HTML"></span>
+            <span class="repo__title">coral</span>
+            <span class="repo__star">3</span>
+            <button class="repo__fold_button"></button>
+            <p class="repo__desc">개인 프로젝트</p>
+          </div>
+          <ul class="issue">
+            <li class="issue__item">
+              <span class="issue__item__title">[#000] no named issue</span>
+              <span class="issue__item__datetime">2 days ago.</span>
+              <span class="issue__item__desc">
+                detailed description
+              </span>
+              <ul class="issue__item__label"><li>Javascript</li><li>JAVA</li><li>C++19</li><li>C#</li><li>ShellScript</li><li>Python</li><li>Ruby</li><li>Node.js</li><li>Vue.js</li><li>Electron</li></ul>
+            </li>
+          </ul>
+          <span class="issue_counter"></span>
+        </div>`;
+        
       _repos[repo.name] = repo;
       let repo_li = document.createElement('li');
       repo_li.innerHTML = `<a><p>${repo.name}</p><p>${repo.description}</p><p>${repo.language}</p></a>`;

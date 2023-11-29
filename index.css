@@ -270,6 +270,21 @@ footer {
 .repo > * {
     display: block;
 }
+.repo__lang {
+    --lang-color: var(var(--accent));
+}
+.repo__lang::before {
+    content: '';
+    background-color: var(--lang-color);
+    width: 0.9rem;
+    height: 0.9rem;
+    margin: 0.3rem;
+    border-radius: 0.45rem;
+    margin-right: 0.5rem;
+}
+.repo__lang::after {
+    content: attr(data-lang)
+}
 .repo__title {
     font-weight: bold;
 }

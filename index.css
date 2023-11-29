@@ -313,6 +313,7 @@ footer {
     left: -0.6rem;
 }
 .issue_counter:before {
+    content: counter(issue);
     counter-reset: issue;
 }
 

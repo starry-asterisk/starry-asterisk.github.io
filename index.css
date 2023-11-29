@@ -248,6 +248,7 @@ footer {
 }
 
 .git__wrap {
+    counter-reset: issue;
     margin-top: 2rem;
     padding: 0.5rem;
     border-radius: 0.2rem;
@@ -270,12 +271,19 @@ footer {
     background-color: var(--border-darker);
     color: white;
 }
+.repo__issue_count::after{
+    content: 'count is :'counter(issue);
+}
 .repo__title {
     font-weight: bold;
 }
 .repo__star::before {
     content: '⭐';
     margin-right: 0.5rem;
+    margin-top: -0.125rem;
+}
+.repo__fold_button {
+    margin-top: -0.125rem;
 }
 .repo__fold_button::after {
     content: '🗙';
@@ -287,6 +295,7 @@ footer {
     grid-column: 1 / 6;
 }
 .issue__item {
+    counter-increment: issue;
     padding: 0.5rem;
     border-radius: 0.2rem;
     background-color: white;

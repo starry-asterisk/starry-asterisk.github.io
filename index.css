@@ -261,8 +261,11 @@ footer {
     display: grid;
     grid-template-columns: fit-content(100px) fit-content(100px) 1fr fit-content(100px) fit-content(100px);
 }
+.repo > * {
+    display: block;
+}
 .repo__issue_count {
-    padding: 0.5rem;
+    padding: 0 0.5rem;
     border-radius: 0.5rem;
     background-color: var(--border-darker);
     color: white;

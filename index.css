@@ -250,7 +250,7 @@ footer {
     counter-reset: issue;
 }
 .git__wrap {
-    counter-set: 0;
+    counter-set: issue 0;
     display: flex;
     flex-direction: column;
     margin-top: 2rem;
@@ -314,7 +314,6 @@ footer {
 }
 .issue_counter:before {
     content: counter(issue);
-    counter-reset: issue;
 }
 
 .fold .repo {
@@ -324,14 +323,15 @@ footer {
     grid-column: 1 / 5;
 }
 .fold .issue_counter {
-    order: 3;
-    grid-column: 1 / 5;
+    order: 1;
     padding: 1rem;
     border-radius: 0.2rem;
     background-color: white;
     border: 1px solid var(--border-darker);
-    margin: 1rem -0.5rem -0.5rem -0.5rem;
     color: inherit;
+    position: relative;
+    top: unset;
+    left: unset;
 }
 .fold .issue_counter::after {
     content: ' issues more...';

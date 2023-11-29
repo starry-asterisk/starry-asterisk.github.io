@@ -273,13 +273,17 @@ footer {
 .repo__title {
     font-weight: bold;
 }
+.repo__star {
+    margin-right: 1rem;
+}
 .repo__star::before {
     content: '⭐';
     margin-right: 0.5rem;
     margin-top: -0.125rem;
 }
 .repo__fold_button {
-    margin-top: -0.125rem;
+    transform: rotate(45deg);
+    background: none;
 }
 .repo__fold_button::after {
     content: '🗙';
@@ -293,13 +297,21 @@ footer {
 .issue__item {
     order: 2;
     counter-increment: issue;
-    padding: 0.5rem;
+    padding: 0.5rem 2.5rem;
     border-radius: 0.2rem;
     background-color: white;
     border: 1px solid var(--border-darker);
 }
 .issue__item + .issue__item {
     margin-top: 1rem;
+}
+.issue__item__title {
+    font-weight: bold;
+    color: #1e90ff;
+}
+.issue__item__datetime {
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 .issue_counter {
     order: -1;
@@ -341,4 +353,5 @@ footer {
     pointer-events: none;
     padding: 0;
     border: 0;
+    height: 0;
 }

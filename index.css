@@ -256,6 +256,11 @@ footer {
 }
 .repo {
     padding: 0.5rem;
+    display: grid;
+    grid-template-columns: fit-content(100px) fit-content(100px) 1fr fit-content(100px) fit-content(100px);
+}
+.repo__desc {
+    grid-column: 1 / 6;
 }
 .issue__item {
     padding: 0.5rem;
@@ -265,4 +270,26 @@ footer {
 }
 .issue__item + .issue__item {
     margin-top: 1rem;
+}
+
+
+.fold .repo {
+    grid-template-columns: fit-content(100px) 1fr fit-content(100px) fit-content(100px);
+}
+.fold .repo__desc {
+    grid-column: 1 / 5;
+}
+.fold .repo__issue_count {
+    order: 2;
+    grid-column: 1 / 5;
+}
+.fold .repo__issue_count::after {
+    content: ' issues more...';
+    padding: 2rem 0.5rem;
+    border-radius: 0.2rem;
+    background-color: white;
+    border: 1px solid var(--border-darker);
+}
+.fold .issue__item {
+    display: none;
 }

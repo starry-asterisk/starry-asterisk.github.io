@@ -288,6 +288,7 @@ footer {
     content: attr(data-lang);
     font-size: 0.7rem;
     line-height: 1.5rem;
+    margin-left: 0.3rem;
 }
 .repo__title {
     font-weight: bold;

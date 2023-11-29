@@ -133,7 +133,7 @@
     _repos = getRepos();
   }
   async function getGitColors(){
-    let res = await fetch('/git-color.json');
+    let res = await fetch('/git-colors.json');
     return await res.json();
   }
   async function getUsers() {
@@ -177,7 +177,7 @@
           </ul>
           <span class="issue_counter"></span>
         </div>`;
-        
+
       _repos[repo.name] = repo;
       let repo_li = document.createElement('li');
       repo_li.innerHTML = `<a><p>${repo.name}</p><p>${repo.description}</p><p>${repo.language}</p></a>`;

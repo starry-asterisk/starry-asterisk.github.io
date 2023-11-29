@@ -128,9 +128,9 @@
   if(!urlParams.get('flag')) init();
 
   async function init(){
-    _git_color = getGitColors();
-    _user = getUsers();
-    _repos = getRepos();
+    _git_color = await getGitColors();
+    _user = await getUsers();
+    _repos = await getRepos();
   }
   async function getGitColors(){
     let res = await fetch('/git-colors.json');

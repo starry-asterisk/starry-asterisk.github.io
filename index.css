@@ -271,19 +271,23 @@ footer {
     display: block;
 }
 .repo__lang {
-    --lang-color: var(var(--accent));
+    --lang-color: var(--accent);
 }
 .repo__lang::before {
     content: '';
-    background-color: var(--lang-color);
+    display: block;
+    float: left;
     width: 0.9rem;
     height: 0.9rem;
     margin: 0.3rem;
     border-radius: 0.45rem;
-    margin-right: 0.5rem;
+    margin-left: 0.1rem;
+    background-color: var(--lang-color);
 }
 .repo__lang::after {
-    content: attr(data-lang)
+    content: attr(data-lang);
+    font-size: 0.7rem;
+    line-height: 1.5rem;
 }
 .repo__title {
     font-weight: bold;
@@ -318,7 +322,7 @@ footer {
     border: 1px solid var(--border-darker);
 }
 .issue__item + .issue__item {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 .issue__item__title {
     font-weight: bold;

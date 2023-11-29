@@ -325,7 +325,7 @@ footer {
     display: inline-block;
     background: var(--accent);
     padding: 0.2rem 0.5rem;
-    border-radius: 0.8rem;
+    border-radius: 0.1rem;
     color: white;
     margin-bottom: 0.5rem;
     margin-left: 0.5rem;

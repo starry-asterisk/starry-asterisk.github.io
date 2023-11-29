@@ -319,7 +319,7 @@ footer {
 }
 .issue__item__label:not(:empty){
     padding-top: 0.5rem;
-    margin-right: -0.2rem;
+    margin-right: -0.5rem;
 }
 .issue__item__label > li {
     display: inline-block;
@@ -328,9 +328,7 @@ footer {
     border-radius: 0.8rem;
     color: white;
     margin-bottom: 0.5rem;
-}
-.issue__item__label > li + li {
-    margin-right: 0.2rem;
+    margin-left: 0.5rem;
 }
 .issue_counter {
     order: -1;

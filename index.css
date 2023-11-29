@@ -295,8 +295,6 @@ footer {
     grid-column: 1 / 5;
 }
 .issue__item {
-    display: flex;
-    flex-direction: column;
     order: 2;
     counter-increment: issue;
     padding: 0.5rem 2.5rem;
@@ -315,6 +313,21 @@ footer {
     margin-left: 0.5rem;
     font-size: 0.8rem;
     opacity: 0.8;
+}
+.issue__item__desc {
+    display: block;
+}
+.issue__item__label:not(:empty){
+    padding: 0.5rem 0;
+    margin-right: -0.2rem;
+}
+.issue__item__label > li {
+    display: inline-block;
+    background: var(--accent);
+    padding: 0.1rem 0.5rem;
+    border-radius: 0.8rem;
+    color: white;
+    margin-right: 0.2rem;
 }
 .issue_counter {
     order: -1;

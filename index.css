@@ -337,5 +337,8 @@ footer {
     content: ' issues more...';
 }
 .fold .issue__item {
-    display: none;
+    visibility: hidden;
+    pointer-events: none;
+    padding: 0;
+    border: 0;
 }

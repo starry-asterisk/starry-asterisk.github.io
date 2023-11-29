@@ -30,6 +30,7 @@
     font-family: Pretendard, auto;
     font-size: 16px;
     --border: #ededed;
+    --border-darker: #bbb;
     --font: #666;
     --accent: #004680;
 }
@@ -248,14 +249,19 @@ footer {
 
 .git__wrap {
     margin-top: 2rem;
-    padding: 1rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
     background-color: var(--border);
+    border: 1px solid var(--border-darker);
+}
+.repo {
+    padding: 0.5rem;
 }
 .issue__item {
-    padding: 1rem;
-    border-radius: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.2rem;
     background-color: white;
+    border: 1px solid var(--border-darker);
 }
 .issue__item + .issue__item {
     margin-top: 1rem;

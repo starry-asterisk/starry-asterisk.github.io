@@ -248,98 +248,15 @@ footer {
 
 .git__wrap {
     margin-top: 2rem;
-    display: flex;
-}
-.repo {
-    box-sizing: border-box;
-    background: var(--border);
     padding: 1rem;
-    height: 6rem;
-    width: 12rem;
-    text-align: left;
-    z-index: 2;
-}
-.repo > .desc,
-.repo > .title {
-    display: block;
-}
-.repo > .lang[data-lang]::after {
-    content: attr(data-lang);
-}
-.issue {
-    flex: 1;
-    margin-top: calc(2rem - 2px);
+    border-radius: 0.5rem;
+    background-color: var(--border);
 }
 .issue__item {
-    display: block;
-    margin-left: 8rem;
-    min-height: 2rem;
-    background: var(--border);
-    margin-bottom: 0.5rem;
-    transition: height 200ms;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background-color: white;
 }
-.issue__item:first-child:before {
-    content: '';
-    position: absolute;
-    top: calc(1rem - 2px);
-    left: -12rem;
-    height: 4px;
-    width: 12rem;
-    background: var(--border);
-}
-.issue__item:first-child:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    top: calc(1rem - 2px);
-    left: -12rem;
-    height: 100%;
-    width: calc(6rem + 2px);
-    border-top: 4px solid var(--border);
-    border-right: 4px solid var(--border);
-    border-top-right-radius: 1rem;
-    box-sizing: border-box;
-}
-.issue__item:nth-child(2)::after {
-    content: '';
-    position: absolute;
-    top: calc(-1rem + 2px);
-    left: calc(-6rem - 2px);
-    height: 100%;
-    width: calc(6rem + 2px);
-    border-bottom: 4px solid var(--border);
-    border-left: 4px solid var(--border);
-    border-bottom-left-radius: 1rem;
-    box-sizing: border-box;
-}
-.issue__item:nth-child(n + 3)::after {
-    content: '';
-    position: absolute;
-    top: calc(-2rem + -2px);
-    left: calc(-6rem - 2px);
-    height: calc(100% + 1rem + 4px);
-    width: calc(6rem + 2px);
-    border-bottom: 4px solid var(--border);
-    border-left: 4px solid var(--border);
-    border-bottom-left-radius: 1rem;
-    box-sizing: border-box;
-}
-.issue__item__desc, .issue__item__datetime {
-    display: block;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 400ms;
-    transition-timing-function: ease-in-out;
-}
-.on .issue__item__desc, .on .issue__item__datetime {
-    max-height: 100vh;
-}
-.issue__item__title {
-    display: block;
-}
-.toggle{
-    display: block;
-    height: 0.5rem;
-    width: 100%;
-    margin-top: 0.2rem;
-    background-color: #004680;
+.issue__item + .issue__item {
+    margin-top: 1rem;
 }

@@ -407,9 +407,9 @@ code {
     border-radius: 0.2rem;
 }
 blockquote {
-    padding: 0 0.8rem;
-    border-left: 0.25rem solid var(--border);
-    color: var(--border);
+    padding: 0 1rem;
+    border-left: 0.3rem solid var(--border);
+    color: var(--border-darker);
 }
 .issue__item__desc ul {
     list-style: disc;

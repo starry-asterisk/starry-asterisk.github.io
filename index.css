@@ -361,7 +361,7 @@ footer {
     color: #1f883d;
     border-color: #1f883d;
 }
-.issue__item[data-state="close"]::before{
+.issue__item[data-state="closed"]::before{
     content: '✓';
     color:#8250df;
     border-color: #8250df;
@@ -449,7 +449,7 @@ footer {
     left: unset;
 }
 .fold .issue_counter::after {
-    content: ' issues more...';
+    content: ' open issues more...';
 }
 .fold .issue__item {
     visibility: hidden;

@@ -320,11 +320,13 @@ footer {
 }
 .issue__item {
     order: 2;
-    counter-increment: issue;
     padding: 0.5rem 2.5rem;
     border-radius: 0.2rem;
     background-color: white;
     border: 1px solid var(--border-darker);
+}
+.issue__item[data-state="open"]{
+    counter-increment: issue;
 }
 .issue__item + .issue__item {
     margin-top: 0.5rem;

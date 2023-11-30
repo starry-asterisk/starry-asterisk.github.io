@@ -171,7 +171,7 @@
         let issue__item = createElement('li', {class: 'issue__item'});
         issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},renderEmoji(issue_data.body)));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body.renderEmoji()));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue_data.labels.forEach(
           label_data => 
@@ -320,6 +320,9 @@ function renderMarkDownText(text) {
 }
 function renderEmoji(text){
   return text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
+}
+String.prototype.renderEmoji = function () {
+  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
 }
 
 function createElement(tag, options = {},innerHTML=''){

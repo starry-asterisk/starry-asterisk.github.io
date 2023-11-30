@@ -186,7 +186,8 @@
         let issue__item__full_button = createElement('button', {class: 'issue__item__full_button'});
         let _before_el;
         let _full_container = document.querySelector('.full');
-        issue__item__full_button.onclick = () => {
+        issue__item__full_button.onclick = function(e){
+          if(e.target != this) return false;
           if(document.body.classList.contains('full-mode')){
             if(_before_el){
               _before_el.after(issue__item);

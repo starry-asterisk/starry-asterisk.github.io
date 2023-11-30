@@ -78,6 +78,18 @@ ul, ol {
     list-style: none;
 }
 
+code {
+    background: var(--border);
+    padding: 0.25rem;
+    border-radius: 0.2rem;
+}
+
+blockquote {
+    padding: 0 1rem;
+    border-left: 0.3rem solid var(--border);
+    color: var(--border-darker);
+}
+
 /*레이아웃 요소*/
 body {
     display: flex;
@@ -343,8 +355,25 @@ footer {
 }
 .issue__item__desc {
     display: block;
+    max-height: 30rem;
+    overflow-y: auto;
     white-space: pre-line;
     zoom: 0.85;
+}
+.issue__item__desc ul {
+    list-style: disc;
+}
+.issue__item__desc ol {
+    list-style: auto;
+}
+.issue__item__desc ul, .issue__item__desc ol {
+    padding-inline-start: 2em;
+}
+.issue__item__desc img {
+    border-radius: 0;
+}
+.issue__item__desc a {
+    text-decoration: underline;
 }
 .issue__item__label:not(:empty){
     padding-top: 0.5rem;
@@ -402,42 +431,4 @@ footer {
     border: 0;
     height: 0;
     margin: 0;
-}
-
-code {
-    background: var(--border);
-    padding: 0.25rem;
-    border-radius: 0.2rem;
-}
-blockquote {
-    padding: 0 1rem;
-    border-left: 0.3rem solid var(--border);
-    color: var(--border-darker);
-}
-.issue__item__desc ul {
-    list-style: disc;
-}
-.issue__item__desc ol {
-    list-style: auto;
-}
-.issue__item__desc ul, .issue__item__desc ol {
-    padding-inline-start: 2em;
-}
-.issue__item__desc img {
-    border-radius: 0;
-}
-.issue__item__desc a {
-    text-decoration: underline;
-}
-
-.issue__item {
-    container-name: issue;
-    container-type: inline-size;
-}
-
-@container issue (height > 300px) {
-    .issue__item {
-        max-height: 400px;
-        overflow-y: scroll;
-    }
 }

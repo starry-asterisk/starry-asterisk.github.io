@@ -462,6 +462,7 @@ footer {
 }
 .fold .issue__item {
     visibility: hidden;
+    overflow: hidden;
     pointer-events: none;
     padding: 0;
     border: 0;
@@ -478,6 +479,9 @@ footer {
     z-index: 99;
     overflow-y: auto;
 }
+.full-mode > .full {
+    pointer-events: all;
+}
 .full * {
     pointer-events: auto;
 }
@@ -490,6 +494,7 @@ footer {
     margin: 5rem;
     padding: 3rem;
     box-shadow: 0 0 0 50vh #00000055;
+    list-style: none;
 }
 .full > .issue__item > .issue__item__desc{
     max-height: unset;

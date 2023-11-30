@@ -107,6 +107,7 @@
   let _emoji = {};
   let _user = {};
   let _repos = [];
+  let _full = document.querySelector('.full');
 
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -183,20 +184,20 @@
           );
         issue__item.appendChild(issue__item__label);
         let issue__item__full_button = createElement('button', {class: 'issue__item__full_button'});
-        let _isFull = false;
         let _before_el;
         let _full_container = document.querySelector('.full');
         issue__item__full_button.onclick = () => {
-          if(_isFull){
+          if(document.body.classList.contains('full-mode')){
             if(_before_el){
               _before_el.after(issue__item);
             }else{
               issue.prepend(issue__item);
             }
           }else{
-            document.querySelector('.full').appendChild(issue__item)
+            _full.appendChild(issue__item);
+            _full.onclick = issue__item__full_button.onclick;
           }
-          _isFull = !_isFull;
+          document.body.classList.toggle('full-mode');
         };
         issue__item.appendChild(issue__item__full_button);
         issue.appendChild(issue__item);

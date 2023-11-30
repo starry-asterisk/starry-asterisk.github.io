@@ -102,6 +102,7 @@
   */
   const USERNAME = 'starry-asterisk';
   let _git_color = {};
+  let _emoji = {};
   let _user = {};
   let _repos = [];
 
@@ -111,10 +112,15 @@
   if (!urlParams.get('flag')) init();
 
   async function init() {
+    _emoji = await getEmojis();
     _git_color = await getGitColors();
     _user = await getUsers();
     _repos = await getRepos();
     getIssues();
+  }
+  async function getEmojis() {
+    let res = await fetch('/emojis.json');
+    return await res.json();
   }
   async function getGitColors() {
     let res = await fetch('/git-colors.json');
@@ -165,7 +171,7 @@
         let issue__item = createElement('li', {class: 'issue__item'});
         issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},renderEmoji(issue_data.body)));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue_data.labels.forEach(
           label_data => 
@@ -299,6 +305,8 @@ function renderMarkDownText(text) {
     //code
     text = text.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
 
+    text = text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
+
     //p
     /*
     text = text.replace(/^\s*(\n)?(.+)/gm, function(m){
@@ -309,6 +317,9 @@ function renderMarkDownText(text) {
     //text = text.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, '$1$2');
 
     return text;
+}
+function renderEmoji(text){
+  return text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
 }
 
 function createElement(tag, options = {},innerHTML=''){

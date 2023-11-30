@@ -152,7 +152,7 @@
       let repo = createElement('div', {class: 'repo'});
       repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language].color};`}));
       repo.appendChild(createElement('span', {class: 'repo__title'},repo_data.name));
-      repo.appendChild(createElement('span', {class: 'repo__star'},''));
+      repo.appendChild(createElement('span', {class: 'repo__star'},repo_data.stargazers_count));
       let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
       repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
       repo.appendChild(repo__fold_button);
@@ -168,10 +168,10 @@
       let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues`);
       (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
-        let issue__item = createElement('li', {class: 'issue__item'});
+        let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
         issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc', 'data-state': issue_data.state},issue_data.body.render()));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body.render()));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue_data.labels.forEach(
           label_data => 

@@ -170,7 +170,7 @@
         issue_data.labels.forEach(
           label_data => 
           issue__item__label.appendChild(
-            createElement('span', {class: 'issue__item__title', style: `--label-color: #${label_data.color};`},label_data.name)
+            createElement('li', {style: `--label-color: #${label_data.color};`},label_data.name)
             )
           );
         issue__item.appendChild(issue__item__label);

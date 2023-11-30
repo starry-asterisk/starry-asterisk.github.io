@@ -176,7 +176,7 @@
       let git__wrap = createElement('div', {class: 'git__wrap fold'});
 
       let repo = createElement('div', {class: 'repo'});
-      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language]};`}));
+      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language].color};`}));
       repo.appendChild(createElement('span', {class: 'repo__title'},repo_data.name));
       repo.appendChild(createElement('span', {class: 'repo__star'},''));
       let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
@@ -188,6 +188,8 @@
       let issue = createElement('ul', {class: 'issue'});
       git__wrap.appendChild(issue);
       git__wrap.appendChild(createElement('span', {class: 'issue_counter'}));
+
+      document.querySelector('.git').appendChild(git__wrap);
 
 
       `<div class="git__wrap">
@@ -225,16 +227,12 @@
       });
     });
   }
-  function getPosts(repo) {
-    fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
-      .then(res => res.json())
-      .then(issues => issues.forEach(issue => {
-        let li = document.createElement('li');
-        li.innerHTML = `<img src="img_url" alt="${issue.title}">
-            <p>${issue.title} | (tag) | 설명...</p>
+  function getPosts(issue_data) {
+    let li = document.createElement('li');
+        li.innerHTML = `<img src="img_url" alt="${issue_data.title}">
+            <p>${issue_data.title} | (tag) | 설명...</p>
             <p>1 min ago. 안녕하세요</p>`;
         document.querySelector('.posts>ul').appendChild(li);
-      }));
   }
   function alert(e) {
     console.log(e);

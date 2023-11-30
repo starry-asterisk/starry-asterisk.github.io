@@ -295,6 +295,7 @@ footer {
 }
 .repo__title {
     font-weight: bold;
+    color: inherit;
 }
 .repo__star {
     margin-right: 1rem;

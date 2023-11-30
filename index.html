@@ -83,39 +83,7 @@
         </ul>
         <button class="button_more">view more</button>
       </section>
-      <section class="git" data-type="list">
-        <div class="git__wrap">
-          <div class="repo">
-            <span class="repo__lang" data-lang="HTML"></span>
-            <span class="repo__title">coral</span>
-            <span class="repo__star">3</span>
-            <button class="repo__fold_button"></button>
-            <p class="repo__desc">개인 프로젝트</p>
-          </div>
-          <ul class="issue">
-            <li class="issue__item">
-              <span class="issue__item__title">[#000] no named issue</span>
-              <span class="issue__item__datetime">2 days ago.</span>
-              <span class="issue__item__desc">
-                detailed description
-              </span>
-              <ul class="issue__item__label">
-                <li>Javascript</li>
-                <li>JAVA</li>
-                <li>C++19</li>
-                <li>C#</li>
-                <li>ShellScript</li>
-                <li>Python</li>
-                <li>Ruby</li>
-                <li>Node.js</li>
-                <li>Vue.js</li>
-                <li>Electron</li>
-              </ul>
-            </li>
-          </ul>
-          <span class="issue_counter"></span>
-        </div>
-      </section>
+      <section class="git" data-type="list"></section>
     </main>
   </div>
   <footer>
@@ -190,29 +158,6 @@
       git__wrap.appendChild(createElement('span', {class: 'issue_counter'}));
 
       document.querySelector('.git').appendChild(git__wrap);
-
-
-      `<div class="git__wrap">
-          <div class="repo">
-            <span class="repo__lang" data-lang="HTML"></span>
-            <span class="repo__title">coral</span>
-            <span class="repo__star">3</span>
-            <button class="repo__fold_button"></button>
-            <p class="repo__desc">개인 프로젝트</p>
-          </div>
-          <ul class="issue">
-            <li class="issue__item">
-              <span class="issue__item__title">[#000] no named issue</span>
-              <span class="issue__item__datetime">2 days ago.</span>
-              <span class="issue__item__desc">
-                detailed description
-              </span>
-              <ul class="issue__item__label"><li>Javascript</li><li>JAVA</li><li>C++19</li><li>C#</li><li>ShellScript</li><li>Python</li><li>Ruby</li><li>Node.js</li><li>Vue.js</li><li>Electron</li></ul>
-            </li>
-          </ul>
-          <span class="issue_counter"></span>
-        </div>`;
-
       
       let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues`);
       (await res.json()).forEach(issue_data => {
@@ -220,8 +165,14 @@
         let issue__item = createElement('li', {class: 'issue__item'});
         issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},'issue__item__desc'));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
+        issue_data.labels.forEach(
+          label_data => 
+          issue__item__label.appendChild(
+            createElement('span', {class: 'issue__item__title', style: `--label-color: #${label_data.color};`},label_data.name)
+            )
+          );
         issue__item.appendChild(issue__item__label);
         issue.appendChild(issue__item);
       });

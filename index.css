@@ -328,9 +328,10 @@ footer {
 .issue__item__title {
     font-weight: bold;
     color: #1e90ff;
+    margin-right: 0.5rem;
 }
 .issue__item__datetime {
-    margin-left: 0.5rem;
+    display: inline-block;
     font-size: 0.8rem;
     opacity: 0.8;
 }
@@ -391,4 +392,5 @@ footer {
     padding: 0;
     border: 0;
     height: 0;
+    margin: 0;
 }

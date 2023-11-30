@@ -319,7 +319,7 @@ function renderMarkDownText(text) {
     return text;
 }
 let renderEmoji = String.prototype.renderEmoji = function () {
-  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match in _emoji?_emoji[match]:match);
+  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
 }
 
 function createElement(tag, options = {},innerHTML=''){

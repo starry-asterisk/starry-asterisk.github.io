@@ -322,13 +322,13 @@ let renderEmoji = String.prototype.renderEmoji = function () {
   return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
 }
 let renderImages = String.prototype.renderImages = function () {
-  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
+  return this.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
 }
 let renderLinks = String.prototype.renderLinks = function () {
-  return text.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+  return this.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
 }
 let render_text = String.prototype.render = function () {
-  return text.renderEmoji().renderImages().renderLinks();
+  return this.renderEmoji().renderImages().renderLinks();
 }
 
 

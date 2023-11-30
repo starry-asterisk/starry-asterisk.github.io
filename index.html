@@ -305,7 +305,7 @@ function renderMarkDownText(text) {
     //code
     text = text.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
 
-    text = text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
+    text = text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[match]);
 
     //p
     /*
@@ -319,10 +319,10 @@ function renderMarkDownText(text) {
     return text;
 }
 function renderEmoji(text){
-  return text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
+  return text.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[match]);
 }
 String.prototype.renderEmoji = function () {
-  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[mathch]);
+  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => _emoji[match]);
 }
 
 function createElement(tag, options = {},innerHTML=''){

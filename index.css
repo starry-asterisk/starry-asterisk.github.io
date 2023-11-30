@@ -337,6 +337,7 @@ footer {
 }
 .issue__item__desc {
     display: block;
+    white-space: pre-line;
 }
 .issue__item__label:not(:empty){
     padding-top: 0.5rem;

@@ -429,3 +429,15 @@ blockquote {
 .issue__item__desc a {
     text-decoration: underline;
 }
+
+.issue__item {
+    container-name: issue;
+    container-type: inline-size;
+}
+
+@container issue (height > 300px) {
+    .issue__item {
+        max-height: 400px;
+        overflow-y: scroll;
+    }
+}

@@ -479,6 +479,9 @@ footer {
     z-index: 99;
     overflow-y: auto;
 }
+.full-mode {
+    overflow: hidden;
+}
 .full-mode > .full {
     pointer-events: all;
 }
@@ -486,7 +489,7 @@ footer {
     pointer-events: auto;
 }
 .full > .issue__item {
-    position: fixed;
+    position: relative;
     top: 0;
     left: 0;
     right: 0;

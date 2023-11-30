@@ -486,7 +486,7 @@ footer {
     pointer-events: all;
 }
 .full * {
-    pointer-events: auto;
+    pointer-events: all;
 }
 .full > .issue__item {
     position: relative;

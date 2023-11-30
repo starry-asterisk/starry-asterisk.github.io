@@ -186,6 +186,7 @@
         let issue__item__full_button = createElement('button', {class: 'issue__item__full_button'});
         let _before_el;
         let _full_container = document.querySelector('.full');
+        
         issue__item__full_button.onclick = function(e){
           if(e.target != this) return false;
           if(document.body.classList.contains('full-mode')){
@@ -196,7 +197,7 @@
             }
           }else{
             _full.appendChild(issue__item);
-            _full.onclick = issue__item__full_button.onclick;
+            //_full.onclick = issue__item__full_button.onclick;
           }
           document.body.classList.toggle('full-mode');
         };

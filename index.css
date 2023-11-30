@@ -365,6 +365,7 @@ footer {
     content: '✓';
     color:#8250df;
     border-color: #8250df;
+    font-weight: 400;
 }
 .issue__item + .issue__item {
     margin-top: 0.5rem;

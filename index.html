@@ -171,7 +171,7 @@
         let issue__item = createElement('li', {class: 'issue__item'});
         issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body.renderEmoji()));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc', 'data-state': issue_data.state},issue_data.body.render()));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue_data.labels.forEach(
           label_data => 
@@ -321,6 +321,16 @@ function renderMarkDownText(text) {
 let renderEmoji = String.prototype.renderEmoji = function () {
   return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
 }
+let renderImages = String.prototype.renderImages = function () {
+  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
+}
+let renderLinks = String.prototype.renderLinks = function () {
+  return text.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+}
+let render_text = String.prototype.render = function () {
+  return text.renderEmoji().renderImages().renderLinks();
+}
+
 
 function createElement(tag, options = {},innerHTML=''){
   let el = document.createElement(tag);

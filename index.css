@@ -475,6 +475,8 @@ footer {
     bottom: 0;
     right: 0;
     pointer-events: none;
+    z-index: 99;
+    overflow-y: auto;
 }
 .full * {
     pointer-events: auto;
@@ -487,11 +489,8 @@ footer {
     z-index: 99;
     margin: 5rem;
     padding: 3rem;
-    box-shadow: 0 0 0 6rem #00000055;
+    box-shadow: 0 0 0 50vh #00000055;
 }
 .full > .issue__item > .issue__item__desc{
     max-height: unset;
-}
-.full {
-    overflow-y: auto;
 }

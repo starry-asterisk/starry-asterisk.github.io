@@ -416,6 +416,15 @@ footer {
     margin-bottom: 0.5rem;
     margin-right: 0.5rem;
 }
+.issue__item__full_button {
+    border: 1px solid var(--border-darker);
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.2rem;
+    background: none;
+}
 .issue_counter {
     order: -1;
     position: absolute;
@@ -458,4 +467,31 @@ footer {
     border: 0;
     height: 0;
     margin: 0;
+}
+.full {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: none;
+}
+.full * {
+    pointer-events: auto;
+}
+.full > .issue__item {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    margin: 5rem;
+    padding: 3rem;
+    box-shadow: 0 0 0 6rem #00000055;
+}
+.full > .issue__item > .issue__item__desc{
+    max-height: unset;
+}
+.full {
+    overflow-y: auto;
 }

@@ -90,6 +90,7 @@
     <p class="copyright">© 2023 starry-asterisk</p>
     <p>powered by <a href="#"></a>Git-hub</a>, written by <a href="#">starry-asterisk</a></p>
   </footer>
+  <div class="full"></div>
 </body>
 <script>
   /*
@@ -181,7 +182,26 @@
             )
           );
         issue__item.appendChild(issue__item__label);
+        let issue__item__full_button = createElement('button', {class: 'issue__item__full_button'});
+        let _isFull = false;
+        let _before_el;
+        let _full_container = document.querySelector('.full');
+        issue__item__full_button.onclick = () => {
+          if(_isFull){
+            if(_before_el){
+              _before_el.after(issue__item);
+            }else{
+              issue.prepend(issue__item);
+            }
+          }else{
+            document.querySelector('.full').appendChild(issue__item)
+          }
+          (_isFull?issue:document.querySelector('.full')).after(issue__item);
+          _isFull = !_isFull;
+        };
+        issue__item.appendChild(issue__item__full_button);
         issue.appendChild(issue__item);
+        _before_el = issue__item.previousSibling;
       });
     });
   }

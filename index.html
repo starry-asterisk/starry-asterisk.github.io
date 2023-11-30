@@ -1,25 +1,28 @@
 <html lang="ko-KR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="starry-asterisk.github.io">
-    <meta property="og:locale" content="ko_KR">
-    <meta name="description" content="personal github blog">
-    <meta property="og:description" content="personal github blog">
-    <meta property="og:url" content="https://starry-asterisk.github.io/">
-    <meta property="og:site_name" content="starry-asterisk.github.io">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta property="twitter:title" content="starry-asterisk.github.io">
-    <link rel="canonical" href="https://starry-asterisk.github.io/">
-    <link rel="icon" href="/favicon.png">
-    <link rel="stylesheet" href="index.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
-    
-    <title>starry-asterisk.github.io | personal github blog</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="starry-asterisk.github.io">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="description" content="personal github blog">
+  <meta property="og:description" content="personal github blog">
+  <meta property="og:url" content="https://starry-asterisk.github.io/">
+  <meta property="og:site_name" content="starry-asterisk.github.io">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="starry-asterisk.github.io">
+  <link rel="canonical" href="https://starry-asterisk.github.io/">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="index.css">
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
+
+  <title>starry-asterisk.github.io | personal github blog</title>
 </head>
+
 <body>
   <header>
     <a class="logo" title="home" href="/">
@@ -42,7 +45,8 @@
             <img git-target="avatar_url,src" alt="✨" src="/">
           </a>
           <h2 git-target="name">김현우</h5>
-          <h5 git-target="login">starry-asterisk</h2>
+            <h5 git-target="login">starry-asterisk
+          </h2>
           <h4>6507055@naver.com</h3>
         </div>
         <div class="profile__right">
@@ -95,7 +99,18 @@
               <span class="issue__item__desc">
                 detailed description
               </span>
-              <ul class="issue__item__label"><li>Javascript</li><li>JAVA</li><li>C++19</li><li>C#</li><li>ShellScript</li><li>Python</li><li>Ruby</li><li>Node.js</li><li>Vue.js</li><li>Electron</li></ul>
+              <ul class="issue__item__label">
+                <li>Javascript</li>
+                <li>JAVA</li>
+                <li>C++19</li>
+                <li>C#</li>
+                <li>ShellScript</li>
+                <li>Python</li>
+                <li>Ruby</li>
+                <li>Node.js</li>
+                <li>Vue.js</li>
+                <li>Electron</li>
+              </ul>
             </li>
           </ul>
           <span class="issue_counter"></span>
@@ -125,38 +140,56 @@
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
 
-  if(!urlParams.get('flag')) init();
+  if (!urlParams.get('flag')) init();
 
-  async function init(){
+  async function init() {
     _git_color = await getGitColors();
     _user = await getUsers();
     _repos = await getRepos();
+    getIssues();
   }
-  async function getGitColors(){
+  async function getGitColors() {
     let res = await fetch('/git-colors.json');
     return await res.json();
   }
   async function getUsers() {
     let res = await fetch(`https://api.github.com/users/${USERNAME}`);
     json = await res.json();
-    
+
     gitAttr('avatar_url', json.avatar_url);
     gitAttr('html_url', json.html_url);
     gitAttr('name', json.name);
     gitAttr('login', json.login);
-    
+
     return json;
   }
   async function getRepos(user = _user) {
-    if('repos_url' in user){
+    if ('repos_url' in user) {
       let res = await fetch(user.repos_url);
       return await res.json();
-    }else{
+    } else {
       return [];
     }
   }
   function getIssues(repos = _repos) {
-    repos.forEach(repo => {
+    repos.forEach(async repo => {
+      let git__wrap = createElement('div', {class: 'git__wrap fold'});
+
+      let repo = createElement('div', {class: 'repo'});
+      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo.language, style: `--lang-color: ${_git_color[repo.language]};`}));
+      repo.appendChild(createElement('span', {class: 'repo__title'},repo.name));
+      repo.appendChild(createElement('span', {class: 'repo__star'},''));
+      let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
+      repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
+      repo.appendChild(repo__fold_button);
+      repo.appendChild(createElement('p', {class: 'repo__desc'},repo.description));
+      git__wrap.appendChild(repo);
+
+      let issue = createElement('ul', {class: 'issue'});
+      git__wrap.appendChild(issue);
+      git__wrap.appendChild(createElement('span', {class: 'issue_counter'}));
+
+
       `<div class="git__wrap">
           <div class="repo">
             <span class="repo__lang" data-lang="HTML"></span>
@@ -178,24 +211,21 @@
           <span class="issue_counter"></span>
         </div>`;
 
-      _repos[repo.name] = repo;
-      let repo_li = document.createElement('li');
-      repo_li.innerHTML = `<a><p>${repo.name}</p><p>${repo.description}</p><p>${repo.language}</p></a>`;
-      document.querySelector('.repos>ul').appendChild(repo_li);
-      if(repo.name == `${USERNAME}.github.io`){
-        getPosts(repo);
-        return;
-      }
-      fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
-      .then(res => res.json())
-      .then(issues => issues.forEach(issue => {
-        let li = document.createElement('li');
-        li.innerHTML = `<span class="issues__repo">${repo.name}</span><span class="issues__label">label</span><span class="issues__title">${issue.title}</span><span class="issues__created_at">${timeSince(new Date(issue.created_at))}</span>`;
-        document.querySelector('.issues>ul').appendChild(li);
-      }));
+      
+      let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`);
+      (await res.json()).forEach(issue_json => {
+        if (repo.name == `${USERNAME}.github.io`) getPosts(issue_json);
+        let issue__item = createElement('li', {class: 'issue__item'});
+        issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_json.title));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_json.created_at))));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},'issue__item__desc'));
+        let issue__item__label = createElement('ul', {class: 'issue__item__label'});
+        issue__item.appendChild(issue__item__label);
+        issue.appendChild(issue__item);
+      });
     });
   }
-  function getPosts(repo){
+  function getPosts(repo) {
     fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`)
       .then(res => res.json())
       .then(issues => issues.forEach(issue => {
@@ -206,15 +236,15 @@
         document.querySelector('.posts>ul').appendChild(li);
       }));
   }
-  function alert(e){
+  function alert(e) {
     console.log(e);
   }
-  function gitAttr(attr, value){
+  function gitAttr(attr, value) {
     document.querySelectorAll(`[git-target^="${attr},"]`).forEach(el => {
       let [attr, target] = el.getAttribute('git-target').split(',');
-      if(target){
+      if (target) {
         el.setAttribute(target, value);
-      }else{
+      } else {
         el.innerHTML = value;
       }
       el.removeAttribute('git-target');
@@ -222,30 +252,123 @@
   }
   function timeSince(date) {
 
-var seconds = Math.floor((new Date() - date) / 1000);
+    var seconds = Math.floor((new Date() - date) / 1000);
 
-var interval = seconds / 31536000;
+    var interval = seconds / 31536000;
 
-if (interval > 1) {
-  return Math.floor(interval) + " years";
+    if (interval > 1) {
+      return Math.floor(interval) + " years";
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      return Math.floor(interval) + " months";
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      return Math.floor(interval) + " days";
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      return Math.floor(interval) + " hours";
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      return Math.floor(interval) + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  }
+
+  
+/**
+ * 무작위 색상 코드를 만들어 주는 기능
+ * @returns {string}
+ */
+function randomColor() {return Math.floor(Math.random()*16777215).toString(16)}
+
+/**
+ * 문자열 속 URL 을 a 태그로 치환해주는 기능
+ * @param text
+ * @returns {*}
+ */
+function renderLinkInText(text) {
+    let urlRegex = /(https?:\/\/\S+)/g;
+    /*
+    return text.replace(urlRegex, function(url) {
+        return '<a href="' + url + '">' + url + '</a>';
+    })*/
+    // or alternatively
+    return text.replace(urlRegex, '<a href="$1" target="_blank" class="link">$1</a>')
 }
-interval = seconds / 2592000;
-if (interval > 1) {
-  return Math.floor(interval) + " months";
+
+/**
+ * 문자열 속 URL 을 a 태그로 치환해주는 기능
+ * @param text
+ * @returns {*}
+ * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
+ */
+function renderMarkDownText(text) {
+    //ul
+    text = text.replace(/^\s*\n\*/gm, '<ul>\n*');
+    text = text.replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2');
+    text = text.replace(/^\*(.+)/gm, '<li>$1</li>');
+
+    //ol
+    text = text.replace(/^\s*\n\d\./gm, '<ol>\n1.');
+    text = text.replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2');
+    text = text.replace(/^\d\.(.+)/gm, '<li>$1</li>');
+
+    //blockquote
+    text = text.replace(/^&gt;(.+)/gm, '<blockquote>$1</blockquote>');
+
+    //h
+    text = text.replace(/[\#]{6}(.+)/g, '<h6>$1</h6>');
+    text = text.replace(/[\#]{5}(.+)/g, '<h5>$1</h5>');
+    text = text.replace(/[\#]{4}(.+)/g, '<h4>$1</h4>');
+    text = text.replace(/[\#]{3}(.+)/g, '<h3>$1</h3>');
+    text = text.replace(/[\#]{2}(.+)/g, '<h2>$1</h2>');
+    text = text.replace(/[\#]{1}(.+)/g, '<h1>$1</h1>');
+
+    //alt h
+    text = text.replace(/^(.+)\n\=+/gm, '<h1>$1</h1>');
+    text = text.replace(/^(.+)\n\-+/gm, '<h2>$1</h2>');
+
+    //images
+    //text = text.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
+
+    //links
+    //text = text.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+
+    //font styles
+    text = text.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<b>$1</b>');
+    text = text.replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>');
+    text = text.replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>');
+
+    //pre
+    text = text.replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="$2">');
+    text = text.replace(/^\`\`\`\s*\n/gm, '</pre>\n\n');
+
+    //code
+    text = text.replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>');
+
+    //p
+    /*
+    text = text.replace(/^\s*(\n)?(.+)/gm, function(m){
+        return  /\<(\/)?(h\d|ul|ol|li|blockquote|pre|img)/.test(m) ? m : '<p>'+m+'</p>';
+    });*/
+
+    //strip p from pre
+    //text = text.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, '$1$2');
+
+    return text;
 }
-interval = seconds / 86400;
-if (interval > 1) {
-  return Math.floor(interval) + " days";
+
+function createElement(tag, options = {},innerHTML=''){
+  let el = document.createElement(tag);
+  for(attr in options) el.setAttribute(attr, options[attr]);
+  if(innerHTML) el.innerHTML = innerHTML;
+  return el;
 }
-interval = seconds / 3600;
-if (interval > 1) {
-  return Math.floor(interval) + " hours";
-}
-interval = seconds / 60;
-if (interval > 1) {
-  return Math.floor(interval) + " minutes";
-}
-return Math.floor(seconds) + " seconds";
-}
+
 </script>
+
 </html>

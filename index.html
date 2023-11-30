@@ -172,17 +172,17 @@
     }
   }
   function getIssues(repos = _repos) {
-    repos.forEach(async repo => {
+    repos.forEach(async repo_data => {
       let git__wrap = createElement('div', {class: 'git__wrap fold'});
 
       let repo = createElement('div', {class: 'repo'});
-      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo.language, style: `--lang-color: ${_git_color[repo.language]};`}));
-      repo.appendChild(createElement('span', {class: 'repo__title'},repo.name));
+      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language]};`}));
+      repo.appendChild(createElement('span', {class: 'repo__title'},repo_data.name));
       repo.appendChild(createElement('span', {class: 'repo__star'},''));
       let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
       repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
       repo.appendChild(repo__fold_button);
-      repo.appendChild(createElement('p', {class: 'repo__desc'},repo.description));
+      repo.appendChild(createElement('p', {class: 'repo__desc'},repo_data.description));
       git__wrap.appendChild(repo);
 
       let issue = createElement('ul', {class: 'issue'});
@@ -212,12 +212,12 @@
         </div>`;
 
       
-      let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo.name}/issues`);
-      (await res.json()).forEach(issue_json => {
-        if (repo.name == `${USERNAME}.github.io`) getPosts(issue_json);
+      let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues`);
+      (await res.json()).forEach(issue_data => {
+        if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item'});
-        issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_json.title));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_json.created_at))));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__title'},issue_data.title));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
         issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},'issue__item__desc'));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue__item.appendChild(issue__item__label);

@@ -420,3 +420,9 @@ blockquote {
 .issue__item__desc ul, .issue__item__desc ol {
     padding-inline-start: 2em;
 }
+.issue__item__desc img {
+    border-radius: 0;
+}
+.issue__item__desc a {
+    text-decoration: underline;
+}

@@ -354,17 +354,17 @@ footer {
     line-height: 1.3rem;
     text-align: center;
     font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 .issue__item[data-state="open"]::before{
     content: '·';
-    color: limegreen;
-    border-color: limegreen;
+    color: #1f883d;
+    border-color: #1f883d;
 }
 .issue__item[data-state="close"]::before{
     content: '✓';
-    color:purple;
-    border-color: purple;
+    color:#8250df;
+    border-color: #8250df;
 }
 .issue__item + .issue__item {
     margin-top: 0.5rem;

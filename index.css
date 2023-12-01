@@ -497,14 +497,15 @@ footer {
 }
 .full > .issue__item {
     position: relative;
-    z-index: 99;
-    margin: 5rem auto;
+    width: calc(100% - 10rem);
+    max-width: 75rem;
+    min-height: 50vh;
     padding: 3rem;
+    margin: 5rem auto;
+    box-sizing: border-box;
     box-shadow: 0 0 0 50vh #00000055;
     list-style: none;
-    max-width: 75rem;
-    width: calc(100% - 10rem);
-    box-sizing: border-box;
+    z-index: 99;
 }
 .full > .issue__item::before {
     position: absolute;

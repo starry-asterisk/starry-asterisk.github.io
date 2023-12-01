@@ -131,6 +131,7 @@
   }
   async function getUsers() {
     let res = await fetch(`https://api.github.com/users/${USERNAME}`);
+    console.log(res.headers.link);
     json = await res.json();
 
     gitAttr('avatar_url', json.avatar_url);
@@ -143,6 +144,8 @@
   async function getRepos(user = _user) {
     if ('repos_url' in user) {
       let res = await fetch(`${user.repos_url}?per_page=${PER_PAGE}`);
+      let links = res.headers.get('link');
+      console.log(links);
       return await res.json();
     } else {
       return [];
@@ -169,6 +172,8 @@
       document.querySelector('.git').appendChild(git__wrap);
       
       let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`);
+      let links = res.headers.get('link');
+      console.log(links);
       (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});

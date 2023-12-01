@@ -131,7 +131,8 @@
   }
   async function getUsers() {
     let res = await fetch(`https://api.github.com/users/${USERNAME}`);
-    console.log(res.headers.link);
+    let link = parse_link_header(res.headers);
+    console.log(link);
     json = await res.json();
 
     gitAttr('avatar_url', json.avatar_url);

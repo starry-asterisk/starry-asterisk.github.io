@@ -214,9 +214,11 @@
         issue.appendChild(issue__item);
         _before_el = issue__item.previousSibling;
       });
+      }
+      
       let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
       issue__item__next.onclick = renderIssues;
-      }
+      git__wrap.appendChild(issue__item__next);
     });
   }
   function getPosts(issue_data) {

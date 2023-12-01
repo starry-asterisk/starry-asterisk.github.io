@@ -168,14 +168,18 @@
 
       let issue = createElement('ul', {class: 'issue'});
       git__wrap.appendChild(issue);
-      git__wrap.appendChild(createElement('span', {class: 'issue_counter'}));
+      git__wrap.appendChild(createElement('span', {class: 'issue_counter'}, repo_data.open_issues_count));
 
       document.querySelector('.git').appendChild(git__wrap);
       
-      let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`);
-      let links = parse_link_header(res.headers);
-      console.log(links);
-      (await res.json()).forEach(issue_data => {
+      let next_link = `https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`;
+
+      async function renderIssues(){
+        let res = await fetch(next_link);
+        let links = parse_link_header(res.headers);
+        next_link = links.next;
+
+        (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
         issue__item.appendChild(createElement('a', {class: 'issue__item__title', href: issue_data.html_url},issue_data.title));
@@ -203,7 +207,6 @@
             }
           }else{
             _full.appendChild(issue__item);
-            //_full.onclick = issue__item__full_button.onclick;
           }
           document.body.classList.toggle('full-mode');
         };
@@ -211,6 +214,9 @@
         issue.appendChild(issue__item);
         _before_el = issue__item.previousSibling;
       });
+      let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
+      issue__item__next.onclick = renderIssues;
+      }
     });
   }
   function getPosts(issue_data) {

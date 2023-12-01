@@ -379,7 +379,7 @@ function parse_link_header(header) {
   var parts = header.split(',');
   var links = {};
   // Parse each part into a named link
-  _.each(parts, function(p) {
+  parts.each(p => {
     var section = p.split(';');
     if (section.length != 2) {
       throw new Error("section could not be split on ';'");

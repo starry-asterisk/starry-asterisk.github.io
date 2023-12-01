@@ -144,7 +144,7 @@
   async function getRepos(user = _user) {
     if ('repos_url' in user) {
       let res = await fetch(`${user.repos_url}?per_page=${PER_PAGE}`);
-      let links = res.headers.get('link');
+      let links = parse_link_header(res.headers);
       console.log(links);
       return await res.json();
     } else {
@@ -172,7 +172,7 @@
       document.querySelector('.git').appendChild(git__wrap);
       
       let res = await fetch(`https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`);
-      let links = res.headers.get('link');
+      let links = parse_link_header(res.headers);
       console.log(links);
       (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
@@ -365,6 +365,30 @@ function createElement(tag, options = {},innerHTML=''){
   for(attr in options) el.setAttribute(attr, options[attr]);
   if(innerHTML) el.innerHTML = innerHTML;
   return el;
+}
+
+function parse_link_header(header) {
+  header = header.get('link');
+
+  if (header == null) {
+    return -1;
+  }
+
+  // Split parts by comma
+  var parts = header.split(',');
+  var links = {};
+  // Parse each part into a named link
+  _.each(parts, function(p) {
+    var section = p.split(';');
+    if (section.length != 2) {
+      throw new Error("section could not be split on ';'");
+    }
+    var url = section[0].replace(/<(.*)>/, '$1').trim();
+    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+    links[name] = url;
+  });
+
+  return links;
 }
 
 </script>

@@ -471,7 +471,7 @@ footer {
     margin: 0;
 }
 .fold .issue__item__next {
-    display: hidden;
+    display: none;
 }
 .full {
     position: fixed;

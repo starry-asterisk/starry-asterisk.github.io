@@ -161,7 +161,11 @@
       repo.appendChild(createElement('a', {class: 'repo__title',href: repo_data.html_url},repo_data.name));
       repo.appendChild(createElement('span', {class: 'repo__star'},repo_data.stargazers_count));
       let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
-      repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
+      repo__fold_button.onclick = () => {
+        git__wrap.classList.toggle('fold');
+        repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
+        renderIssues();
+      };
       repo.appendChild(repo__fold_button);
       repo.appendChild(createElement('p', {class: 'repo__desc'},repo_data.description));
       git__wrap.appendChild(repo);
@@ -219,6 +223,8 @@
       let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
       issue__item__next.onclick = renderIssues;
       git__wrap.appendChild(issue__item__next);
+
+      renderIssues();
     });
   }
   function getPosts(issue_data) {

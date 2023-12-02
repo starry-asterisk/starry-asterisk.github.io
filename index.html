@@ -180,16 +180,12 @@
       let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
       
       async function renderIssues(){
-        if(next_link){
-
-        }else{
-          issue__item__next.classList.add('end');
-          return;
-        }
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
         next_link = links.next;
 
+        if(next_link.last == next_link.next) issue__item__next.classList.add('end');
+        
         (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});

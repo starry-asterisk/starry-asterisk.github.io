@@ -182,6 +182,7 @@
 
 
         (await res.json()).forEach(issue_data => {
+          console.log(repo_data);
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
         issue__item.appendChild(createElement('a', {class: 'issue__item__title', href: issue_data.html_url},issue_data.title));
@@ -223,6 +224,7 @@
     });
   }
   function getPosts(issue_data) {
+    console.log(issue_data);
     let li = document.createElement('li');
         li.innerHTML = `<img src="img_url" alt="${issue_data.title}">
             <p>${issue_data.title} | (tag) | 설명...</p>

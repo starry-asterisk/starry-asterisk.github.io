@@ -177,14 +177,14 @@
       document.querySelector('.git').appendChild(git__wrap);
       
       let next_link = `https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`;
-      let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
+      let issue__item__next = createElement('button',{class: 'issue__item__next'});
       
       async function renderIssues(){
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
+        if(links.last == next_link) issue__item__next.classList.add('end');
         next_link = links.next;
 
-        if(links.last == next_link) issue__item__next.classList.add('end');
 
         (await res.json()).forEach(issue_data => {
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);

@@ -460,7 +460,7 @@ footer {
 .issue__item__next:after, .posts__next:after{
     content: 'load next';
 }
-.issue__item__next.end:after, .posts__next:after{
+.issue__item__next.end:after, .posts__next.end:after{
     content: 'end of load';
 }
 .fold .repo {

@@ -172,6 +172,7 @@
       if (repo_data.name == `${USERNAME}.github.io`) {
         repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
         document.querySelector('.posts__next').onclick = ()=> issue__item__next.onclick();
+        renderIssues();
       } else {
         repo__fold_button.onclick = () => {
           git__wrap.classList.toggle('fold');

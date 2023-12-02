@@ -177,8 +177,15 @@
       document.querySelector('.git').appendChild(git__wrap);
       
       let next_link = `https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`;
-
+      let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
+      
       async function renderIssues(){
+        if(next_link){
+
+        }else{
+          issue__item__next.classList.add('end');
+          return;
+        }
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
         next_link = links.next;
@@ -220,11 +227,8 @@
       });
       }
       
-      let issue__item__next = createElement('button',{class: 'issue__item__next'},'load next');
       issue__item__next.onclick = renderIssues;
       git__wrap.appendChild(issue__item__next);
-
-      renderIssues();
     });
   }
   function getPosts(issue_data) {

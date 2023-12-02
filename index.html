@@ -182,7 +182,7 @@
       async function renderIssues(){
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
-        if(links.last == next_link) issue__item__next.classList.add('end');
+        if(links.last == next_link || links.last == null) issue__item__next.classList.add('end');
         next_link = links.next;
 
 

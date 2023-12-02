@@ -450,17 +450,17 @@ footer {
     border-radius: 1.25rem;
     cursor: pointer;
 }
-.issue__item__next:active {
+.issue__item__next:active, .posts__next{
     opacity: 0.6;
 }
-.issue__item__next.end {
+.issue__item__next.end, .posts__next.end {
     pointer-events: none;
     border: none;
 }
-.issue__item__next:after{
+.issue__item__next:after, .posts__next:after{
     content: 'load next';
 }
-.issue__item__next.end:after{
+.issue__item__next.end:after, .posts__next:after{
     content: 'end of load';
 }
 .fold .repo {

@@ -156,11 +156,6 @@
       repo.appendChild(createElement('a', {class: 'repo__title',href: repo_data.html_url},repo_data.name));
       repo.appendChild(createElement('span', {class: 'repo__star'},repo_data.stargazers_count));
       let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
-      repo__fold_button.onclick = () => {
-        git__wrap.classList.toggle('fold');
-        repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
-        renderIssues();
-      };
       repo.appendChild(repo__fold_button);
       repo.appendChild(createElement('p', {class: 'repo__desc'},repo_data.description));
       git__wrap.appendChild(repo);
@@ -174,6 +169,17 @@
       let next_link = `https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`;
       let issue__item__next = createElement('button',{class: 'issue__item__next'});
       
+      if (repo_data.name == `${USERNAME}.github.io`) {
+        repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
+        document.querySelector('.posts__next').onclick = ()=> issue__item__next.onclick();
+      } else {
+        repo__fold_button.onclick = () => {
+          git__wrap.classList.toggle('fold');
+          repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
+          renderIssues();
+        };
+      }
+      
       async function renderIssues(){
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
@@ -182,7 +188,6 @@
 
 
         (await res.json()).forEach(issue_data => {
-          console.log(repo_data);
         if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
         issue__item.appendChild(createElement('a', {class: 'issue__item__title', href: issue_data.html_url},issue_data.title));
@@ -224,7 +229,6 @@
     });
   }
   function getPosts(issue_data) {
-    console.log(issue_data);
     let li = document.createElement('li');
         li.innerHTML = `<img src="img_url" alt="${issue_data.title}">
             <p>${issue_data.title} | (tag) | 설명...</p>

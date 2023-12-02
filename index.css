@@ -449,7 +449,7 @@ footer {
     cursor: pointer;
 }
 .issue__item__next:active {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 .issue__item__next.end {
     pointer-events: none;

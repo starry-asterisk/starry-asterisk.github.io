@@ -127,7 +127,6 @@
   async function getUsers() {
     let res = await fetch(`https://api.github.com/users/${USERNAME}`);
     let link = parse_link_header(res.headers);
-    console.log(link);
     json = await res.json();
 
     gitAttr('avatar_url', json.avatar_url);
@@ -141,7 +140,6 @@
     if ('repos_url' in user) {
       let res = await fetch(`${user.repos_url}?per_page=${PER_PAGE}`);
       let links = parse_link_header(res.headers);
-      console.log(links);
       return await res.json();
     } else {
       return [];

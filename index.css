@@ -244,11 +244,13 @@ footer {
     background: var(--accent);
     color: white;
 }
+.posts > ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
 .posts > ul > li {
-    width: 49%;
     background: var(--border);
-    float: left;
-    margin: 0.5%;
 }
 .posts > ul > li > img {
     display: block;
@@ -438,7 +440,7 @@ footer {
     top: -0.6rem;
     left: -0.6rem;
 }
-.issue__item__next {
+.issue__item__next, .posts__next {
     order: 2;
     width: 10rem;
     margin: 0.5rem auto 0 auto;

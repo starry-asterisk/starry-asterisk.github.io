@@ -231,7 +231,7 @@
     });
   }
   function getPosts(issue_data) {
-    let li = createElement('li');
+    let li = createElement('li',{class: 'post'});
       let post__label = createElement('p', {class: 'post__label'});
         issue_data.labels.forEach(
           label_data => 

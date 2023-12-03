@@ -261,7 +261,7 @@ p.post__label {
     color: var(--accent);
 }
 .post__label > span + span {
-    display: hidden;
+    display: none;
 }
 p.post__title {
     padding: 0.5rem;

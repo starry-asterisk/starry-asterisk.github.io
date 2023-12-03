@@ -244,19 +244,18 @@ footer {
     background: var(--accent);
     color: white;
 }
-.posts {
-    border-top: 1px solid var(--border-darker);
-    border-bottom: 1px solid var(--border-darker);
-}
 .posts > ul {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    border-top: 1px solid var(--border-darker);
+    border-bottom: 1px solid var(--border-darker);
 }
 .post {
     display: flex;
     flex-direction: column;
     border: 1px solid var(--border-darker);
     padding: 0.5rem;
+    height: 13rem;
 }
 p.post__label {
     color: var(--accent);
@@ -281,6 +280,8 @@ p.post__desc {
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: left;
+    margin-top: 0.5rem;
 }
 .git__wrap {
     display: flex;

@@ -244,37 +244,39 @@ footer {
     background: var(--accent);
     color: white;
 }
+.posts {
+    border-top: 1px solid var(--border-darker);
+    border-bottom: 1px solid var(--border-darker);
+}
 .posts > ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
 }
 .post {
+    display: flex;
+    flex-direction: column;
     border: 1px solid var(--border-darker);
     padding: 0.5rem;
 }
-.post > p {
-    line-height: 2.5rem;
-    text-align: left;
-    padding-left: 0.5rem;
-}
-.post__label {
+p.post__label {
     color: var(--accent);
 }
-.post__label > span + span::before {
-    content: ', ';
+.post__label > span + span {
+    display: hidden;
 }
-.post__titel {
+p.post__title {
     padding: 0.5rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bold;
+    flex: 1;
 }
-.post__datetime {
+p.post__datetime {
     text-align: right;
     font-size: 0.8rem;
 }
-.post__desc {
+p.post__desc {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;

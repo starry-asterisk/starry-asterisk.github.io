@@ -240,7 +240,7 @@
             )
           );
     li.appendChild(post__label);
-    li.appendChild(createElement('p',{class: 'post__titel'},issue_data.title));
+    li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
     li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
     li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body.render()));
         document.querySelector('.posts>ul').appendChild(li);

@@ -232,11 +232,11 @@
   }
   function getPosts(issue_data) {
     let li = createElement('li');
-      let post__label = createElement('ul', {class: 'post__label'});
+      let post__label = createElement('p', {class: 'post__label'});
         issue_data.labels.forEach(
           label_data => 
-          issue__item__label.appendChild(
-            createElement('li', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
+          post__label.appendChild(
+            createElement('span', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
             )
           );
     li.appendChild(post__label);

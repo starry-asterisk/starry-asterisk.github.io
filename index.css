@@ -260,7 +260,7 @@ footer {
     transition: transform 150ms;
 }
 .post:nth-child(3n - 2)::after, .post:nth-child(3n - 1)::after {
-    content: 'no more conntents';
+    content: 'no more contents';
     display: block;
     position: absolute;
     border: 1px dashed var(--border-darker);

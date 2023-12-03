@@ -231,10 +231,18 @@
     });
   }
   function getPosts(issue_data) {
-    let li = document.createElement('li');
-        li.innerHTML = `<img src="img_url" alt="${issue_data.title}">
-            <p>${issue_data.title} | (tag) | 설명...</p>
-            <p>1 min ago. 안녕하세요</p>`;
+    let li = createElement('li');
+      let post__label = createElement('ul', {class: 'post__label'});
+        issue_data.labels.forEach(
+          label_data => 
+          issue__item__label.appendChild(
+            createElement('li', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
+            )
+          );
+    li.appendChild(post__label);
+    li.appendChild(createElement('p',{class: 'post__titel'},issue_data.title));
+    li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
+    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body.render()));
         document.querySelector('.posts>ul').appendChild(li);
   }
   function alert(e) {

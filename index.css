@@ -256,6 +256,11 @@ footer {
     border: 1px solid var(--border-darker);
     padding: 0.5rem;
     height: 13rem;
+    background: white;
+    transition: scale 300ms;
+}
+.post:hover {
+    transform: scale(1.1);
 }
 p.post__label {
     color: var(--accent);

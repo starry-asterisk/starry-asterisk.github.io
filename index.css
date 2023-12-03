@@ -250,8 +250,7 @@ footer {
 }
 .posts > ul {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 .post {
     display: flex;

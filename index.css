@@ -280,6 +280,7 @@ p.post__desc {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 .git__wrap {
     display: flex;

@@ -246,6 +246,7 @@ footer {
 }
 .posts {
     margin: 0 -1rem;
+    height: 75rem;
 }
 .posts, .posts * {
     transition: all 5s;

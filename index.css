@@ -478,28 +478,25 @@ footer {
     top: 60rem;
 }
 
-.post:nth-child(1){animation-name: slideToBig_x1;}
-.post:nth-child(2){animation-name: slideToBig_x2;}
-.post:nth-child(3){animation-name: slideToBig_x3;}
-.post:nth-child(4){animation-name: slideToBig_x4;}
-.post:nth-child(5){animation-name: slideToBig_x5;}
-.post:nth-child(6){animation-name: slideToBig_x6;}
-.post:nth-child(7){animation-name: slideToBig_x7;}
-.post:nth-child(8){animation-name: slideToBig_x8;}
-.post:nth-child(9){animation-name: slideToBig_x9;}
-.post:nth-child(10){animation-name: slideToBig_x10;}
-.post:nth-child(11){animation-name: slideToBig_x11;}
-.post:nth-child(12){animation-name: slideToBig_x12;}
-.post:nth-child(13){animation-name: slideToBig_x13;}
-.post:nth-child(14){animation-name: slideToBig_x14;}
-.post:nth-child(15){animation-name: slideToBig_x15;}
 .post {
-    animation-direction: reverse;
+    animation-direction: alternate;
 }
 @media screen and (width > 80rem) {
-    .post {
-        animation-direction: normal;
-    }
+    .post:nth-child(1){animation-name: slideToBig_x1;}
+    .post:nth-child(2){animation-name: slideToBig_x2;}
+    .post:nth-child(3){animation-name: slideToBig_x3;}
+    .post:nth-child(4){animation-name: slideToBig_x4;}
+    .post:nth-child(5){animation-name: slideToBig_x5;}
+    .post:nth-child(6){animation-name: slideToBig_x6;}
+    .post:nth-child(7){animation-name: slideToBig_x7;}
+    .post:nth-child(8){animation-name: slideToBig_x8;}
+    .post:nth-child(9){animation-name: slideToBig_x9;}
+    .post:nth-child(10){animation-name: slideToBig_x10;}
+    .post:nth-child(11){animation-name: slideToBig_x11;}
+    .post:nth-child(12){animation-name: slideToBig_x12;}
+    .post:nth-child(13){animation-name: slideToBig_x13;}
+    .post:nth-child(14){animation-name: slideToBig_x14;}
+    .post:nth-child(15){animation-name: slideToBig_x15;}
 }
 .post:hover {
     transform: scale(1.07);

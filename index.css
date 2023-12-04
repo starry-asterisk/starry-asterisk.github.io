@@ -246,19 +246,21 @@ footer {
 }
 .posts {
     margin: 0 -1rem;
+}
+.posts > ul {
     height: 15rem;
     transition: height 500ms;
 }
-.posts:has(.post:nth-child(4)) {
+.posts > ul:has(.post:nth-child(4)) {
     height: 30rem;
 }
-.posts:has(.post:nth-child(7)) {
+.posts > ul:has(.post:nth-child(7)) {
     height: 45rem;
 }
-.posts:has(.post:nth-child(10)) {
+.posts > ul:has(.post:nth-child(10)) {
     height: 60rem;
 }
-.posts:has(.post:nth-child(13)) {
+.posts > ul:has(.post:nth-child(13)) {
     height: 75rem;
 }
 .post {
@@ -616,10 +618,10 @@ footer {
 .post:nth-child(14){animation-name: slideToBig_r14;}
 .post:nth-child(15){animation-name: slideToBig_r15;}
 @media screen and (width > 80rem) {
-    .posts:has(.post:nth-child(6)) {
+    .posts > ul:has(.post:nth-child(6)) {
         height: 30rem;
     }
-    .posts:has(.post:nth-child(11)) {
+    .posts > ul:has(.post:nth-child(11)) {
         height: 45rem;
     }
     .post:nth-child(1){animation-name: slideToBig_x1;}

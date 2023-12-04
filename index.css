@@ -248,7 +248,6 @@ footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     border-top: 1px solid var(--border-darker);
-    border-bottom: 1px solid var(--border-darker);
 }
 .post {
     display: flex;
@@ -257,29 +256,10 @@ footer {
     padding: 0.5rem;
     height: 13rem;
     background: white;
-    transition: transform 150ms;
-}
-.post:nth-child(3n - 2)::after, .post:nth-child(3n - 1)::after {
-    content: 'no more contents';
-    display: block;
-    position: absolute;
-    border: 1px dashed var(--border-darker);
-    top: -1px;
-    left: calc(100% + 1px);
-    width: 100%;
-    height: 100%;
-    background: white;
-    color: var(--border-darker);
-    line-height: 13rem;
-}
-.post:nth-child(3n - 2)::after {
-    width: calc(200% + 3px);
-}
-.post:nth-child(3n - 2):not(:last-child)::after, .post:nth-child(3n - 1):not(:last-child)::after{
-    display: none;
+    transition: transform 200ms;
 }
 .post:hover {
-    transform: scale(1.1);
+    transform: scale(1.07);
     z-index: 1;
 }
 p.post__label {

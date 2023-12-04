@@ -247,15 +247,13 @@ footer {
 .posts {
     margin: 0 -1rem;
 }
-@media screen and (width > 80rem) {
-    .posts {
-        width: 75rem;
-        margin-left: -15rem;
-    }
+.posts, .posts * {
+    transition: all 5s;
 }
 .post {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
+    position: absolute;
     border: 1px solid var(--border-darker);
     padding: 0.5rem;
     width: 15rem;
@@ -263,6 +261,60 @@ footer {
     background: white;
     transition: transform 200ms;
     box-sizing: border-box;
+}
+.post:nth-child(3n+1){
+    left: 0;
+}
+.post:nth-child(3n+2){
+    left: 15rem;
+}
+.post:nth-child(3n+3){
+    left: 30rem;
+}
+.post:nth-child(n-3){
+    top: 0;
+}
+.post:nth-child(n+4):nth-child(n-6){
+    top: 15rem;
+}
+.post:nth-child(n+7):nth-child(n-9){
+    top: 30rem;
+}
+.post:nth-child(n+10):nth-child(n-12){
+    top: 45rem;
+}
+.post:nth-child(n+13){
+    top: 60rem;
+}
+@media screen and (width > 80rem) {
+    .posts {
+        width: 75rem;
+        margin-left: -15rem;
+    }
+    .post:nth-child(5n+1){
+        left: 0;
+    }
+    .post:nth-child(5n+2){
+        left: 15rem;
+    }
+    .post:nth-child(5n+3){
+        left: 30rem;
+    }
+    .post:nth-child(5n+4){
+        left: 45rem;
+    }
+    .post:nth-child(5n+5){
+        left: 60rem;
+    }
+    .post:nth-child(n-5){
+        top: 0;
+    }
+    .post:nth-child(n+6):nth-child(n-10){
+        top: 15rem;
+    }
+    .post:nth-child(n+11){
+        top: 30rem;
+    }
 }
 .post:hover {
     transform: scale(1.07);

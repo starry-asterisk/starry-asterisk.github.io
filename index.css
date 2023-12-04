@@ -249,6 +249,15 @@ footer {
     grid-template-columns: 1fr 1fr 1fr;
     border-top: 1px solid var(--border-darker);
 }
+@media screen and (width > 75rem) {
+    .posts {
+        width: 166%;
+        margin-left: -33%;
+    }
+    .posts > ul {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
 .post {
     display: flex;
     flex-direction: column;

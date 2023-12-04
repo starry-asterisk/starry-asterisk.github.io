@@ -249,7 +249,7 @@
     li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
     li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
     li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body.render()));
-        document.querySelector('.posts>ul').appendChild(li);
+    ul.appendChild(li);
   }
   function alert(e) {
     console.log(e);

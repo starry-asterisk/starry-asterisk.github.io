@@ -576,32 +576,6 @@ footer {
     }
 }
 
-
-.post:nth-child(3n+1){
-    left: 0;
-}
-.post:nth-child(3n+2){
-    left: 15rem;
-}
-.post:nth-child(3n+3){
-    left: 30rem;
-}
-.post:nth-child(n-3){
-    top: 0;
-}
-.post:nth-child(n+4):nth-child(n-6){
-    top: 15rem;
-}
-.post:nth-child(n+7):nth-child(n-9){
-    top: 30rem;
-}
-.post:nth-child(n+10):nth-child(n-12){
-    top: 45rem;
-}
-.post:nth-child(n+13){
-    top: 60rem;
-}
-
 .post:nth-child(1){animation-name: slideToBig_r1;}
 .post:nth-child(2){animation-name: slideToBig_r2;}
 .post:nth-child(3){animation-name: slideToBig_r3;}

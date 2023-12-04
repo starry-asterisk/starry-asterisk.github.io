@@ -262,6 +262,194 @@ footer {
     transition: transform 200ms;
     box-sizing: border-box;
 }
+
+@keyframes slideToBig_y1 {
+    from {
+        top: 15rem;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes slideToBig_y2 {
+    from {
+        top: 30rem;
+    }
+    to {
+        top: 15rem
+    }
+}
+@keyframes slideToBig_y3 {
+    from {
+        top: 45rem;
+    }
+    to {
+        top: 15rem;
+    }
+}
+@keyframes slideToBig_y4 {
+    from {
+        top: 45rem;
+    }
+    to {
+        top: 30rem;
+    }
+}
+@keyframes slideToBig_y5 {
+    from {
+        top: 60rem;
+    }
+    to {
+        top: 30rem;
+    }
+}
+
+
+@keyframes slideToBig_x1 {
+    from {
+        left: 0;
+    }
+    to {
+        left: -15rem
+    }
+}
+@keyframes slideToBig_x2 {
+    from {
+        left: 15rem;
+    }
+    to {
+        left: 0;
+    }
+}
+@keyframes slideToBig_x3 {
+    from {
+        left: 30rem;
+    }
+    to {
+        left: 15rem
+    }
+}
+
+
+@keyframes slideToBig_x4 {
+    from {
+        top: 15rem;
+        left: 0;
+    }
+    to {
+        top: 0;
+        left: 30rem
+    }
+}
+@keyframes slideToBig_x5 {
+    from {
+        top: 15rem;
+        left: 15rem;
+    }
+    to {
+        top: 0;
+        left: 45rem
+    }
+}
+@keyframes slideToBig_x6 {
+    from {
+        left: 30rem;
+    }
+    to {
+        left: -15rem;
+    }
+}
+
+
+@keyframes slideToBig_x7 {
+    from {
+        top: 30rem;
+    }
+    to {
+        top: 15rem;
+    }
+}
+@keyframes slideToBig_x8 {
+    from {
+        top: 30rem;
+    }
+    to {
+        top: 15rem;
+    }
+}
+@keyframes slideToBig_x9 {
+    from {
+        top: 30rem;
+    }
+    to {
+        top: 15rem;
+    }
+}
+
+
+@keyframes slideToBig_x10 {
+    from {
+        top: 45rem;
+        left: 0;
+    }
+    to {
+        top: 15rem;
+        left: 45rem;
+    }
+}
+@keyframes slideToBig_x11 {
+    from {
+        top: 45rem;
+        left: 15rem;
+    }
+    to {
+        top: 30rem;
+        left: -15rem;
+    }
+}
+@keyframes slideToBig_x12 {
+    from {
+        top: 45rem;
+        left: 30rem;
+    }
+    to {
+        top: 30rem;
+        left: 0;
+    }
+}
+
+@keyframes slideToBig_x13 {
+    from {
+        top: 60rem;
+        left: 0;
+    }
+    to {
+        top: 30rem;
+        left: 15rem;
+    }
+}
+@keyframes slideToBig_x14 {
+    from {
+        top: 60rem;
+        left: 15rem;
+    }
+    to {
+        top: 30rem;
+        left: 30rem;
+    }
+}
+@keyframes slideToBig_x15 {
+    from {
+        top: 60rem;
+        left: 30rem;
+    }
+    to {
+        top: 30rem;
+        left: 45rem;
+    }
+}
+
+
 .post:nth-child(3n+1){
     left: 0;
 }
@@ -286,35 +474,28 @@ footer {
 .post:nth-child(n+13){
     top: 60rem;
 }
+
 @media screen and (width > 80rem) {
     .posts {
         width: 75rem;
         margin-left: -15rem;
     }
-    .post:nth-child(5n+1){
-        left: 0;
-    }
-    .post:nth-child(5n+2){
-        left: 15rem;
-    }
-    .post:nth-child(5n+3){
-        left: 30rem;
-    }
-    .post:nth-child(5n+4){
-        left: 45rem;
-    }
-    .post:nth-child(5n+5){
-        left: 60rem;
-    }
-    .post:nth-child(n-5){
-        top: 0;
-    }
-    .post:nth-child(n+6):nth-child(n-10){
-        top: 15rem;
-    }
-    .post:nth-child(n+11){
-        top: 30rem;
-    }
+    .post {animation-duration: 1s;}
+    .post:nth-child(1){animation-name: slideToBig_x1;}
+    .post:nth-child(2){animation-name: slideToBig_x2;}
+    .post:nth-child(3){animation-name: slideToBig_x3;}
+    .post:nth-child(4){animation-name: slideToBig_x4;}
+    .post:nth-child(5){animation-name: slideToBig_x5;}
+    .post:nth-child(6){animation-name: slideToBig_x6;}
+    .post:nth-child(7){animation-name: slideToBig_x7;}
+    .post:nth-child(8){animation-name: slideToBig_x8;}
+    .post:nth-child(9){animation-name: slideToBig_x9;}
+    .post:nth-child(10){animation-name: slideToBig_x10;}
+    .post:nth-child(11){animation-name: slideToBig_x11;}
+    .post:nth-child(12){animation-name: slideToBig_x12;}
+    .post:nth-child(13){animation-name: slideToBig_x13;}
+    .post:nth-child(14){animation-name: slideToBig_x14;}
+    .post:nth-child(15){animation-name: slideToBig_x15;}
 }
 .post:hover {
     transform: scale(1.07);

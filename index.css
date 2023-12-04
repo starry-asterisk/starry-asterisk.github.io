@@ -244,26 +244,22 @@ footer {
     background: var(--accent);
     color: white;
 }
-.posts > ul {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    border-top: 1px solid var(--border-darker);
+.posts {
+    margin: 0 -1rem;
 }
-@media screen and (width > 75rem) {
+@media screen and (width > 80rem) {
     .posts {
-        width: 166%;
-        margin-left: -33%;
-    }
-    .posts > ul {
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        width: 75rem;
+        margin-left: -15rem;
     }
 }
 .post {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     border: 1px solid var(--border-darker);
     padding: 0.5rem;
-    height: 13rem;
+    width: 15rem;
+    height: 15rem;
     background: white;
     transition: transform 200ms;
 }

@@ -266,46 +266,6 @@ footer {
     animation-fill-mode: forwards;
 }
 
-@keyframes slideToBig_y1 {
-    from {
-        top: 15rem;
-    }
-    to {
-        top: 0;
-    }
-}
-@keyframes slideToBig_y2 {
-    from {
-        top: 30rem;
-    }
-    to {
-        top: 15rem
-    }
-}
-@keyframes slideToBig_y3 {
-    from {
-        top: 45rem;
-    }
-    to {
-        top: 15rem;
-    }
-}
-@keyframes slideToBig_y4 {
-    from {
-        top: 45rem;
-    }
-    to {
-        top: 30rem;
-    }
-}
-@keyframes slideToBig_y5 {
-    from {
-        top: 60rem;
-    }
-    to {
-        top: 30rem;
-    }
-}
 
 
 @keyframes slideToBig_x1 {
@@ -453,6 +413,158 @@ footer {
 }
 
 
+
+
+
+
+
+
+
+@keyframes slideToBig_r1 {
+    to {
+        left: 0;
+    }
+    from {
+        left: -15rem
+    }
+}
+@keyframes slideToBig_r2 {
+    to {
+        left: 15rem;
+    }
+    from {
+        left: 0;
+    }
+}
+@keyframes slideToBig_r3 {
+    to {
+        left: 30rem;
+    }
+    from {
+        left: 15rem
+    }
+}
+
+
+@keyframes slideToBig_r4 {
+    to {
+        top: 15rem;
+        left: 0;
+    }
+    from {
+        top: 0;
+        left: 30rem
+    }
+}
+@keyframes slideToBig_r5 {
+    to {
+        top: 15rem;
+        left: 15rem;
+    }
+    from {
+        top: 0;
+        left: 45rem
+    }
+}
+@keyframes slideToBig_r6 {
+    to {
+        left: 30rem;
+    }
+    from {
+        left: -15rem;
+    }
+}
+
+
+@keyframes slideToBig_r7 {
+    to {
+        top: 30rem;
+    }
+    from {
+        top: 15rem;
+    }
+}
+@keyframes slideToBig_r8 {
+    to {
+        top: 30rem;
+    }
+    from {
+        top: 15rem;
+    }
+}
+@keyframes slideToBig_r9 {
+    to {
+        top: 30rem;
+    }
+    from {
+        top: 15rem;
+    }
+}
+
+
+@keyframes slideToBig_r10 {
+    to {
+        top: 45rem;
+        left: 0;
+    }
+    from {
+        top: 15rem;
+        left: 45rem;
+    }
+}
+@keyframes slideToBig_r11 {
+    to {
+        top: 45rem;
+        left: 15rem;
+    }
+    from {
+        top: 30rem;
+        left: -15rem;
+    }
+}
+@keyframes slideToBig_r12 {
+    to {
+        top: 45rem;
+        left: 30rem;
+    }
+    from {
+        top: 30rem;
+        left: 0;
+    }
+}
+
+@keyframes slideToBig_r13 {
+    to {
+        top: 60rem;
+        left: 0;
+    }
+    from {
+        top: 30rem;
+        left: 15rem;
+    }
+}
+@keyframes slideToBig_r14 {
+    to {
+        top: 60rem;
+        left: 15rem;
+    }
+    from {
+        top: 30rem;
+        left: 30rem;
+    }
+}
+@keyframes slideToBig_r15 {
+    to {
+        top: 60rem;
+        left: 30rem;
+    }
+    from {
+        top: 30rem;
+        left: 45rem;
+    }
+}
+
+
 .post:nth-child(3n+1){
     left: 0;
 }
@@ -478,9 +590,21 @@ footer {
     top: 60rem;
 }
 
-.post {
-    animation-direction: alternate;
-}
+.post:nth-child(1){animation-name: slideToBig_r1;}
+.post:nth-child(2){animation-name: slideToBig_r2;}
+.post:nth-child(3){animation-name: slideToBig_r3;}
+.post:nth-child(4){animation-name: slideToBig_r4;}
+.post:nth-child(5){animation-name: slideToBig_r5;}
+.post:nth-child(6){animation-name: slideToBig_r6;}
+.post:nth-child(7){animation-name: slideToBig_r7;}
+.post:nth-child(8){animation-name: slideToBig_r8;}
+.post:nth-child(9){animation-name: slideToBig_r9;}
+.post:nth-child(10){animation-name: slideToBig_r10;}
+.post:nth-child(11){animation-name: slideToBig_r11;}
+.post:nth-child(12){animation-name: slideToBig_r12;}
+.post:nth-child(13){animation-name: slideToBig_r13;}
+.post:nth-child(14){animation-name: slideToBig_r14;}
+.post:nth-child(15){animation-name: slideToBig_r15;}
 @media screen and (width > 80rem) {
     .post:nth-child(1){animation-name: slideToBig_x1;}
     .post:nth-child(2){animation-name: slideToBig_x2;}

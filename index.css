@@ -262,6 +262,7 @@ footer {
     height: 15rem;
     background: white;
     transition: transform 200ms;
+    box-sizing: border-box;
 }
 .post:hover {
     transform: scale(1.07);

@@ -61,21 +61,7 @@
         </div>
       </section>
       <section class="posts" data-type="card">
-        <ul>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-          <li class="post"></li>
-        </ul>
+        <ul></ul>
         <button class="posts__next"></button>
       </section>
       <section class="git" data-type="list"></section>
@@ -231,6 +217,11 @@
     });
   }
   function getPosts(issue_data) {
+    let ul = document.querySelector('.posts>ul:last-child');
+    if(ul.querySelector('.post:nth-child(15)')){
+      ul = createElement('ul');
+      document.querySelector('.posts').appendChild(ul);
+    }
     let li = createElement('li',{class: 'post'});
       let post__label = createElement('p', {class: 'post__label'});
         issue_data.labels.forEach(

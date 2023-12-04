@@ -247,6 +247,7 @@ footer {
 .posts {
     margin: 0 -1rem;
     height: 15rem;
+    transition: height 500ms;
 }
 .posts:has(.post:nth-child(4)) {
     height: 30rem;
@@ -271,7 +272,7 @@ footer {
     background: white;
     transition: transform 200ms;
     box-sizing: border-box;
-    animation-duration: 1s;
+    animation-duration: 500ms;
     animation-fill-mode: forwards;
 }
 

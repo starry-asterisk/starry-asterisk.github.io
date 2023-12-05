@@ -1,36 +1,111 @@
 <html lang="ko-KR">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="starry-asterisk.github.io">
-    <meta property="og:locale" content="ko_KR">
-    <meta name="description" content="개인 이력서">
-    <meta property="og:description" content="personal github blog">
-    <meta property="og:url" content="https://starry-asterisk.github.io/">
-    <meta property="og:site_name" content="starry-asterisk.github.io">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta property="twitter:title" content="이력서">
-    <link rel="canonical" href="https://starry-asterisk.github.io/">
-    <link rel="icon" href="/favicon.png">
-    <link rel="stylesheet" href="index.css">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
-    <style>
 
-    </style>
-    <title>starry-asterisk.github.io | personal github blog</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="starry-asterisk.github.io">
+  <meta property="og:locale" content="ko_KR">
+  <meta name="description" content="personal github blog">
+  <meta property="og:description" content="personal github blog">
+  <meta property="og:url" content="https://starry-asterisk.github.io/">
+  <meta property="og:site_name" content="starry-asterisk.github.io">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta property="twitter:title" content="starry-asterisk.github.io">
+  <link rel="canonical" href="https://starry-asterisk.github.io/">
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="index.css">
+  <script
+    type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","description":"personal github blog","headline":"starry-asterisk.github.io","name":"starry-asterisk.github.io","url":"https://starry-asterisk.github.io/"}</script>
+
+  <title>starry-asterisk.github.io | personal github blog</title>
 </head>
+
 <body>
+  <header>
+    <a class="logo" title="home" href="/">
+      <img src="/logo.png" alt="✨">
+      <span>starry-asterisk</span>
+    </a>
+    <nav>
+      <a href="/about">about</a>
+      <a href="/resume">resume</a>
+    </nav>
+  </header>
   <div class="middle">
     <aside>
 
     </aside>
     <main>
+      <section class="profile">
+        <div class="profile__left">
+          <a class="profile__left__avatar" git-target="html_url,href" href="/#">
+            <img git-target="avatar_url,src" alt="✨" src="/">
+          </a>
+          <h2 git-target="name">김현우</h5>
+            <h5 git-target="login">starry-asterisk
+          </h2>
+          <h4>6507055@naver.com</h3>
+        </div>
+        <div class="profile__right">
+          <div class="profile__right__description">
+            개발자로서의 설명
+          </div>
+          <ul class="profile__right__skills">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>javascript</li>
+          </ul>
+        </div>
+      </section>
     </main>
   </div>
+  <footer>
+    <p class="copyright">© 2023 starry-asterisk</p>
+    <p>powered by <a href="#"></a>Git-hub</a>, written by <a href="#">starry-asterisk</a></p>
+  </footer>
+  <div class="full"></div>
 </body>
 <script>
+  const USERNAME = 'starry-asterisk';
+  let _user = {};
+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+
+  if (!urlParams.get('flag')) init();
+
+  async function init() {
+    _user = await getUsers();
+  }
+  async function getUsers() {
+    let res = await fetch(`https://api.github.com/users/${USERNAME}`);
+    json = await res.json();
+
+    gitAttr('avatar_url', json.avatar_url);
+    gitAttr('html_url', json.html_url);
+    gitAttr('name', json.name);
+    gitAttr('login', json.login);
+
+    return json;
+  }
+  function alert(e) {
+    console.log(e);
+  }
+  function gitAttr(attr, value) {
+    document.querySelectorAll(`[git-target^="${attr},"]`).forEach(el => {
+      let [attr, target] = el.getAttribute('git-target').split(',');
+      if (target) {
+        el.setAttribute(target, value);
+      } else {
+        el.innerHTML = value;
+      }
+      el.removeAttribute('git-target');
+    });
+  }
+
 </script>
+
 </html>

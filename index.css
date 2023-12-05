@@ -618,7 +618,7 @@ footer {
 .post:nth-child(14){animation-name: slideToBig_r14;}
 .post:nth-child(15){animation-name: slideToBig_r15;}
 @media screen and (width > 80rem) {
-    .posts > ul {
+    .posts > ul:has(.post:nth-child(1)) {
         height: 15rem;
     }
     .posts > ul:has(.post:nth-child(6)) {

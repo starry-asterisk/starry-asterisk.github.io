@@ -207,7 +207,7 @@
     li.appendChild(post__label);
     li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
     li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
-    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body?issue_data.body.render():''));
+    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body));
     ul.appendChild(li);
   }
   function alert(e) {
@@ -281,6 +281,7 @@ function renderLinkInText(text) {
  * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
  */
 function renderMarkDownText(text) {
+  if(text == null) return '';
     //ul
     text = text.replace(/^\s*\n\*/gm, '<ul>\n*');
     text = text.replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2');

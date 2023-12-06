@@ -201,6 +201,9 @@
             createElement('span', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
             )
           );
+          li.onclick=()=>{
+            window.open('_blank').location.href=issue_data.html_url;
+          }
     li.appendChild(post__label);
     li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
     li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));

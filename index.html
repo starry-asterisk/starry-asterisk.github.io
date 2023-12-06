@@ -207,7 +207,7 @@
     li.appendChild(post__label);
     li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
     li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
-    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body.render()));
+    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body?issue_data.body.render():''));
     ul.appendChild(li);
   }
   function alert(e) {

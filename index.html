@@ -151,7 +151,7 @@
         let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
         issue__item.appendChild(createElement('a', {class: 'issue__item__title', href: issue_data.html_url},issue_data.title));
         issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},issue_data.body.render()));
+        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},renderMarkDownText(issue_data.body)));
         let issue__item__label = createElement('ul', {class: 'issue__item__label'});
         issue_data.labels.forEach(
           label_data => 
@@ -304,10 +304,10 @@ function renderMarkDownText(text) {
     text = text.replace(/^(.+)\n\-+/gm, '<h2>$1</h2>');
 
     //images
-    //text = text.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
+    text = text.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
 
     //links
-    //text = text.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+    text = text.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
 
     //font styles
     text = text.replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<b>$1</b>');

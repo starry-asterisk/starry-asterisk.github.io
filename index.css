@@ -682,12 +682,14 @@ p.post__desc {
     text-align: left;
     margin-top: 0.5rem;
     opacity: 0.8;
+    line-height: 1.5;
 }
 span.post__desc {
     display: block;
     overflow-y: auto;
     white-space: pre-line;
     max-width: 55rem !important;
+    line-height: 1.5;
 }
 span.post__datetime {
     font-size: 0.8rem;

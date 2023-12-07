@@ -341,6 +341,9 @@
       .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
       .replace(/^\*(.+)/gm, '<li>$1</li>')
 
+      //emoji
+      .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match);
+      
       //ol
       .replace(/^\s*\n\d\./gm, '<ol>\n1.')
       .replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2')
@@ -379,8 +382,6 @@
       //code
       .replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>')
 
-      //emoji
-      .replace(/:([a-zA-Z0-9_+-]+):/g, (match, emojiCode) => `<img class="emoji" src="https://github.githubassets.com/images/icons/emoji/${emojiCode}.png" alt="${emojiCode}" />`)
       //table
       .replace(/(?:\|(.+?)\|)+\n(?:\|?(?::?-+:?)\|?)+\n((?:\|(.+?)\|+\n)*)/g, (match, header, rows) => {
         const headers = header.split('|').filter(Boolean);

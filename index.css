@@ -98,14 +98,6 @@ body {
     min-height: 100%;
     overflow-x: hidden;
 }
-body.full-mode::after {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #000000AA;
-}
 /*헤더*/
 header {
     display: flex;
@@ -699,7 +691,7 @@ span.post__desc {
     line-height: 1.5;
 }
 .post__desc img {
-    width: 100%;
+    max-width: 100%;
 }
 span.post__datetime {
     font-size: 0.8rem;
@@ -883,7 +875,7 @@ button.post_detail__back::before {
 }
 .issue__item__desc img {
     border-radius: 0;
-    width: 100%;
+    max-width: 100%;
 }
 .issue__item__desc a {
     text-decoration: underline;
@@ -995,6 +987,15 @@ button.post_detail__back::before {
 }
 .full-mode {
     overflow: hidden;
+}
+.full-mode::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000AA;
 }
 .full-mode > .full {
     pointer-events: all;

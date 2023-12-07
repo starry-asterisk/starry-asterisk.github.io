@@ -235,12 +235,11 @@
         clone.appendChild(createElement('span', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
         post_detail.appendChild(clone);
         post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
-        console.log(issue_data.body, renderMarkDownText(issue_data.body));
         post_detail.appendChild(createElement('span', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
         let post_detail__back = createElement('button', { class: 'post_detail__back' }, 'back');
         post_detail.appendChild(post_detail__back);
         window.onmousemove = e => {
-          if(e.pageY > Rem2Px(200)) return post_detail__back.style.left = '50%';
+          if(e.pageY > Rem2Px(20)) return post_detail__back.style.left = '50%';
           body_rect = document.body.getBoundingClientRect();
           if(e.pageX < Rem2Px(3)) post_detail__back.style.left = Rem2Px(3)+'px';
           else if(body_rect.width - e.pageX < Rem2Px(3)) post_detail__back.style.left = body_rect.width - Rem2Px(3) + 'px';
@@ -333,7 +332,7 @@
    * @returns {*}
    * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
    */
-  function renderMarkDownText(markdownText) {
+   function renderMarkDownText(markdownText) {
     if (markdownText == null) return '';
     //ul
     return markdownText
@@ -383,13 +382,10 @@
     //emoji
       .replace(/:([a-zA-Z0-9_+-]+):/g, (match, emojiCode) => `<img class="emoji" src="https://github.githubassets.com/images/icons/emoji/${emojiCode}.png" alt="${emojiCode}" />`)
     //table
-      .replace(/(?:\|(.+?)\|)+\n(?:\|?(?::?-+:?)\|?)+\n((?:\|(.+?)\|)+\n)*/g, (match, header, separator, rows) => {
+      .replace(/(?:\|(.+?)\|)+\n(?:\|?(?::?-+:?)\|?)+\n((?:\|(.+?)\|+\n)*)/g, (match, header, rows) => {
         const headers = header.split('|').filter(Boolean);
         const dataRows = rows.split('\n').filter(Boolean);
-
-        console.log(match, header, separator, rows);
-        console.log(headers, dataRows);
-
+        
         const tableHtml = `<table><thead><tr>${headers.map(h => `<th>${h.trim()}</th>`).join('')}</tr></thead><tbody>${dataRows.map(row => `<tr>${row.split('|').filter(Boolean).map(d => `<td>${d.trim()}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 
         return tableHtml;

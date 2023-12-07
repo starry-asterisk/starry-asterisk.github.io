@@ -744,7 +744,12 @@ span.post__datetime {
     cursor: pointer;
     opacity: 0.8;
     font-size: 1.25rem;
-    transition: transform 150ms, opacity 150ms, left 100ms;
+    transition: transform 150ms, opacity 150ms, left 600ms;
+}
+button.post_detail__back::before {
+    content: '←';
+    position: absolute;
+    right: 105%;
 }
 .post_detail__back:hover {
     opacity: 1;

@@ -237,7 +237,7 @@
         post_detail.appendChild(post_detail__back);
         window.onmousemove = e => {
           if(e.pageX < Rem2Px(3)) post_detail__back.style.left = Rem2Px(3)+'px';
-          else if(window.innerWidth - e.pageX < Rem2Px(7.5)) post_detail__back.style.left = window.innerWidth - Rem2Px(7.5) + 'px';
+          else if(window.innerWidth - e.pageX < Rem2Px(4.5)) post_detail__back.style.left = window.innerWidth - Rem2Px(4.5) + 'px';
           else post_detail__back.style.left = e.pageX + 'px'; 
         }
         post_detail__back.onclick = () => {

@@ -721,7 +721,6 @@ span.post__desc {
     background:none;
     width: 3rem;
     cursor: pointer;
-    transition: left 100ms;
 }
 .git__wrap {
     display: flex;

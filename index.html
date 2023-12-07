@@ -337,17 +337,19 @@
     //ul
     return markdownText
       .replace(/\r\n/g, `\n`)
-      .replace(/^\s*\n\*/gm, '<ul>\n*')
-      .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
-      .replace(/^\*(.+)/gm, '<li>$1</li>')
+
+      //ul
+      .replace(/^\s*\*\s(.+)$/gm, '<li>$1</li>')
+      .replace(/^\s*-\s(.+)$/gm, '<li>$1</li>')
+      .replace(/<li>(.+)<\/li>/g, '<ul>$&</ul>')
+
+      //ol
+      .replace(/^\s*\d+\.\s(.+)$/gm, '<li>$1</li>')
+      .replace(/<li>(.+)<\/li>/g, '<ol>$&</ol>')
 
       //emoji
       .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match)
 
-      //ol
-      .replace(/^\s*\n\d\./gm, '<ol>\n1.')
-      .replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2')
-      .replace(/^\d\.(.+)/gm, '<li>$1</li>')
 
       //blockquote
       .replace(/^&gt;(.+)/gm, '<blockquote>$1</blockquote>')
@@ -359,10 +361,6 @@
       .replace(/^\s*#### (.+)$/gm, '<h4>$1</h4>')
       .replace(/^\s*##### (.+)$/gm, '<h5>$1</h5>')
       .replace(/^\s*###### (.+)$/gm, '<h6>$1</h6>')
-
-      //alt h
-      .replace(/^(.+)\n\=+/gm, '<h1>$1</h1>')
-      .replace(/^(.+)\n\-+/gm, '<h2>$1</h2>')
 
       //images
       .replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />')

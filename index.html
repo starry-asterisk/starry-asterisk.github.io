@@ -206,7 +206,7 @@
       document.body.classList.add('full-mode');
       let body_rect = document.body.getBoundingClientRect();
       let li_rect = li.getBoundingClientRect();
-      let post_detail = createElement('div', {class: 'post_detail'});
+      let post_detail = createElement('div', { class: 'post_detail' });
       document.body.appendChild(post_detail);
       const keyframes = [
         {
@@ -239,11 +239,11 @@
         let post_detail__back = createElement('button', { class: 'post_detail__back' }, 'back');
         post_detail.appendChild(post_detail__back);
         window.onmousemove = e => {
-          if(e.pageY > Rem2Px(20)) return post_detail__back.style.left = '50%';
+          if (e.pageY > Rem2Px(20)) return post_detail__back.style.left = '50%';
           body_rect = document.body.getBoundingClientRect();
-          if(e.pageX < Rem2Px(3)) post_detail__back.style.left = Rem2Px(3)+'px';
-          else if(body_rect.width - e.pageX < Rem2Px(3)) post_detail__back.style.left = body_rect.width - Rem2Px(3) + 'px';
-          else post_detail__back.style.left = e.pageX + 'px'; 
+          if (e.pageX < Rem2Px(3)) post_detail__back.style.left = Rem2Px(3) + 'px';
+          else if (body_rect.width - e.pageX < Rem2Px(3)) post_detail__back.style.left = body_rect.width - Rem2Px(3) + 'px';
+          else post_detail__back.style.left = e.pageX + 'px';
         }
         post_detail__back.onclick = () => {
           window.onmousemove = null;
@@ -332,7 +332,7 @@
    * @returns {*}
    * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
    */
-   function renderMarkDownText(markdownText) {
+  function renderMarkDownText(markdownText) {
     if (markdownText == null) return '';
     //ul
     return markdownText
@@ -341,51 +341,51 @@
       .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
       .replace(/^\*(.+)/gm, '<li>$1</li>')
 
-    //ol
+      //ol
       .replace(/^\s*\n\d\./gm, '<ol>\n1.')
       .replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2')
       .replace(/^\d\.(.+)/gm, '<li>$1</li>')
 
-    //blockquote
+      //blockquote
       .replace(/^&gt;(.+)/gm, '<blockquote>$1</blockquote>')
 
-    //h
-      .replace(/[\#]{6}(.+)/g, '<h6>$1</h6>')
-      .replace(/[\#]{5}(.+)/g, '<h5>$1</h5>')
-      .replace(/[\#]{4}(.+)/g, '<h4>$1</h4>')
-      .replace(/[\#]{3}(.+)/g, '<h3>$1</h3>')
-      .replace(/[\#]{2}(.+)/g, '<h2>$1</h2>')
-      .replace(/[\#]{1}(.+)/g, '<h1>$1</h1>')
+      //h
+      .replace(/^\s*# (.+)$/gm, '<h1>$1</h1>')
+      .replace(/^\s*## (.+)$/gm, '<h2>$1</h2>')
+      .replace(/^\s*### (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^\s*#### (.+)$/gm, '<h4>$1</h4>')
+      .replace(/^\s*##### (.+)$/gm, '<h5>$1</h5>')
+      .replace(/^\s*###### (.+)$/gm, '<h6>$1</h6>')
 
-    //alt h
+      //alt h
       .replace(/^(.+)\n\=+/gm, '<h1>$1</h1>')
       .replace(/^(.+)\n\-+/gm, '<h2>$1</h2>')
 
-    //images
+      //images
       .replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />')
 
-    //links
+      //links
       .replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>')
 
-    //font styles
+      //font styles
       .replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<b>$1</b>')
       .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>')
       .replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>')
 
-    //pre
+      //pre
       .replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="$2">')
       .replace(/^\`\`\`\s*\n/gm, '</pre>\n\n')
 
-    //code
+      //code
       .replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>')
 
-    //emoji
+      //emoji
       .replace(/:([a-zA-Z0-9_+-]+):/g, (match, emojiCode) => `<img class="emoji" src="https://github.githubassets.com/images/icons/emoji/${emojiCode}.png" alt="${emojiCode}" />`)
-    //table
+      //table
       .replace(/(?:\|(.+?)\|)+\n(?:\|?(?::?-+:?)\|?)+\n((?:\|(.+?)\|+\n)*)/g, (match, header, rows) => {
         const headers = header.split('|').filter(Boolean);
         const dataRows = rows.split('\n').filter(Boolean);
-        
+
         const tableHtml = `<table><thead><tr>${headers.map(h => `<th>${h.trim()}</th>`).join('')}</tr></thead><tbody>${dataRows.map(row => `<tr>${row.split('|').filter(Boolean).map(d => `<td>${d.trim()}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 
         return tableHtml;

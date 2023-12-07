@@ -234,7 +234,7 @@
         clone.appendChild(createElement('span', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
         post_detail.appendChild(clone);
         post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
-        console.log(renderMarkDownText(issue_data.body));
+        console.log(issue_data.body, renderMarkDownText(issue_data.body));
         post_detail.appendChild(createElement('span', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
         let post_detail__back = createElement('button', { class: 'post_detail__back' }, 'back');
         post_detail.appendChild(post_detail__back);
@@ -335,6 +335,7 @@
     if (markdownText == null) return '';
     //ul
     return markdownText
+      .replace(/\r\n/g, `\n`)
       .replace(/^\s*\n\*/gm, '<ul>\n*')
       .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
       .replace(/^\*(.+)/gm, '<li>$1</li>')
@@ -379,7 +380,6 @@
 
     //emoji
       .replace(/:([a-zA-Z0-9_+-]+):/g, (match, emojiCode) => `<img class="emoji" src="https://github.githubassets.com/images/icons/emoji/${emojiCode}.png" alt="${emojiCode}" />`)
-      
     //table
       .replace(/(?:\|(.+?)\|)+\n(?:\|?(?::?-+:?)\|?)+\n((?:\|(.+?)\|)+\n)*/g, (match, header, separator, rows) => {
         const headers = header.split('|').filter(Boolean);

@@ -206,7 +206,7 @@
             let body_rect = document.body.getBoundingClientRect();
             let li_rect = li.getBoundingClientRect();
             let post_detail = createElement('div',{
-              style: 'position: fixed;top:5.5rem;left:1.5rem;right:1.5rem;bottom:0;box-sizing: border-box;border: 1px solid var(--border-darker);'
+              style: 'position: fixed;top:5.5rem;left:1.5rem;right:1.5rem;bottom:0;box-sizing: border-box;border: 1px solid var(--border-darker);z-index:99;border-radius:0.2rem;box-shadow: 0 0 0 50vh #00000055;background: white;'
             });
             document.body.appendChild(post_detail);
             const keyframes = [
@@ -230,7 +230,7 @@
               fillMode: 'forwards',
             };
 
-            post_detail.animate(keyframes, option);
+            post_detail.animate(keyframes, option).onfinish = console.log;
             //window.open('_blank').location.href=issue_data.html_url;
           }
     li.appendChild(post__label);

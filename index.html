@@ -342,6 +342,7 @@
   .replace(/^\s*\n\*/gm, '<ul>\n*')
   .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
   .replace(/^\*(.+)/gm, '<li>$1</li>')
+  .replace(/^\s*-\s(.+)$/gm, '<li>$1</li>')
   
   //ol
   .replace(/^\s*\n\d\./gm, '<ol>\n1.')

@@ -42,7 +42,7 @@
       <section class="posts" data-type="card">
         <ul></ul>
       </section>
-      <button class="posts__next"></button>
+      <button class="posts__next" style="display: none;"></button>
       <section class="git" data-type="list"></section>
     </main>
   </div>
@@ -188,6 +188,7 @@
     });
   }
   function getPosts(issue_data) {
+    document.querySelector('.posts__next').style.display='inline-block';
     let ul = document.querySelector('.posts>ul:last-child');
     if(ul.querySelector('.post:nth-child(15)')){
       ul = createElement('ul');
@@ -202,7 +203,35 @@
             )
           );
           li.onclick=()=>{
-            window.open('_blank').location.href=issue_data.html_url;
+            let body_rect = document.body.getBoundingClientRect();
+            let li_rect = li.getBoundingClientRect();
+            let post_detail = createElement('div',{
+              style: 'position: fixed;top:5.5rem;left:1.5rem;right:1.5rem;bottom:0;box-sizing: border-box;border: 1px solid var(--border-darker);'
+            });
+            document.body.appendChild(post_detail);
+            const keyframes = [
+              {
+                top: li_rect.top + 'px',
+                left: li_rect.left + 'px',
+                bottom: body_rect.height - li_rect.bottom + 'px',
+                right: body_rect.width - li_rect.right + 'px',
+              },
+              {
+                top: Rem2Px(5.5) + 'px',
+                left: Rem2Px(1.5) + 'px',
+                bottom: Rem2Px(1.5) + 'px',
+                right: 0,
+              }
+            ];
+
+            const option = {
+              duration: 1000,
+              iterations: 1,
+              fillMode: 'forwards',
+            };
+
+            post_detail.animate(keyframes, option);
+            //window.open('_blank').location.href=issue_data.html_url;
           }
     li.appendChild(post__label);
     li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
@@ -252,6 +281,9 @@
     return Math.floor(seconds) + " seconds";
   }
 
+  function Rem2Px(rem) {    
+    return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
+}
   
 /**
  * 무작위 색상 코드를 만들어 주는 기능

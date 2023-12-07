@@ -385,6 +385,9 @@
         const headers = header.split('|').filter(Boolean);
         const dataRows = rows.split('\n').filter(Boolean);
 
+        console.log(match, header, separator, rows);
+        console.log(headers, dataRows);
+
         const tableHtml = `<table><thead><tr>${headers.map(h => `<th>${h.trim()}</th>`).join('')}</tr></thead><tbody>${dataRows.map(row => `<tr>${row.split('|').filter(Boolean).map(d => `<td>${d.trim()}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
 
         return tableHtml;

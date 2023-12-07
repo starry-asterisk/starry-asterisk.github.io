@@ -891,6 +891,7 @@ button.post_detail__back::before {
 }
 .issue__item__desc img {
     border-radius: 0;
+    width: 100%;
 }
 .issue__item__desc a {
     text-decoration: underline;

@@ -709,7 +709,7 @@ span.post__desc {
     left: 0;
     right: 0;
     bottom: 0;
-    background: #00000055;
+    background: #000000AA;
     z-index: -2;
 }
 .post_detail__back {
@@ -721,6 +721,12 @@ span.post__desc {
     background:none;
     width: 3rem;
     cursor: pointer;
+    opacity: 0.8;
+    transition: transform 150ms, opacity 150ms;
+}
+.post_detail__back:hover {
+    opacity: 1;
+    transform: scale(1.15);
 }
 .git__wrap {
     display: flex;

@@ -342,8 +342,8 @@
       .replace(/^\*(.+)/gm, '<li>$1</li>')
 
       //emoji
-      .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match);
-      
+      .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match)
+
       //ol
       .replace(/^\s*\n\d\./gm, '<ol>\n1.')
       .replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2')

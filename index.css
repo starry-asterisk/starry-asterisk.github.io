@@ -680,6 +680,42 @@ p.post__desc {
     margin-top: 0.5rem;
     opacity: 0.8;
 }
+.post_detail {
+    position: fixed;
+    box-sizing: border-box;
+    z-index:99;
+    padding: 2.5rem;
+}
+.post_detail::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid var(--border-darker);
+    background: white;
+    z-index: -1;
+}
+.post_detail::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #00000055;
+    z-index: -2;
+}
+.post_detail__back {
+    position: absolute;
+    bottom: 100%;
+    margin-left: -3rem;
+    padding: 0.5rem;
+    color: white;
+    background:none;
+    width: 3rem;
+}
 .git__wrap {
     display: flex;
     flex-direction: column;

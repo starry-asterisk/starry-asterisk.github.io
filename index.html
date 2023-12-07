@@ -104,29 +104,29 @@
   }
   function getIssues(repos = _repos) {
     repos.forEach(async repo_data => {
-      let git__wrap = createElement('div', {class: 'git__wrap fold'});
+      let git__wrap = createElement('div', { class: 'git__wrap fold' });
 
-      let repo = createElement('div', {class: 'repo'});
-      repo.appendChild(createElement('span', {class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language].color};`}));
-      repo.appendChild(createElement('a', {class: 'repo__title',href: repo_data.html_url},repo_data.name));
-      repo.appendChild(createElement('span', {class: 'repo__star'},repo_data.stargazers_count));
-      let repo__fold_button = createElement('button', {class: 'repo__fold_button'});
+      let repo = createElement('div', { class: 'repo' });
+      repo.appendChild(createElement('span', { class: 'repo__lang', 'data-lang': repo_data.language, style: `--lang-color: ${_git_color[repo_data.language].color};` }));
+      repo.appendChild(createElement('a', { class: 'repo__title', href: repo_data.html_url }, repo_data.name));
+      repo.appendChild(createElement('span', { class: 'repo__star' }, repo_data.stargazers_count));
+      let repo__fold_button = createElement('button', { class: 'repo__fold_button' });
       repo.appendChild(repo__fold_button);
-      repo.appendChild(createElement('p', {class: 'repo__desc'},repo_data.description));
+      repo.appendChild(createElement('p', { class: 'repo__desc' }, repo_data.description));
       git__wrap.appendChild(repo);
 
-      let issue = createElement('ul', {class: 'issue'});
+      let issue = createElement('ul', { class: 'issue' });
       git__wrap.appendChild(issue);
-      git__wrap.appendChild(createElement('span', {class: 'issue_counter'}, repo_data.open_issues_count));
+      git__wrap.appendChild(createElement('span', { class: 'issue_counter' }, repo_data.open_issues_count));
 
       document.querySelector('.git').appendChild(git__wrap);
-      
+
       let next_link = `https://api.github.com/repos/${USERNAME}/${repo_data.name}/issues?state=all&per_page=${PER_PAGE}`;
-      let issue__item__next = createElement('button',{class: 'issue__item__next'});
-      
+      let issue__item__next = createElement('button', { class: 'issue__item__next' });
+
       if (repo_data.name == `${USERNAME}.github.io`) {
         repo__fold_button.onclick = () => git__wrap.classList.toggle('fold');
-        document.querySelector('.posts__next').onclick = ()=> issue__item__next.onclick();
+        document.querySelector('.posts__next').onclick = () => issue__item__next.onclick();
         renderIssues();
       } else {
         repo__fold_button.onclick = () => {
@@ -135,11 +135,11 @@
           renderIssues();
         };
       }
-      
-      async function renderIssues(){
+
+      async function renderIssues() {
         let res = await fetch(next_link);
         let links = parse_link_header(res.headers);
-        if(links.last == next_link || links.last == null) {
+        if (links.last == next_link || links.last == null) {
           issue__item__next.classList.add('end');
           if (repo_data.name == `${USERNAME}.github.io`) document.querySelector('.posts__next').classList.add('end');
         }
@@ -147,96 +147,101 @@
 
 
         (await res.json()).forEach(issue_data => {
-        if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
-        let issue__item = createElement('li', {class: 'issue__item', 'data-state': issue_data.state});
-        issue__item.appendChild(createElement('a', {class: 'issue__item__title', href: issue_data.html_url},issue_data.title));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__datetime'},timeSince(new Date(issue_data.created_at))));
-        issue__item.appendChild(createElement('span', {class: 'issue__item__desc'},renderMarkDownText(issue_data.body)));
-        let issue__item__label = createElement('ul', {class: 'issue__item__label'});
-        issue_data.labels.forEach(
-          label_data => 
-          issue__item__label.appendChild(
-            createElement('li', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
-            )
+          if (repo_data.name == `${USERNAME}.github.io`) getPosts(issue_data);
+          let issue__item = createElement('li', { class: 'issue__item', 'data-state': issue_data.state });
+          issue__item.appendChild(createElement('a', { class: 'issue__item__title', href: issue_data.html_url }, issue_data.title));
+          issue__item.appendChild(createElement('span', { class: 'issue__item__datetime' }, timeSince(new Date(issue_data.created_at))));
+          issue__item.appendChild(createElement('span', { class: 'issue__item__desc' }, renderMarkDownText(issue_data.body)));
+          let issue__item__label = createElement('ul', { class: 'issue__item__label' });
+          issue_data.labels.forEach(
+            label_data =>
+              issue__item__label.appendChild(
+                createElement('li', { style: `--label-color: #${label_data.color};`, title: label_data.description }, label_data.name)
+              )
           );
-        issue__item.appendChild(issue__item__label);
-        let issue__item__full_button = createElement('button', {class: 'issue__item__full_button'});
-        let _before_el;
-        let _full_container = document.querySelector('.full');
-        
-        issue__item__full_button.onclick = function(e){
-          if(e.target != this) return false;
-          if(document.body.classList.contains('full-mode')){
-            if(_before_el){
-              _before_el.after(issue__item);
-            }else{
-              issue.prepend(issue__item);
+          issue__item.appendChild(issue__item__label);
+          let issue__item__full_button = createElement('button', { class: 'issue__item__full_button' });
+          let _before_el;
+          let _full_container = document.querySelector('.full');
+
+          issue__item__full_button.onclick = function (e) {
+            if (e.target != this) return false;
+            if (document.body.classList.contains('full-mode')) {
+              if (_before_el) {
+                _before_el.after(issue__item);
+              } else {
+                issue.prepend(issue__item);
+              }
+            } else {
+              _full.appendChild(issue__item);
             }
-          }else{
-            _full.appendChild(issue__item);
-          }
-          document.body.classList.toggle('full-mode');
-        };
-        issue__item.appendChild(issue__item__full_button);
-        issue.appendChild(issue__item);
-        _before_el = issue__item.previousSibling;
-      });
+            document.body.classList.toggle('full-mode');
+          };
+          issue__item.appendChild(issue__item__full_button);
+          issue.appendChild(issue__item);
+          _before_el = issue__item.previousSibling;
+        });
       }
-      
+
       issue__item__next.onclick = renderIssues;
       git__wrap.appendChild(issue__item__next);
     });
   }
   function getPosts(issue_data) {
-    document.querySelector('.posts__next').style.display='inline-block';
+    document.querySelector('.posts__next').style.display = 'inline-block';
     let ul = document.querySelector('.posts>ul:last-child');
-    if(ul.querySelector('.post:nth-child(15)')){
+    if (ul.querySelector('.post:nth-child(15)')) {
       ul = createElement('ul');
       document.querySelector('.posts').appendChild(ul);
     }
-    let li = createElement('li',{class: 'post'});
-      let post__label = createElement('p', {class: 'post__label'});
-        issue_data.labels.forEach(
-          label_data => 
-          post__label.appendChild(
-            createElement('span', {style: `--label-color: #${label_data.color};`,title: label_data.description},label_data.name)
-            )
-          );
-          li.onclick=()=>{
-            let body_rect = document.body.getBoundingClientRect();
-            let li_rect = li.getBoundingClientRect();
-            let post_detail = createElement('div',{
-              style: 'position: fixed;top:5.5rem;left:1.5rem;right:1.5rem;bottom:0;box-sizing: border-box;border: 1px solid var(--border-darker);z-index:99;border-radius:0.2rem;box-shadow: 0 0 0 50vh #00000055;background: white;'
-            });
-            document.body.appendChild(post_detail);
-            const keyframes = [
-              {
-                top: li_rect.top + 'px',
-                left: li_rect.left + 'px',
-                bottom: body_rect.height - li_rect.bottom + 'px',
-                right: body_rect.width - li_rect.right + 'px',
-              },
-              {
-                top: Rem2Px(5.5) + 'px',
-                left: Rem2Px(1.5) + 'px',
-                bottom: Rem2Px(1.5) + 'px',
-                right: 0,
-              }
-            ];
+    let li = createElement('li', { class: 'post' });
+    let post__label = createElement('p', { class: 'post__label' });
+    issue_data.labels.forEach(
+      label_data =>
+        post__label.appendChild(
+          createElement('span', { style: `--label-color: #${label_data.color};`, title: label_data.description }, label_data.name)
+        )
+    );
+    li.onclick = () => {
+      let body_rect = document.body.getBoundingClientRect();
+      let li_rect = li.getBoundingClientRect();
+      let post_detail = createElement('div', {
+        style: 'position: fixed;box-sizing: border-box;border: 1px solid var(--border-darker);z-index:99;box-shadow: 0 0 0 50vw #00000055;background: white;padding: 2.5rem'
+      });
+      document.body.appendChild(post_detail);
+      const keyframes = [
+        {
+          top: li_rect.top + 'px',
+          left: li_rect.left + 'px',
+          bottom: body_rect.height - li_rect.bottom + 'px',
+          right: body_rect.width - li_rect.right + 'px',
+        },
+        {
+          top: Rem2Px(5.5) + 'px',
+          left: Rem2Px(1.5) + 'px',
+          bottom: Rem2Px(1.5) + 'px',
+          right: 0,
+        }
+      ];
 
-            const option = {
-              duration: 1000,
-              iterations: 1,
-              fillMode: 'forwards',
-            };
+      const option = {
+        duration: 300,
+        iterations: 1,
+        fillMode: 'forwards',
+      };
 
-            post_detail.animate(keyframes, option).onfinish = console.log;
-            //window.open('_blank').location.href=issue_data.html_url;
-          }
+      post_detail.animate(keyframes, option).onfinish = () => {
+        li.appendChild(post__label.cloneNode(true));
+        li.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
+        li.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
+        li.appendChild(createElement('p', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
+      };
+      //window.open('_blank').location.href=issue_data.html_url;
+    }
     li.appendChild(post__label);
-    li.appendChild(createElement('p',{class: 'post__title'},issue_data.title));
-    li.appendChild(createElement('p',{class: 'post__datetime'},timeSince(new Date(issue_data.created_at))));
-    li.appendChild(createElement('p',{class: 'post__desc'},issue_data.body));
+    li.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
+    li.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
+    li.appendChild(createElement('p', { class: 'post__desc' }, issue_data.body));
     ul.appendChild(li);
   }
   function alert(e) {
@@ -281,22 +286,22 @@
     return Math.floor(seconds) + " seconds";
   }
 
-  function Rem2Px(rem) {    
+  function Rem2Px(rem) {
     return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}
-  
-/**
- * 무작위 색상 코드를 만들어 주는 기능
- * @returns {string}
- */
-function randomColor() {return Math.floor(Math.random()*16777215).toString(16)}
+  }
 
-/**
- * 문자열 속 URL 을 a 태그로 치환해주는 기능
- * @param text
- * @returns {*}
- */
-function renderLinkInText(text) {
+  /**
+   * 무작위 색상 코드를 만들어 주는 기능
+   * @returns {string}
+   */
+  function randomColor() { return Math.floor(Math.random() * 16777215).toString(16) }
+
+  /**
+   * 문자열 속 URL 을 a 태그로 치환해주는 기능
+   * @param text
+   * @returns {*}
+   */
+  function renderLinkInText(text) {
     let urlRegex = /(https?:\/\/\S+)/g;
     /*
     return text.replace(urlRegex, function(url) {
@@ -304,16 +309,16 @@ function renderLinkInText(text) {
     })*/
     // or alternatively
     return text.replace(urlRegex, '<a href="$1" target="_blank" class="link">$1</a>')
-}
+  }
 
-/**
- * 문자열 속 URL 을 a 태그로 치환해주는 기능
- * @param text
- * @returns {*}
- * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
- */
-function renderMarkDownText(text) {
-  if(text == null) return '';
+  /**
+   * 문자열 속 URL 을 a 태그로 치환해주는 기능
+   * @param text
+   * @returns {*}
+   * @referer : https://jung-max.github.io/2019/09/27/Web-Javascript-MarkDown%EA%B5%AC%ED%98%84/
+   */
+  function renderMarkDownText(text) {
+    if (text == null) return '';
     //ul
     text = text.replace(/^\s*\n\*/gm, '<ul>\n*');
     text = text.replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2');
@@ -369,50 +374,50 @@ function renderMarkDownText(text) {
     //text = text.replace(/(\<pre.+\>)\s*\n\<p\>(.+)\<\/p\>/gm, '$1$2');
 
     return text;
-}
-let renderEmoji = String.prototype.renderEmoji = function () {
-  return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_','') in _emoji?_emoji[match.replaceAll('_','')]:match);
-}
-let renderImages = String.prototype.renderImages = function () {
-  return this.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
-}
-let renderLinks = String.prototype.renderLinks = function () {
-  return this.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
-}
-let render_text = String.prototype.render = function () {
-  return this.renderEmoji().renderImages().renderLinks();
-}
-
-
-function createElement(tag, options = {},innerHTML=''){
-  let el = document.createElement(tag);
-  for(attr in options) el.setAttribute(attr, options[attr]);
-  if(innerHTML) el.innerHTML = innerHTML;
-  return el;
-}
-
-function parse_link_header(header) {
-  header = header.get('link');
-
-  if (header == null) {
-    return -1;
+  }
+  let renderEmoji = String.prototype.renderEmoji = function () {
+    return this.replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match);
+  }
+  let renderImages = String.prototype.renderImages = function () {
+    return this.replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />');
+  }
+  let renderLinks = String.prototype.renderLinks = function () {
+    return this.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
+  }
+  let render_text = String.prototype.render = function () {
+    return this.renderEmoji().renderImages().renderLinks();
   }
 
-  // Split parts by comma
-  var parts = header.split(',');
-  var links = {};
-  // Parse each part into a named link
-  for(let p of parts){
-    var section = p.split(';');
-    if (section.length != 2) {
-      throw new Error("section could not be split on ';'");
+
+  function createElement(tag, options = {}, innerHTML = '') {
+    let el = document.createElement(tag);
+    for (attr in options) el.setAttribute(attr, options[attr]);
+    if (innerHTML) el.innerHTML = innerHTML;
+    return el;
+  }
+
+  function parse_link_header(header) {
+    header = header.get('link');
+
+    if (header == null) {
+      return -1;
     }
-    var url = section[0].replace(/<(.*)>/, '$1').trim();
-    var name = section[1].replace(/rel="(.*)"/, '$1').trim();
-    links[name] = url;
+
+    // Split parts by comma
+    var parts = header.split(',');
+    var links = {};
+    // Parse each part into a named link
+    for (let p of parts) {
+      var section = p.split(';');
+      if (section.length != 2) {
+        throw new Error("section could not be split on ';'");
+      }
+      var url = section[0].replace(/<(.*)>/, '$1').trim();
+      var name = section[1].replace(/rel="(.*)"/, '$1').trim();
+      links[name] = url;
+    }
+    return links;
   }
-  return links;
-}
 
 </script>
 

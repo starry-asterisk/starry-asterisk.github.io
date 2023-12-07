@@ -232,7 +232,7 @@
         post_detail.appendChild(post__label.cloneNode(true));
         post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
         post_detail.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
-        post_detail.appendChild(createElement('p', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
+        post_detail.appendChild(createElement('span', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
         let post_detail__back = createElement('button', { class: 'post_detail__back' }, 'back');
         post_detail.appendChild(post_detail__back);
         window.onmousemove = e => {

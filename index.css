@@ -680,6 +680,11 @@ p.post__desc {
     margin-top: 0.5rem;
     opacity: 0.8;
 }
+span.post__desc {
+    display: block;
+    overflow-y: auto;
+    white-space: pre-line;
+}
 .post_detail {
     position: fixed;
     box-sizing: border-box;

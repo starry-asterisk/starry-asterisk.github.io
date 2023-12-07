@@ -219,8 +219,8 @@
         {
           top: Rem2Px(5.5) + 'px',
           left: Rem2Px(1.5) + 'px',
-          bottom: Rem2Px(1.5) + 'px',
-          right: 0,
+          bottom: 0,
+          right: Rem2Px(1.5) + 'px',
         }
       ];
 
@@ -235,6 +235,13 @@
         post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
         post_detail.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
         post_detail.appendChild(createElement('p', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
+        let back_button = createElement('button', { style: 'position: absolute;bottom: 100%;margin-left: -1.5rem;padding: 0.5rem;color: white;' }, 'back');
+        post_detail.appendChild(back_button);
+        window.onmousemove = e => back_button.style.left = e.pageX + 'px'; 
+        back_button.onclick = () => {
+          window.onmousemove = null;
+          post_detail.remove();
+        }
       };
       //window.open('_blank').location.href=issue_data.html_url;
     }

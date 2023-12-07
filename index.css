@@ -691,6 +691,9 @@ span.post__desc {
     max-width: 55rem !important;
     line-height: 1.5;
 }
+.post__desc img {
+    width: 100%;
+}
 span.post__datetime {
     font-size: 0.8rem;
     opacity: 0.8;

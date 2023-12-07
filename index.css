@@ -652,8 +652,11 @@ p.post__label {
     color: var(--accent);
     text-align: left;
 }
-.post__label > span + span {
+.post > .post__label > span + span {
     display: none;
+}
+.post_detail > .post__label > span + span {
+    padding-left: 1rem;
 }
 p.post__title {
     display: flex;
@@ -684,6 +687,11 @@ span.post__desc {
     display: block;
     overflow-y: auto;
     white-space: pre-line;
+    max-width: 59rem;
+}
+span.post__datetime {
+    font-size: 0.8rem;
+    opacity: 0.8;
 }
 .post_detail {
     position: fixed;
@@ -711,6 +719,18 @@ span.post__desc {
     bottom: 0;
     background: #000000AA;
     z-index: -2;
+}
+.post_detail > *:not(button) {
+    max-width: 75rem;
+    margin: auto;
+}
+.post_detail > p.post__title {
+    padding: 0.5rem 10rem 0.5rem 0;
+    margin-bottom: 3rem;
+    font-size: 3rem;
+    line-height: 4.5rem;
+    word-break: keep-all;
+    justify-content: flex-start;
 }
 .post_detail__back {
     position: absolute;

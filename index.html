@@ -211,8 +211,9 @@
         {
           top: li_rect.top + 'px',
           left: li_rect.left + 'px',
-          bottom: body_rect.height - li_rect.bottom + 'px',
+          bottom: window.innerHeight - li_rect.bottom + 'px',
           right: body_rect.width - li_rect.right + 'px',
+          maxWidth: '',
         },
         {
           top: Rem2Px(5.5) + 'px',
@@ -223,15 +224,16 @@
       ];
 
       const option = {
-        duration: 300,
+        duration: 150,
         iterations: 1,
         fill: 'forwards',
       };
 
       post_detail.animate(keyframes, option).onfinish = () => {
-        post_detail.appendChild(post__label.cloneNode(true));
+        let clone = post__label.cloneNode(true);
+        clone.appendChild(createElement('span', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
+        post_detail.appendChild(clone);
         post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
-        post_detail.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
         post_detail.appendChild(createElement('span', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
         let post_detail__back = createElement('button', { class: 'post_detail__back' }, 'back');
         post_detail.appendChild(post_detail__back);

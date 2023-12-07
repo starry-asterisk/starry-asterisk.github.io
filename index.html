@@ -206,7 +206,7 @@
       let body_rect = document.body.getBoundingClientRect();
       let li_rect = li.getBoundingClientRect();
       let post_detail = createElement('div', {
-        style: 'position: fixed;box-sizing: border-box;border: 1px solid var(--border-darker);z-index:99;box-shadow: 0 0 0 50vw #00000055;background: white;padding: 2.5rem'
+        style: 'position: fixed;box-sizing: border-box;border: 1px solid var(--border-darker);z-index:99;box-shadow: 0 0 0 50vw #00000055;background: white;padding: 2.5rem;'
       });
       document.body.appendChild(post_detail);
       const keyframes = [
@@ -227,14 +227,14 @@
       const option = {
         duration: 300,
         iterations: 1,
-        fillMode: 'forwards',
+        fill: 'forwards',
       };
 
       post_detail.animate(keyframes, option).onfinish = () => {
-        li.appendChild(post__label.cloneNode(true));
-        li.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
-        li.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
-        li.appendChild(createElement('p', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
+        post_detail.appendChild(post__label.cloneNode(true));
+        post_detail.appendChild(createElement('p', { class: 'post__title' }, issue_data.title));
+        post_detail.appendChild(createElement('p', { class: 'post__datetime' }, timeSince(new Date(issue_data.created_at))));
+        post_detail.appendChild(createElement('p', { class: 'post__desc' }, renderMarkDownText(issue_data.body)));
       };
       //window.open('_blank').location.href=issue_data.html_url;
     }

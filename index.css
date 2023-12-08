@@ -1018,6 +1018,7 @@ button.post_detail__back::before {
     right: 0;
     bottom: 0;
     background-color: #000000AA;
+    z-index: 98;
 }
 .full-mode > .full {
     pointer-events: all;

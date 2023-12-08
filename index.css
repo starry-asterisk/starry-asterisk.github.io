@@ -96,6 +96,19 @@ hr {
     margin: 2rem 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table tr:nth-of-type(2n) {
+    background-color: pink;
+}
+
+th, td {
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+}
+
 /*레이아웃 요소*/
 body {
     display: flex;

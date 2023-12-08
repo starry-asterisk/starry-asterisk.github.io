@@ -338,6 +338,9 @@
     return markdownText
       .replace(/\r\n/g, `\n`)
 
+      //hr
+      .replace(/^\s*---\s*$/,'<hr>')
+
       //list
       .renderLi()
 

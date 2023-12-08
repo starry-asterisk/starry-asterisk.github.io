@@ -339,7 +339,7 @@
       .replace(/\r\n/g, `\n`)
 
       //hr
-      .replace(/^\s*---\s*$/,'<hr>')
+      .replace(/^\s*---\s*$/gm,'<hr>')
 
       //list
       .renderLi()

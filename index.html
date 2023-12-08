@@ -338,19 +338,20 @@
     return markdownText
       .replace(/\r\n/g, `\n`)
 
-      //ul
-      .replace(/^\s*\n\*/gm, '<ul>\n*')
-      .replace(/^(\*.+)\s*\n([^\*])/gm, '$1\n</ul>\n\n$2')
-      .replace(/^\*(.+)/gm, '<li>$1</li>')
-  
-      .replace(/^\s*\n\s*-\s*/gm, '<ul>\n- ')
-      .replace(/^(\s*-\s.+)\n(\s*[^-^\s])/gm, '$1\n</ul>\n$2')
-      .replace(/^\s*-\s(.+)/gm, '<li>$1</li>')
+      //ul with dash(hyphen)
+      .replace(/^((?!\s*-\s).*)*\n\s*-\s/gm, '$1\n<ul>\n- ')
+      .replace(/^\s*-\s(.*)\n((?!\s*-\s).*)/gm, '- $1\n</ul>\n$2')
+      .replace(/^\s*-\s(.*)/gm, '<li>$1</li>')
+
+      //ul with *
+      .replace(/^((?!\s*\*\s).*)*\n\s*\*\s/gm, '$1\n<ul>\n* ')
+      .replace(/^\s*\*\s(.*)\n((?!\s*\*\s).*)/gm, '* $1\n</ul>\n$2')
+      .replace(/^\s*\*\s(.*)/gm, '<li>$1</li>')
   
       //ol
-      .replace(/^\s*\n\d\./gm, '<ol>\n1.')
-      .replace(/^(\d\..+)\s*\n([^\d\.])/gm, '$1\n</ol>\n\n$2')
-      .replace(/^\d\.(.+)/gm, '<li>$1</li>')
+      .replace(/^((?!\s*\d\.\s).*)*\n\s*\d\.\s/gm, '$1\n<ol>\n1. ')
+      .replace(/^\s*\d\.\s(.*)\n((?!\s*\d\.\s).*)/gm, '1. $1\n</ol>\n$2')
+      .replace(/^\s*\d\.\s(.+)/gm, '<li>$1</li>')
 
       //emoji
       .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match)

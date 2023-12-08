@@ -349,7 +349,7 @@
 
 
       //blockquote
-      .replace(/^&gt;(.+)/gm, '<blockquote>$1</blockquote>')
+      .replace(/^\s*>(.+)/gm, '<blockquote>$1</blockquote>')
 
       //h
       .replace(/^\s*# (.+)$/gm, '<h1>$1</h1>')

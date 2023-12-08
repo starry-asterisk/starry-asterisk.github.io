@@ -90,6 +90,12 @@ blockquote {
     color: var(--border-darker);
 }
 
+hr {
+    height: 0.25rem;
+    background: var(--border);
+    margin: 2rem 0;
+}
+
 /*레이아웃 요소*/
 body {
     display: flex;

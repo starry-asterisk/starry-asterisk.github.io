@@ -98,15 +98,18 @@ hr {
 
 table {
     border-collapse: collapse;
+    background-color: #0d1117;
 }
 
-table tr:nth-of-type(2n) {
-    background-color: pink;
+table tr:nth-child(2n +1) > td {
+    background-color: #161b22;
 }
 
 th, td {
-    border: 1px solid var(--border);
+    border: 1px solid #30363d;
     padding: 0.5rem 1rem;
+    color:#e6edf3;
+    
 }
 
 /*레이아웃 요소*/

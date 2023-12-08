@@ -338,20 +338,8 @@
     return markdownText
       .replace(/\r\n/g, `\n`)
 
-      //ul with dash(hyphen)
-      .replace(/^((?!\s*-\s).*)*\n\s*-\s/gm, '$1\n<ul>\n- ')
-      .replace(/^\s*-\s(.*)\n((?!\s*-\s).*)/gm, '- $1\n</ul>\n$2')
-      .replace(/^\s*-\s(.*)/gm, '<li>$1</li>')
-
-      //ul with *
-      .replace(/^((?!\s*\*\s).*)*\n\s*\*\s/gm, '$1\n<ul>\n* ')
-      .replace(/^\s*\*\s(.*)\n((?!\s*\*\s).*)/gm, '* $1\n</ul>\n$2')
-      .replace(/^\s*\*\s(.*)/gm, '<li>$1</li>')
-  
-      //ol
-      .replace(/^((?!\s*\d\.\s).*)*\n\s*\d\.\s/gm, '$1\n<ol>\n1. ')
-      .replace(/^\s*\d\.\s(.*)\n((?!\s*\d\.\s).*)/gm, '1. $1\n</ol>\n$2')
-      .replace(/^\s*\d\.\s(.+)/gm, '<li>$1</li>')
+      //list
+      .renderLi()
 
       //emoji
       .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match)
@@ -406,7 +394,43 @@
   let renderLinks = String.prototype.renderLinks = function () {
     return this.replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>');
   }
-  let render_text = String.prototype.render = function () {
+  let renderLi = String.prototype.renderLi = function () {
+    let text = '';
+    let mode = -1;// -1 : none, 0 : ul, 1 : ol
+    this.split('\n').forEach(line => {
+      let trimed = line.trim();
+      if('-*'.indexOf(trimed[0]) > -1){
+        switch(mode){
+          case 1:
+            text += `</ol>\n`;
+          case -1:
+            text += `<ul>\n`;
+        }
+        text += `<li>${trimed.substr(1)}</li>\n`;
+        mode = 0;
+      }else if(/^\d\./.test(trimed)){
+        switch(mode){
+          case 0:
+            text += `</ul>\n`;
+          case -1:
+            text += `<ol>\n`;
+        }
+        text += `<li>${trimed.substr(1)}</li>\n`;
+        mode = 1;
+      }else {
+        switch(mode){
+          case 0:
+            text += `</ul>\n`;
+          case 1:
+            text += `</ol>\n`;
+        }
+        text += line + '\n';
+        mode = -1;
+      }
+    });
+    return text;
+  }
+  let render_ol = String.prototype.render = function () {
     return this.renderEmoji().renderImages().renderLinks();
   }
 

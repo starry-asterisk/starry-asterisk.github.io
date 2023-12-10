@@ -1066,26 +1066,25 @@ button.post_detail__back::before {
     position: absolute;
     top: 0.25rem;
     right: 0.25rem;
-    height: 1.5rem;
-    width: 1.5rme;
-    padding: 0.25rem;
-    border: 1px solid var(--border)
+    height: 2rem;
+    width: 2rem;
+    background: none;
 }
 .code > button::before,
 .code > button::after {
     content: '';
     position: absolute;
-    width: 80%;
-    height: 80%;
+    width: 0.9rem;
+    height: 0.9rem;
     border: 0.125rem solid var(--border-darker);
     outline: 0.125rem solid #fafafa;
-
+    background: #fafafa;
 }
 .code > button::before {
-    top: 0;
-    left: 0;
+    bottom: 0.25rem;
+    left: 0.25rem;
 }
 .code > button::after {
-    bottom: 0;
-    right: 0; 
+    top: 0.25rem;
+    right: 0.25rem; 
 }

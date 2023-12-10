@@ -407,7 +407,7 @@
       if (trimed.indexOf('```') == 0) {
         if (code_type == null) {
           trimed.replace(/^\s*\`\`\`\s*(.*)\s*$/, (match, g1) => {
-            text += `<pre class="code" code-type="${g1}"><button onclick="copy"></button>\n`;
+            text += `<pre class="code" code-type="${g1}"><button onclick="copy(this.parentElement)"></button>\n`;
             code_type = g1;
           });
           mode = 2;
@@ -491,8 +491,8 @@
     return links;
   }
 
-  function copy(){
-    navigator.clipboard.writeText(this.parentElement.innerText);
+  function copy(target){
+    navigator.clipboard.writeText(target.innerText);
   }
 </script>
 

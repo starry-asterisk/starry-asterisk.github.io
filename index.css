@@ -1044,3 +1044,13 @@ button.post_detail__back::before {
 .full > .issue__item > .issue__item__desc{
     max-height: unset;
 }
+
+.keyword {
+    color: red;
+}
+.number {
+    color: blue;
+}
+.d_quote, .quote {
+    color: green;
+}

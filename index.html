@@ -56,6 +56,7 @@
   const USERNAME = 'starry-asterisk';
   const PER_PAGE = 5;
   let _git_color = {};
+  let _reserved_word = {};
   let _emoji = {};
   let _user = {};
   let _repos = [];
@@ -71,7 +72,12 @@
     _git_color = await getGitColors();
     _user = await getUsers();
     _repos = await getRepos();
+    _reserved_word = getReservedWord();
     getIssues();
+  }
+  async function getReservedWord() {
+    let res = await fetch('/reserved_word.json');
+    return await res.json();
   }
   async function getEmojis() {
     let res = await fetch('/emojis.json');
@@ -345,9 +351,8 @@
       .renderLi()
 
       //emoji
-      .replace(/(:(?![\n])[()#$@-\w]+:)/g, match => match.replaceAll('_', '') in _emoji ? _emoji[match.replaceAll('_', '')] : match)
-
-
+      .renderEmoji()
+      
       //blockquote
       .replace(/\n\s*>\s*(([^>\n]|\n[^\n])*)\n\n/gm, '\n<blockquote>$1</blockquote>\n')
 
@@ -360,10 +365,10 @@
       .replace(/^\s*###### (.+)$/gm, '<h6>$1</h6>')
 
       //images
-      .replace(/\!\[([^\]]+)\]\(([^\)]+)\)/g, '<img src="$2" alt="$1" />')
+      .renderImages()
 
       //links
-      .replace(/[\[]{1}([^\]]+)[\]]{1}[\(]{1}([^\)\"]+)(\"(.+)\")?[\)]{1}/g, '<a href="$2" title="$4">$1</a>')
+      .renderLinks()
 
       //font styles
       .replace(/[\*\_]{2}([^\*\_]+)[\*\_]{2}/g, '<b>$1</b>')
@@ -371,7 +376,7 @@
       .replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>')
 
       //pre
-      .replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="$2">')
+      .replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="code" code-type="$2">')
       .replace(/^\`\`\`\s*\n/gm, '</pre>\n\n')
 
       //code
@@ -399,10 +404,33 @@
   }
   let renderLi = String.prototype.renderLi = function () {
     let text = '';
-    let mode = -1;// -1 : none, 0 : ul, 1 : ol
+    let mode = -1;// -1 : none, 0 : ul, 1 : ol, 2 : code-pre
+    let code_type = null;
     this.split('\n').forEach(line => {
       let trimed = line.trim();
-      if('-*'.indexOf(trimed[0]) > -1){
+      if(trimed.indexOf('```') == 0){
+        if(code_type == null){
+          trimed.replace(/^\s*\`\`\`\s*(.*)\s*$/, (match, g1) => {
+            text += `<pre class="code" code-type="${g1}">\n`;
+            code_type = g1;
+          });
+        } else {
+            text += `</pre>\n`;
+        }
+      }else if(mode == 2){
+        trimed.split(/(\s*,\s*|\s*\(\s*|\s*\)\s*|\s+)/).forEach(word => {
+          if(_reserved_word[code_type].indexOf(word.toUpperCase()) > -1){
+            text += `<span class="keyword">${word}</span>`;
+          }else if(/^\d+.*$/.test(word)){
+            text += `<span class="number">${word}</span>`;
+          }else if(/^".*"$/.test(word)){
+            text += `<span class="d_quote">${word}</span>`;
+          }else if(/^'.*'$/.test(word)){
+            text += `<span class="quote">${word}</span>`;
+          }else text += word;
+        });
+        text += `\n`;
+      }else if('-*'.indexOf(trimed[0]) > -1){
         switch(mode){
           case 1:
             text += `</ol>\n`;
@@ -432,9 +460,6 @@
       }
     });
     return text;
-  }
-  let render_ol = String.prototype.render = function () {
-    return this.renderEmoji().renderImages().renderLinks();
   }
 
 

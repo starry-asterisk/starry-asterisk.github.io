@@ -72,7 +72,7 @@
     _git_color = await getGitColors();
     _user = await getUsers();
     _repos = await getRepos();
-    _reserved_word = getReservedWord();
+    _reserved_word = await getReservedWord();
     getIssues();
   }
   async function getReservedWord() {
@@ -420,7 +420,9 @@
           mode = -1;
         }
       } else if (mode == 2) {
+        console.log('code type outer : ',code_type);
         trimed.split(/(\s*,\s*|\s*\(\s*|\s*\)\s*|\s+)/).forEach(word => {
+        console.log('code type inner : ',code_type);
           if (_reserved_word[code_type].indexOf(word.toUpperCase()) > -1) {
             text += `<span class="keyword">${word}</span>`;
           } else if (/^\d+.*$/.test(word)) {

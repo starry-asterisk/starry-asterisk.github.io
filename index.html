@@ -407,7 +407,7 @@
       if (trimed.indexOf('```') == 0) {
         if (code_type == null) {
           trimed.replace(/^\s*\`\`\`\s*(.*)\s*$/, (match, g1) => {
-            text += `<pre class="code" code-type="${g1}"><button onclick="copy(this.parentElement)"></button>\n`;
+            text += `<pre class="code" code-type="${g1}"><button onclick="copy(this.parentElement)"></button>`;
             code_type = g1;
           });
           mode = 2;

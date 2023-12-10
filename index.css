@@ -1069,13 +1069,15 @@ button.post_detail__back::before {
     height: 2rem;
     width: 2rem;
     background: none;
+    cursor: pointer;
 }
 .code > button::before,
 .code > button::after {
     content: '';
     position: absolute;
-    width: 0.9rem;
-    height: 0.9rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 0.1rem;
     border: 0.125rem solid var(--border-darker);
     outline: 0.125rem solid #fafafa;
     background: #fafafa;

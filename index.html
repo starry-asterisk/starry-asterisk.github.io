@@ -375,10 +375,6 @@
       .replace(/[\*\_]{1}([^\*\_]+)[\*\_]{1}/g, '<i>$1</i>')
       .replace(/[\~]{2}([^\~]+)[\~]{2}/g, '<del>$1</del>')
 
-      //pre
-      .replace(/^\s*\n\`\`\`(([^\s]+))?/gm, '<pre class="code" code-type="$2">')
-      .replace(/^\`\`\`\s*\n/gm, '</pre>\n\n')
-
       //code
       .replace(/[\`]{1}([^\`]+)[\`]{1}/g, '<code>$1</code>')
 
@@ -411,7 +407,7 @@
       if (trimed.indexOf('```') == 0) {
         if (code_type == null) {
           trimed.replace(/^\s*\`\`\`\s*(.*)\s*$/, (match, g1) => {
-            text += `<pre class="code" code-type="${g1}">\n`;
+            text += `<pre class="code" code-type="${g1}"><button onclick="copy"></button>\n`;
             code_type = g1;
           });
           mode = 2;
@@ -420,9 +416,7 @@
           mode = -1;
         }
       } else if (mode == 2) {
-        console.log('code type outer : ',code_type);
-        trimed.split(/(\s*,\s*|\s*\(\s*|\s*\)\s*|\s+)/).forEach(word => {
-        console.log('code type inner : ',code_type);
+        line.split(/(\s*,\s*|\s*\(\s*|\s*\)\s*|\s+)/).forEach(word => {
           if (_reserved_word[code_type].indexOf(word.toUpperCase()) > -1) {
             text += `<span class="keyword">${word}</span>`;
           } else if (/^\d+.*$/.test(word)) {
@@ -497,6 +491,9 @@
     return links;
   }
 
+  function copy(){
+    navigator.clipboard.writeText(this.parentElement.innerText);
+  }
 </script>
 
 </html>

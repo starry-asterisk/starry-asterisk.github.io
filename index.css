@@ -1054,3 +1054,38 @@ button.post_detail__back::before {
 .d_quote, .quote {
     color: green;
 }
+.code {
+    font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    padding: 1rem;
+    background: #fafafa;
+    border-radius: 0.25rem;
+}
+.code > button {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    height: 1.5rem;
+    width: 1.5rme;
+    padding: 0.25rem;
+    border: 1px solid var(--border)
+}
+.code > button::before,
+.code > button::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    border: 0.125rem solid var(--border-darker);
+    outline: 0.125rem solid #fafafa;
+
+}
+.code > button::before {
+    top: 0;
+    left: 0;
+}
+.code > button::after {
+    bottom: 0;
+    right: 0; 
+}

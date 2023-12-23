@@ -55,27 +55,42 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -20vw);
     height: 80vw;
 }
 .container__object > * > img {
+    transform: translate(-50%, -20vw);
     height: 100%;
 }
-.container__object > *.horizontal_invert {
+.container__object > *.horizontal_invert > img {
     transform: translate(-50%, -20vw) scaleX(-1);
 }
-.container__object > *.vertical_invert {
+.container__object > *.vertical_invert > img {
     transform: translate(-50%, -20vw) scaleY(-1);
 }
-.container__object > *.horizontal_invert.vertical_invert {
+.container__object > *.horizontal_invert.vertical_invert > img {
     transform: translate(-50%, -20vw) scale(-1);
 }
 .container__object > *.behind::after {
     content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     --mask: inherit;
     mask-image: var(--mask);
     mask-size: contain;
     background-image: linear-gradient(to bottom, white, black);
+    transform: translate(-50%, -20vw);
+}
+.container__object > *.horizontal_invert.behind::after {
+    transform: translate(-50%, -20vw) scaleX(-1);
+}
+.container__object > *.vertical_invert.behind::after {
+    transform: translate(-50%, -20vw) scaleY(-1);
+}
+.container__object > *.horizontal_invert.vertical_invert.behind::after {
+    transform: translate(-50%, -20vw) scale(-1);
 }
 
 

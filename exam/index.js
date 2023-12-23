@@ -244,7 +244,7 @@ function frameHandler(frame){
 
                     if(option.scale) object._instance.style.zoom = option.scale;
                     if(option.order) object._instance.style.zIndex = option.order;
-                    if(option.animation) stopable_arr.push(object._img.animate(option.animation.keyframes, option.animation.option).finish);
+                    if(option.animation) stopable_arr.push(object._instance.animate(option.animation.keyframes, option.animation.option).finish);
                     if(option.base_x) object._instance.style.left = option.base_x;
                     if(option.base_y) object._instance.style.top = option.base_y;
                     if(option.destroy) object._instance.remove();

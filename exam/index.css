@@ -70,6 +70,13 @@ body {
 .container__object > *.horizontal_invert.vertical_invert {
     transform: translate(-50%, -20vw) scale(-1);
 }
+.container__object > *.behind::after {
+    content: '';
+    --mask: inherit;
+    mask-image: var(--mask);
+    mask-size: contain;
+    background-image: linear-gradient(to bottom, white, black);
+}
 
 
 .container__choice {

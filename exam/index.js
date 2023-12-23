@@ -224,13 +224,13 @@ function frameHandler(frame){
                             _img: document.createElement('img')
                         };
                         object._img.src = `./resource/imageSet/${option.name}/${option.type}.png`;
-                        object._instance.setProperty('--mask', `url(./resource/imageSet/${option.name}/${option.type}.png)`);   
+                        object._instance.style.setProperty('--mask', `url(./resource/imageSet/${option.name}/${option.type}.png)`);   
                         object._instance.appendChild(object._img);
                         Player.object_container.appendChild(object._instance);
                     }else{
                         option = {...object, ...option};
                         object._img.src = `./resource/imageSet/${option.name}/${option.type}.png`;
-                        object._instance.setProperty('--mask', `url(./resource/imageSet/${option.name}/${option.type}.png)`);            
+                        object._instance.style.setProperty('--mask', `url(./resource/imageSet/${option.name}/${option.type}.png)`);            
                     }
 
                     if(option.horizontal_invert===true)object._instance.classList.add('horizontal_invert');

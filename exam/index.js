@@ -226,15 +226,15 @@ function frameHandler(frame){
                         object._img.src = `./resource/imageSet/${option.name}/${option.type}.png`;
                         object._instance.appendChild(object._img);
                         Player.object_container.appendChild(object._instance);
-                        Player._img.style.maskImage = `url(./resource/imageSet/${option.name}/${option.type}.png)`;
-                        Player._img.style.maskSize = `contain`;
-                        Player._img.style.maskOrigin = `center`;
+                        object._img.style.maskImage = `url(./resource/imageSet/${option.name}/${option.type}.png)`;
+                        object._img.style.maskSize = `contain`;
+                        object._img.style.maskOrigin = `center`;
                     }else{
                         option = {...object, ...option};
                         object._img.src = `./resource/imageSet/${option.name}/${option.type}.png`;     
-                        Player._img.style.maskImage = `url(./resource/imageSet/${option.name}/${option.type}.png)`;
-                        Player._img.style.maskSize = `contain`;
-                        Player._img.style.maskOrigin = `center`;               
+                        object._img.style.maskImage = `url(./resource/imageSet/${option.name}/${option.type}.png)`;
+                        object._img.style.maskSize = `contain`;
+                        object._img.style.maskOrigin = `center`;               
                     }
 
                     if(option.horizontal_invert===true)object._instance.classList.add('horizontal_invert');
